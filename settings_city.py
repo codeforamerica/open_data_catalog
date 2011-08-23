@@ -8,6 +8,8 @@ CATALOG_URL = 'opendataboston.org'
 
 # Number of days for the account activation registration window.
 ACCOUNT_ACTIVATION_DAYS = 7
+DEFAULT_FROM_EMAIL = 'admin@' + CATALOG_URL
+LOGIN_REDIRECT_URL = '/'
 
 
 # This should work both locally and on DotCloud.

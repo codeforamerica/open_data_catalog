@@ -3,7 +3,7 @@
 import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 from settings_city import (CITY_NAME, CATALOG_URL, ACCOUNT_ACTIVATION_DAYS,
-                           DB_PATH)
+                           DB_PATH, DEFAULT_FROM_EMAIL, LOGIN_REDIRECT_URL)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG

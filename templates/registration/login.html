@@ -1,1 +1,11 @@
 {% extends "base.html" %}
+
+{% include "_formalize.html" %}
+
+{% block main %}
+<form action="." method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" class="submit" value="Submit" />
+</form>
+{% endblock %}
