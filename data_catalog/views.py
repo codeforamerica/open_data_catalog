@@ -1,6 +1,6 @@
 """Views for the Boston Data Catalog."""
 
-from django.shortcuts import redirect, get_object_or_404, render_to_response
+from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from utils import render_response
 
@@ -54,4 +54,5 @@ def submit_data(request):
 
 def send_text_file(request, name):
     """Easiest way to send `robots.txt` and `humans.txt` files."""
-    return render_to_response('text_files/%s.txt' % name, mimetype='text/plain')
+    return render_response(request, 'text_files/%s.txt' % name,
+                           mimetype='text/plain')

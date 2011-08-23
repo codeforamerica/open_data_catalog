@@ -3,8 +3,10 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.db import IntegrityError
+from mock import Mock
 
 from models import Tag, App, Data, Idea
+from context_processors import settings_context
 
 
 class TestViews(TestCase):
@@ -59,6 +61,8 @@ class TestModels(TestCase):
     def test_creating_a_tag(self):
         Tag.objects.create(name='GIS').save()
         self.assertQuerysetEqual(Tag.objects.all(), ['GIS'], lambda t: t.name)
+        gis = Tag.objects.get(name='GIS')
+        self.assertEqual(str(gis), 'GIS')
 
     def test_tag_names_are_unique(self):
         Tag.objects.create(name='GIS').save()
@@ -77,6 +81,7 @@ class TestModels(TestCase):
                                  lambda tag: tag.name)
         self.assertQuerysetEqual(gis.apps.all(), ['My App'],
                                  lambda app: app.name)
+        self.assertEquals(str(app), 'My App')
 
     def test_data_does_not_need_an_url(self):
         test = Tag.objects.create(name='test')
@@ -86,14 +91,26 @@ class TestModels(TestCase):
         data.save()
         self.assertQuerysetEqual(Data.objects.all(), ['My Data'],
                                  lambda data: data.name)
+        self.assertEquals(str(data), 'My Data')
 
     def test_creating_an_idea(self):
         Idea.objects.create(name='Test', description='A test idea.')
         self.assertQuerysetEqual(Idea.objects.all(), ['Test'],
                                  lambda idea: idea.name)
+        idea = Idea.objects.get(name='Test')
+        self.assertEquals(str(idea), 'Test')
 
     def test_an_idea_can_have_a_type(self):
         Idea.objects.create(name='App Idea', type='app',
                             description='An idea for an app.')
         self.assertQuerysetEqual(Idea.objects.all(), ['App Idea'],
                                  lambda idea: idea.name)
+
+
+class TestContextProcessor(TestCase):
+
+    def test_settings_context_context_processor(self):
+        mock_request = Mock()
+        settings = settings_context(mock_request)['settings']
+        self.assertEqual(settings['CITY_NAME'], 'Boston')
+        self.assertEqual(settings['CATALOG_URL'], 'opendataboston.org')
