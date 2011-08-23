@@ -1,6 +1,7 @@
 """Django settings file."""
 
 import os
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 from settings_city import CITY_NAME, CATALOG_URL
 
 DEBUG = True
@@ -26,6 +27,11 @@ MANAGERS = ADMINS
 TEMPLATE_CONTEXT_SETTINGS = (
     'CITY_NAME',
     'CATALOG_URL',
+)
+
+# Make the `settings` template namespace available.
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'data_catalog.context_processors.settings_context',
 )
 
 DATABASES = {
