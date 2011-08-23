@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 
-from models import Tag, Resource, App, Data, Idea
+from models import Tag, App, Data, Idea
 
 
 class TestViews(TestCase):
@@ -46,6 +46,12 @@ class TestViews(TestCase):
     def test_submit_data_page_for_user_not_logged_in(self):
         response = self.client.get('/submit/data/')
         self.assertEquals(response.status_code, 302)
+
+    def test_static_files_are_sent(self):
+        response = self.client.get('/robots.txt')
+        self.assertEquals(response.status_code, 200)
+        response = self.client.get('/humans.txt')
+        self.assertEquals(response.status_code, 200)
 
 
 class TestModels(TestCase):
