@@ -1,6 +1,7 @@
 """Django settings file."""
 
 import os
+from settings_city import CITY_NAME, CATALOG_URL
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -19,6 +20,13 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+
+# These will become available in templates under the settings namespace.
+# City specific ones can be changed in the `settings_city.py` file.
+TEMPLATE_CONTEXT_SETTINGS = (
+    'CITY_NAME',
+    'CATALOG_URL',
+)
 
 DATABASES = {
     'default': {
