@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>{% block title %}Open Data Catalog{% endblock %}</title>
+  <title>{% block title %}Open Data {{ settings.CITY_NAME }}{% endblock %}</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -36,7 +36,7 @@
     <header>
     <ul class="clearfix">
         <li class="float_left">
-            <a href="/" class="ir">Open Data Catalog</a>
+            <a href="/" class="ir">Open Data {{ settings.CITY_NAME }}</a>
         </li>
     </ul>
     </header>
