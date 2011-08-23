@@ -2,19 +2,14 @@
 
 import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
-from settings_city import CITY_NAME, CATALOG_URL
+from settings_city import (CITY_NAME, CATALOG_URL, ACCOUNT_ACTIVATION_DAYS,
+                           DB_PATH)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 # This way we can get test coverage.
 TEST_RUNNER = 'django-test-coverage.runner.run_tests'
-
-# This should work both locally and on DotCloud.
-if os.path.exists('/home/dotcloud/current'):
-    DB_PATH = '/home/dotcloud/'
-else:
-    DB_PATH = ''
 
 ADMINS = (
     ('Zach', 'zach@codeforamerica.org'),
@@ -29,7 +24,8 @@ TEMPLATE_CONTEXT_SETTINGS = (
     'CATALOG_URL',
 )
 
-# Make the `settings` template namespace available.
+# Append the `settings_context` to make the `settings` template
+# namespace available.
 TEMPLATE_CONTEXT_PROCESSORS += (
     'data_catalog.context_processors.settings_context',
 )
@@ -115,7 +111,6 @@ SECRET_KEY = 'this_is_not_my_real_secret_key'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -132,6 +127,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(os.path.dirname(__file__), 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -144,6 +140,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'data_catalog',
+    'registration',
     'south',
 )
 
