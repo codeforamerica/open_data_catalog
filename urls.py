@@ -15,12 +15,12 @@ urlpatterns = patterns('data_catalog.views',
     url(r'^submit/app/$', 'submit_app'),
     url(r'^submit/idea/$', 'submit_idea'),
     url(r'^submit/data/$', 'submit_data'),
+    url(r'^(?P<name>\w+)\.txt$', 'send_text_file'),
 )
 
 
 urlpatterns += patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^(?P<name>\w+)\.txt$', 'send_text_file'),
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout_then_login'),
     url(r'^accounts/login/$', redirect_to, {'url': '/login/'}),
