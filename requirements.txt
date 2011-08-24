@@ -3,6 +3,7 @@
 # ---------------------
 django
 django-registration
+django-autoslug
 
 
 # ---------------------
