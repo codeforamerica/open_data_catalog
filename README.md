@@ -1,4 +1,4 @@
-Boston Data Catalog
+Open Data Catalog
 ===================
 
 A Django web application that can be used by cities to easily get an
