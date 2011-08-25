@@ -2,7 +2,9 @@
 
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from utils import render_response
+
+from data_catalog.models import App, Data, Idea
+from data_catalog.utils import render_response
 
 
 def home(request):
@@ -23,6 +25,37 @@ def apps(request):
 def ideas(request):
     """Render the ideas page."""
     return render_response(request, 'ideas.html')
+
+
+def search(request):
+    """Handle search requests."""
+    return render_response(request, 'base.html')
+
+
+def autocomplete(request):
+    """
+    Handle all autocomplete requests from the data catalog's
+    search bar.
+    """
+    return render_response(request, 'base.html')
+
+
+def category(request, model, tag):
+    """
+    Given a lowercase model name and tag, search for all models linked to
+    the given tag. The model is obtained by looking through a dictionary of
+    available models.
+    """
+    available_models = {'apps': App, 'data': Data, 'ideas': Idea}
+    try:
+        actual_model = available_models[model]
+    except KeyError:
+        # The model does not exist.
+        context = {'results': None}
+    else:
+        results = actual_model.objects.filter(tag=tag)
+        context = {'results': results}
+    return render_response(request, 'category.html', context)
 
 
 @login_required

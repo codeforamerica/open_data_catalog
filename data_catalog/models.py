@@ -1,6 +1,8 @@
 """Models for the data catalog."""
 
 from django.db import models
+from django.template.defaultfilters import slugify
+from autoslug import AutoSlugField
 from markdown import markdown
 
 
@@ -15,6 +17,7 @@ class Tag(models.Model):
 class Resource(models.Model):
     """An abstract model for resources submitted to the data catalog."""
     name = models.CharField(max_length=100)
+    slug = AutoSlugField(populate_from='name', unique=True)
     description = models.TextField()
 
     class Meta:
@@ -45,6 +48,7 @@ class Data(Resource):
 class Idea(models.Model):
     """A model for submitted ideas."""
     name = models.CharField(max_length=100)
+    slug = AutoSlugField(populate_from='name', unique=True)
     type = models.CharField(max_length=50, blank=True)
     description = models.TextField()
     tags = models.ManyToManyField(Tag, related_name='ideas')

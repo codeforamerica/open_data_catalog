@@ -3,10 +3,12 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-from mock import Mock
+from mock import Mock, patch
 
-from models import Tag, App, Data, Idea
-from context_processors import settings_context
+from data_catalog.views import category
+from data_catalog.models import Tag, App, Data, Idea
+from data_catalog.context_processors import settings_context
+from data_catalog.forms import AppForm, DataForm, IdeaForm
 
 
 class TestViews(TestCase):
@@ -54,6 +56,19 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200)
         response = self.client.get('/humans.txt')
         self.assertEquals(response.status_code, 200)
+
+    @patch('data_catalog.views.App')
+    def test_category_page_is_working(self, model):
+        response = self.client.get('/apps/GIS/')
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue(model.objects.filter.called)
+        model.objects.filter.assert_called_with(tag='GIS')
+
+    @patch('data_catalog.views.render_response')
+    def test_category_view_can_handle_missing_models_gracefully(self, render):
+        request = Mock()
+        category(request, 'test', 'tag')
+        render.assert_called_with(request, 'category.html', {'results': None})
 
 
 class TestModels(TestCase):
@@ -105,6 +120,13 @@ class TestModels(TestCase):
                             description='An idea for an app.')
         self.assertQuerysetEqual(Idea.objects.all(), ['App Idea'],
                                  lambda idea: idea.name)
+
+
+class TestForms(TestCase):
+
+    def test_form_for_submitting_an_app(self):
+        form = AppForm({'name': 'Test', 'description': 'My test form.',
+                        'url': 'http://test.com', 'input_tags': 'test, form'})
 
 
 class TestContextProcessor(TestCase):
