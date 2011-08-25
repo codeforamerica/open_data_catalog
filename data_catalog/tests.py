@@ -57,6 +57,22 @@ class TestViews(TestCase):
         response = self.client.get('/humans.txt')
         self.assertEquals(response.status_code, 200)
 
+    @patch('data_catalog.views.Tag')
+    def test_search_works_for_queries(self, model):
+        response = self.client.get('/search?q=test')
+        self.assertTrue(model.objects.filter.called)
+        self.assertEquals(response.status_code, 200)
+
+    @patch('data_catalog.views.Tag')
+    def test_search_works_without_query(self, model):
+        response = self.client.get('/search?q=')
+        self.assertFalse(model.objects.filter.called)
+        self.assertEquals(response.status_code, 200)
+
+    def test_autocomplete_page_works(self):
+        response = self.client.get('/autocomplete')
+        self.assertEquals(response.status_code, 200)
+
     @patch('data_catalog.views.App')
     def test_category_page_is_working(self, model):
         response = self.client.get('/apps/GIS/')
@@ -65,7 +81,7 @@ class TestViews(TestCase):
         model.objects.filter.assert_called_with(tag='GIS')
 
     @patch('data_catalog.views.render_response')
-    def test_category_view_can_handle_missing_models_gracefully(self, render):
+    def test_category_view_can_handle_missing_models(self, render):
         request = Mock()
         category(request, 'test', 'tag')
         render.assert_called_with(request, 'category.html', {'results': None})

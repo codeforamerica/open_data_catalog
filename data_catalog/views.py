@@ -3,7 +3,7 @@
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
-from data_catalog.models import App, Data, Idea
+from data_catalog.models import App, Data, Idea, Tag
 from data_catalog.utils import render_response
 
 
@@ -29,7 +29,13 @@ def ideas(request):
 
 def search(request):
     """Handle search requests."""
-    return render_response(request, 'base.html')
+    query = request.GET.get('q')
+    if not query:
+        context = {'results': None}
+    else:
+        tags = Tag.objects.filter(name=query)
+        context = {'results': tags}
+    return render_response(request, 'base.html', context)
 
 
 def autocomplete(request):
