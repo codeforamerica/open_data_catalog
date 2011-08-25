@@ -15,6 +15,13 @@ django-test-coverage
 
 
 # ---------------------
+# Image Manipulation
+# ---------------------
+sorl-thumbnail
+PIL
+
+
+# ---------------------
 # Database
 # ---------------------
 south
