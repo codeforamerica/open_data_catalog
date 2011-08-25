@@ -33,7 +33,7 @@ def search(request):
     if not query:
         context = {'results': None}
     else:
-        tags = Tag.objects.filter(name=query)
+        tags = Tag.get_resources(query)
         context = {'results': tags}
     return render_response(request, 'base.html', context)
 

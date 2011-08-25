@@ -1,7 +1,6 @@
 """Models for the data catalog."""
 
 from django.db import models
-from django.template.defaultfilters import slugify
 from autoslug import AutoSlugField
 from markdown import markdown
 
@@ -12,6 +11,11 @@ class Tag(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_resources(self, name):
+        """Return all resources linked to a tag."""
+        instances = self.objects.filter(name__icontains=name)
+        return instances
 
 
 class Resource(models.Model):

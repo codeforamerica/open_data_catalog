@@ -8,7 +8,6 @@ from mock import Mock, patch
 from data_catalog.views import category
 from data_catalog.models import Tag, App, Data, Idea
 from data_catalog.context_processors import settings_context
-from data_catalog.forms import AppForm, DataForm, IdeaForm
 
 
 class TestViews(TestCase):
@@ -60,13 +59,13 @@ class TestViews(TestCase):
     @patch('data_catalog.views.Tag')
     def test_search_works_for_queries(self, model):
         response = self.client.get('/search?q=test')
-        self.assertTrue(model.objects.filter.called)
+        self.assertTrue(model.method_calls)
         self.assertEquals(response.status_code, 200)
 
     @patch('data_catalog.views.Tag')
     def test_search_works_without_query(self, model):
         response = self.client.get('/search?q=')
-        self.assertFalse(model.objects.filter.called)
+        self.assertFalse(model.method_calls)
         self.assertEquals(response.status_code, 200)
 
     def test_autocomplete_page_works(self):
@@ -138,17 +137,10 @@ class TestModels(TestCase):
                                  lambda idea: idea.name)
 
 
-class TestForms(TestCase):
-
-    def test_form_for_submitting_an_app(self):
-        form = AppForm({'name': 'Test', 'description': 'My test form.',
-                        'url': 'http://test.com', 'input_tags': 'test, form'})
-
-
 class TestContextProcessor(TestCase):
 
     def test_settings_context_context_processor(self):
-        mock_request = Mock()
-        settings = settings_context(mock_request)['settings']
+        request = Mock()
+        settings = settings_context(request)['settings']
         self.assertEqual(settings['CITY_NAME'], 'Boston')
         self.assertEqual(settings['CATALOG_URL'], 'opendataboston.org')
