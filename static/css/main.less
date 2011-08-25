@@ -1,5 +1,5 @@
 @color: #6b1bdf;
-@width: 90%;
+@width: 100%;
 
 /* Link Color and Styles */
 a, a:active, a:visited { color: @color; }
@@ -10,15 +10,23 @@ a:hover { background: @color; color: white; text-decoration: none; }
 ::-moz-selection{ background:@color; color:#fff; text-shadow: none; }
 ::selection { background:@color; color:#fff; text-shadow: none; }
 
+.round_corners (@radius: 5px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
 body{
     color: #444;
 }
+
 header, #main, footer{
   margin: 0 auto;
   width: @width;
 }
 
 header{
+    background: #666;
     display:block;
     margin-bottom: 25px;
     ul{
@@ -33,31 +41,36 @@ header{
     }
     li.float_left{
         float:left;
+    }
+    li.city_name{
         padding-top: 10px;
         a{
-          background: url('/static/img/yourlogo.png') no-repeat center center;
-          height: 41px;
-          width: 315px;
+          background: url('http://placehold.it/300x50') no-repeat center center;
+          height: 50px;
+          width: 350px;
         }
     }
-    a{
-        display:block;
-        font-size:16px;
-        padding:10px 12px;
-        width:100px;
-        text-align:center;
-        text-decoration:none;
-        -moz-border-radius: 4px;
-        -webkit-border-radius: 4px;
-        border-radius: 4px;
+    form{
+        width: 200px;
+        input{
+            background: url('/static/img/search.png') #fff no-repeat right center;
+            border: 1px solid #888;
+            padding: 5px;
+            width: 100%;
+        }
     }
-    a, a:visited{
-        color: #444;
-    }
-    a:hover{
-        background: #fff;
-        color: #444;
-        text-decoration: none;
+    .sign_in{
+        margin: 0 25px;
+        span{
+            color: #bbb;
+            font-size: 16px;
+        }
+        a{
+            color: #fff;
+            font-size: 24px;
+            padding: 0 20px;
+            text-decoration: none;
+        }
     }
 }
 
@@ -67,43 +80,9 @@ header{
     color: white;
 }
 
-.screencast{
-    margin: 100px 0 125px;
-}
-.description{
-    float: left;
-    max-width: 29%;
-    p{
-        font-size: 16px;
-        line-height: 1.5;
-        margin: 90px 0 0;
-        padding: 0 5%;
-        text-align: justify;
-    }
-}
-.content{
-    float: right;
-    min-width: 65%;
-    h2{
-        font-size: 28px;
-        margin-bottom: 35px;
-    }
-}
-
-.super_logo{
-    margin: 0 auto;
-    height: 75px;
-    width: 75px;
-}
 footer{
     display: block;
     margin: 100px auto 50px;
-    a.super_logo{
-        background: url('/static/img/super_z.png') no-repeat center center;
-    }
-    a.super_logo:hover{
-        background: url('/static/img/super_z_color.png') no-repeat center center;
-    }
 }
 
 /* Just a little image preloading. */
