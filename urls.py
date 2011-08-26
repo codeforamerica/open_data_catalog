@@ -9,16 +9,15 @@ admin.autodiscover()
 
 urlpatterns = patterns('data_catalog.views',
     url(r'^$', 'home'),
-    url(r'^data/$', 'data'),
-    url(r'^apps/$', 'apps'),
-    url(r'^ideas/$', 'ideas'),
+    url(r'^data$', 'data'),
+    url(r'^apps$', 'apps'),
+    url(r'^ideas$', 'ideas'),
     url(r'^search$', 'search'),
     url(r'^autocomplete$', 'autocomplete'),
     url(r'^submit/app/$', 'submit_app'),
     url(r'^submit/idea/$', 'submit_idea'),
     url(r'^submit/data/$', 'submit_data'),
     url(r'^(?P<name>\w+)\.txt$', 'send_text_file'),
-    url(r'^(?P<model>apps|data|ideas)/(?P<tag>\w+)/$', 'category'),
 )
 
 

@@ -21,15 +21,15 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200)
 
     def test_data_page_is_working(self):
-        response = self.client.get('/data/')
+        response = self.client.get('/data')
         self.assertEquals(response.status_code, 200)
 
     def test_apps_page_is_working(self):
-        response = self.client.get('/apps/')
+        response = self.client.get('/apps')
         self.assertEquals(response.status_code, 200)
 
     def test_ideas_page_is_working(self):
-        response = self.client.get('/ideas/')
+        response = self.client.get('/ideas')
         self.assertEquals(response.status_code, 200)
 
     def test_submit_app_page(self):
@@ -81,18 +81,18 @@ class TestViews(TestCase):
         expected_json = '{\n  "tags": null\n}'
         self.assertEquals(response.content, expected_json)
 
-    @patch('data_catalog.views.App')
-    def test_category_page_is_working(self, model):
-        response = self.client.get('/apps/GIS/')
+    @patch('data_catalog.views.Tag')
+    def test_category_view_is_working(self, model):
+        response = self.client.get('/apps?tag=GIS')
         self.assertEquals(response.status_code, 200)
-        self.assertTrue(model.objects.filter.called)
-        model.objects.filter.assert_called_with(tag='GIS')
+        self.assertTrue(model.objects.get.called)
 
     @patch('data_catalog.views.render_response')
     def test_category_view_can_handle_missing_models(self, render):
         request = Mock()
-        category(request, 'test', 'tag')
-        render.assert_called_with(request, 'category.html', {'results': None})
+        response = category(request, 'test')
+        expected_response = {'results': None}
+        self.assertEqual(response, expected_response)
 
 
 class TestModels(TestCase):

@@ -15,17 +15,20 @@ def home(request):
 
 def data(request):
     """Render the data page."""
-    return render_response(request, 'data.html')
+    results = category(request, 'data')
+    return render_response(request, 'data.html', results)
 
 
 def apps(request):
     """Render the apps page."""
-    return render_response(request, 'apps.html')
+    results = category(request, 'apps')
+    return render_response(request, 'apps.html', results)
 
 
 def ideas(request):
     """Render the ideas page."""
-    return render_response(request, 'ideas.html')
+    results = category(request, 'ideas')
+    return render_response(request, 'ideas.html', results)
 
 
 def search(request):
@@ -54,22 +57,27 @@ def autocomplete(request):
     return JSONResponse(data)
 
 
-def category(request, model, tag):
+def category(request, related_name):
     """
-    Given a lowercase model name and tag, search for all models linked to
-    the given tag. The model is obtained by looking through a dictionary of
-    available models.
+    Given the model `related_name` attribute of the Tag model (apps, ideas,
+    data), this function will check to see if a specific tag is being called.
+    If not, all of the available records are returned.
     """
     available_models = {'apps': App, 'data': Data, 'ideas': Idea}
-    try:
-        actual_model = available_models[model]
-    except KeyError:
-        # The model does not exist.
-        context = {'results': None}
+    tag = request.GET.get('tag')
+    if related_name not in available_models:
+        results = None
+    elif tag:
+        try:
+            tag_model = Tag.objects.get(name=tag)
+            results = getattr(tag_model, related_name).all()
+        except:
+            results = []
     else:
-        results = actual_model.objects.filter(tag=tag)
-        context = {'results': results}
-    return render_response(request, 'category.html', context)
+        model = available_models[related_name]
+        results = model.objects.all()
+    context = {'results': results}
+    return context
 
 
 @login_required
