@@ -107,11 +107,36 @@ class TestModels(TestCase):
                                  description='This is my test app.')
         app.tags.add(gis, pollution)
         app.save()
+        self.assertEquals(str(app), 'My App')
         self.assertQuerysetEqual(app.tags.all(), ['GIS', 'pollution'],
                                  lambda tag: tag.name)
         self.assertQuerysetEqual(gis.apps.all(), ['My App'],
                                  lambda app: app.name)
-        self.assertEquals(str(app), 'My App')
+
+    def test_tag_search_resources_method(self):
+        gis = Tag.objects.create(name='GIS')
+        gis.save()
+        app = App.objects.create(name='Test', description='Test', url='test.com')
+        app.tags.add(gis)
+        app.save()
+        results = Tag.search_resources('gis')
+        self.assertQuerysetEqual(results['apps'], ['Test'],
+                                 lambda app: app.name)
+        self.assertFalse(results['data'])
+        self.assertFalse(results['ideas'])
+
+    def test_tag_search_resources_for_nonexisting_tag(self):
+        results = Tag.search_resources('foo')
+        self.assertFalse(results['apps'])
+        self.assertFalse(results['data'])
+        self.assertFalse(results['ideas'])
+
+    def test_tag_search_resources_can_find_app_by_name(self):
+        App.objects.create(name='Test data', description='test',
+                url='http://test.com').save()
+        results = Tag.search_resources('data')
+        self.assertQuerysetEqual(results['apps'], ['Test data'],
+                                 lambda app: app.name)
 
     def test_data_does_not_need_an_url(self):
         test = Tag.objects.create(name='test')
@@ -119,9 +144,9 @@ class TestModels(TestCase):
         data = Data.objects.create(name='My Data', description='Test data.')
         data.tags.add(test)
         data.save()
+        self.assertEquals(str(data), 'My Data')
         self.assertQuerysetEqual(Data.objects.all(), ['My Data'],
                                  lambda data: data.name)
-        self.assertEquals(str(data), 'My Data')
 
     def test_creating_an_idea(self):
         Idea.objects.create(name='Test', description='A test idea.')
