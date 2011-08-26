@@ -78,8 +78,9 @@ class TestViews(TestCase):
 
     def test_autocomplete_works_without_query(self):
         response = self.client.get('/autocomplete')
-        expected_json = '{\n  "tags": null\n}'
-        self.assertEquals(response.content, expected_json)
+        data = json.loads(response.content)
+        expected_data = {'tags': None}
+        self.assertEquals(data, expected_data)
 
     @patch('data_catalog.views.Tag')
     def test_category_view_is_working(self, model):
