@@ -9,6 +9,7 @@ from mock import Mock, patch
 from data_catalog.views import category
 from data_catalog.models import Tag, App, Data, Idea
 from data_catalog.context_processors import settings_context
+from data_catalog.utils import JSONResponse
 
 
 class TestViews(TestCase):
@@ -83,7 +84,7 @@ class TestViews(TestCase):
         self.assertEquals(data, expected_data)
 
     @patch('data_catalog.views.Tag')
-    def test_category_view_is_working(self, model):
+    def test_category_view_is_working_for_found_tag(self, model):
         response = self.client.get('/apps?tag=GIS')
         self.assertEquals(response.status_code, 200)
         self.assertTrue(model.objects.get.called)
@@ -94,6 +95,10 @@ class TestViews(TestCase):
         response = category(request, 'test')
         expected_response = {'results': None}
         self.assertEqual(response, expected_response)
+
+    def test_category_view_with_no_matching_tags(self):
+        response = self.client.get('/apps?tag=GIS')
+        self.assertEquals(response.status_code, 200)
 
 
 class TestModels(TestCase):
@@ -179,3 +184,19 @@ class TestContextProcessor(TestCase):
         settings = settings_context(request)['settings']
         self.assertEqual(settings['CITY_NAME'], 'Boston')
         self.assertEqual(settings['CATALOG_URL'], 'opendataboston.org')
+
+
+class TestUtils(TestCase):
+
+    def test_JSON_response_against_model(self):
+        app = App.objects.create(name='Test', description='Test.',
+                                 url='http://test.com')
+        app.save()
+        data = {'app': app}
+        response = JSONResponse(data)
+        content = json.loads(response.content)
+        self.assertTrue(isinstance(content, dict))
+
+    def test_JSON_response_fails_when_passed_a_mock_object(self):
+        data = Mock()
+        self.assertRaises(TypeError, JSONResponse, data)

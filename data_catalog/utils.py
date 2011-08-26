@@ -41,7 +41,7 @@ class API_JSONEncoder(JSONEncoder):
             return [jsonify_model(o) for o in obj]
         if isinstance(obj, Model):
             return jsonify_model(obj)
-        return JSONEncoder.default(self,obj)
+        return JSONEncoder.default(self, obj)
 
 
 class JSONResponse(HttpResponse):
