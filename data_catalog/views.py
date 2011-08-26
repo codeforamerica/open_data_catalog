@@ -2,7 +2,6 @@
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, get_object_or_404
-from django.utils import simplejson as json
 
 from data_catalog.models import App, Data, Idea, Tag
 from data_catalog.utils import render_response, JSONResponse
@@ -31,6 +30,29 @@ def ideas(request):
     return render_response(request, 'ideas.html', results)
 
 
+def category(request, related_name):
+    """
+    Given the model `related_name` attribute of the Tag model (apps, ideas,
+    data), this function will check to see if a specific tag is being called.
+    If not, all of the available records are returned.
+    """
+    available_models = {'apps': App, 'data': Data, 'ideas': Idea}
+    tag = request.GET.get('tag')
+    if related_name not in available_models:
+        results = None
+    elif tag:
+        try:
+            tag_model = Tag.objects.get(name=tag)
+            results = getattr(tag_model, related_name).all()
+        except:
+            results = []
+    else:
+        model = available_models[related_name]
+        results = model.objects.all()
+    context = {'results': results}
+    return context
+
+
 def search(request):
     """Handle search requests."""
     query = request.GET.get('q')
@@ -55,29 +77,6 @@ def autocomplete(request):
         tags = Tag.objects.filter(name__istartswith=query)
         data['tags'] = tags
     return JSONResponse(data)
-
-
-def category(request, related_name):
-    """
-    Given the model `related_name` attribute of the Tag model (apps, ideas,
-    data), this function will check to see if a specific tag is being called.
-    If not, all of the available records are returned.
-    """
-    available_models = {'apps': App, 'data': Data, 'ideas': Idea}
-    tag = request.GET.get('tag')
-    if related_name not in available_models:
-        results = None
-    elif tag:
-        try:
-            tag_model = Tag.objects.get(name=tag)
-            results = getattr(tag_model, related_name).all()
-        except:
-            results = []
-    else:
-        model = available_models[related_name]
-        results = model.objects.all()
-    context = {'results': results}
-    return context
 
 
 @login_required
