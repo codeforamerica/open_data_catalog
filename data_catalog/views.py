@@ -1,10 +1,11 @@
 """Views for the Boston Data Catalog."""
 
-from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, get_object_or_404
+from django.utils import simplejson as json
 
 from data_catalog.models import App, Data, Idea, Tag
-from data_catalog.utils import render_response
+from data_catalog.utils import render_response, JSONResponse
 
 
 def home(request):
@@ -33,8 +34,8 @@ def search(request):
     if not query:
         context = {'results': None}
     else:
-        tags = Tag.get_resources(query)
-        context = {'results': tags}
+        results = Tag.search_resources(query)
+        context = {'results': results}
     return render_response(request, 'base.html', context)
 
 
@@ -43,7 +44,14 @@ def autocomplete(request):
     Handle all autocomplete requests from the data catalog's
     search bar.
     """
-    return render_response(request, 'base.html')
+    data = {}
+    query = request.GET.get('q')
+    if not query:
+        data['tags'] = None
+    else:
+        tags = Tag.objects.filter(name__istartswith=query)
+        data['tags'] = tags
+    return JSONResponse(data)
 
 
 def category(request, model, tag):

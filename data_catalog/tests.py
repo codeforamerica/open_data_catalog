@@ -3,6 +3,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.db import IntegrityError
+from django.utils import simplejson as json
 from mock import Mock, patch
 
 from data_catalog.views import category
@@ -68,9 +69,17 @@ class TestViews(TestCase):
         self.assertFalse(model.method_calls)
         self.assertEquals(response.status_code, 200)
 
-    def test_autocomplete_page_works(self):
+    def test_autocomplete_works_and_returns_JSON(self):
+        Tag.objects.create(name='GIS').save()
+        response = self.client.get('/autocomplete?q=g')
+        data = json.loads(response.content)
+        expected_data = {u'tags': [{u'id': u'1', u'name': u'GIS'}]}
+        self.assertEqual(data, expected_data)
+
+    def test_autocomplete_works_without_query(self):
         response = self.client.get('/autocomplete')
-        self.assertEquals(response.status_code, 200)
+        expected_json = '{\n  "tags": null\n}'
+        self.assertEquals(response.content, expected_json)
 
     @patch('data_catalog.views.App')
     def test_category_page_is_working(self, model):
