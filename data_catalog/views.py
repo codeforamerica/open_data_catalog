@@ -12,45 +12,30 @@ def home(request):
     return render_response(request, 'home.html')
 
 
-def data(request):
-    """Render the data page."""
-    results = category(request, 'data')
-    return render_response(request, 'data.html', results)
-
-
 def apps(request):
     """Render the apps page."""
-    results = category(request, 'apps')
-    return render_response(request, 'apps.html', results)
+    return reduce_results(request, 'apps', 'apps.html')
+
+
+def data(request):
+    """Render the data page."""
+    return reduce_results(request, 'data', 'data.html')
 
 
 def ideas(request):
     """Render the ideas page."""
-    results = category(request, 'ideas')
-    return render_response(request, 'ideas.html', results)
+    return reduce_results(request, 'ideas', 'ideas.html')
 
 
-def category(request, related_name):
+def reduce_results(request, related_name, template):
     """
-    Given the model `related_name` attribute of the Tag model (apps, ideas,
-    data), this function will check to see if a specific tag is being called.
-    If not, all of the available records are returned.
+    Given a request, the `relative_name` of a view's specific model for Tag
+    objects, and a template name, this function determines whether it can
+    reduce the number of model instances returned by a specific tag.
     """
-    available_models = {'apps': App, 'data': Data, 'ideas': Idea}
     tag = request.GET.get('tag')
-    if related_name not in available_models:
-        results = None
-    elif tag:
-        try:
-            tag_model = Tag.objects.get(name=tag)
-            results = getattr(tag_model, related_name).all()
-        except:
-            results = []
-    else:
-        model = available_models[related_name]
-        results = model.objects.all()
-    context = {'results': results}
-    return context
+    results = Tag.categorize(related_name, tag)
+    return render_response(request, template, results)
 
 
 def search(request):

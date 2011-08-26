@@ -37,6 +37,29 @@ class Tag(models.Model):
             results['ideas'] = tag.ideas.all()
         return results
 
+    @staticmethod
+    def categorize(related_name, tag):
+        """
+        Given the model `related_name` attribute of the Tag model (apps, ideas,
+        data), this function will check to see if a specific tag can be found.
+        If not, all of the available records of the `related_name` model are
+        returned.
+        """
+        available_models = {'apps': App, 'data': Data, 'ideas': Idea}
+        if related_name not in available_models:
+            results = None
+        elif tag:
+            try:
+                tag_model = Tag.objects.get(name=tag)
+                results = getattr(tag_model, related_name).all()
+            except:
+                results = []
+        else:
+            model = available_models[related_name]
+            results = model.objects.all()
+        context = {'results': results}
+        return context
+
 
 class Resource(models.Model):
     """An abstract model for resources submitted to the data catalog."""

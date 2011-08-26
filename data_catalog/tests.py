@@ -4,9 +4,8 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.utils import simplejson as json
-from mock import Mock, patch
+from mock import patch, Mock, MagicMock
 
-from data_catalog.views import category
 from data_catalog.models import Tag, App, Data, Idea
 from data_catalog.context_processors import settings_context
 from data_catalog.utils import JSONResponse
@@ -83,18 +82,10 @@ class TestViews(TestCase):
         expected_data = {'tags': None}
         self.assertEquals(data, expected_data)
 
-    @patch('data_catalog.views.Tag')
-    def test_category_view_is_working_for_found_tag(self, model):
+    def test_category_view_is_working_for_found_tag(self):
+        Tag.objects.create(name='GIS').save()
         response = self.client.get('/apps?tag=GIS')
         self.assertEquals(response.status_code, 200)
-        self.assertTrue(model.objects.get.called)
-
-    @patch('data_catalog.views.render_response')
-    def test_category_view_can_handle_missing_models(self, render):
-        request = Mock()
-        response = category(request, 'test')
-        expected_response = {'results': None}
-        self.assertEqual(response, expected_response)
 
     def test_category_view_with_no_matching_tags(self):
         response = self.client.get('/apps?tag=GIS')
@@ -152,6 +143,10 @@ class TestModels(TestCase):
         results = Tag.search_resources('data')
         self.assertQuerysetEqual(results['apps'], ['Test data'],
                                  lambda app: app.name)
+
+    def test_tag_categorize_for_unknown_related_model(self):
+        results = Tag.categorize('test', 'tag')
+
 
     def test_data_does_not_need_an_url(self):
         test = Tag.objects.create(name='test')
