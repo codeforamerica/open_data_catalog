@@ -11,7 +11,7 @@ Setup Instructions
 You should first make sure that you have [`git` installed on your
 computer](http://git-scm.com/), so that you can clone the project.
 
-    $ git clone git://github.com/codeforamerica/Open-Data-Catalog.git open_data_catalog
+    $ git clone git://github.com/codeforamerica/open_data_catalog.git open_data_catalog
     $ cd open_data_catalog
 
 The next step is to make sure that you have both `pip` and `virtualenv`
@@ -47,6 +47,16 @@ You can then start up the development server.
 
 You should then be able to use your web browser to pull up the
 application.
+
+If you're looking to change the Open Data Catalog to use your city with
+the provided templates, then you simply need to edit the
+`data_catalog/settings_city` file. By replacing the `CITY_NAME` and
+`CATALOG_URL` variables, you can easily change the default locale of
+Boston to your specific location (for instance, the code below changes
+it to Tulsa).
+
+    CITY_NAME = 'Tulsa'
+    CATALOG_URL = 'opendatatulsa.org'
 
 
 ### Uploading to DotCloud ###
