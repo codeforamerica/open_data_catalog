@@ -4,6 +4,7 @@
 django
 django-registration
 django-autoslug
+django-debug-toolbar
 
 
 # ---------------------
