@@ -17,3 +17,7 @@ if os.path.exists('/home/dotcloud/current'):
     DB_PATH = '/home/dotcloud/'
 else:
     DB_PATH = ''
+
+
+__all__ = [CITY_NAME, CATALOG_URL, ACCOUNT_ACTIVATION_DAYS, DEFAULT_FROM_EMAIL,
+           LOGIN_REDIRECT_URL, DB_PATH]
