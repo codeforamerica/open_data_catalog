@@ -7,10 +7,9 @@ header,#main,footer{margin:0 auto;width:100%;}
 header{background:#666;display:block;margin-bottom:25px;}header ul{border-bottom:1px solid #eee;list-style:none;margin:0 auto;padding:10px 0;}
 header li{float:right;padding-top:24px;}
 header li.float_left{float:left;}
-header li.city_name{padding-top:10px;}header li.city_name a{background:url('http://placehold.it/300x50') no-repeat center center;height:50px;width:350px;}
+header li.city_name{padding-top:10px;}header li.city_name a{background:url('http://dummyimage.com/300x50') no-repeat center center;height:50px;width:350px;}
 header form{width:200px;}header form input{background:url('/static/img/search.png') #ffffff no-repeat right center;border:1px solid #888;padding:5px;width:100%;}
 header .sign_in{margin:0 25px;}header .sign_in span{color:#bbb;font-size:16px;}
 header .sign_in a{color:#fff;font-size:24px;padding:0 20px;text-decoration:none;}
-.no-js header a:hover{background:#6b1bdf;color:white;}
 footer{display:block;margin:100px auto 50px;}
 footer:after{content:url('/static/img/super_z_color.png');display:none;}
