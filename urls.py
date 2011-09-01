@@ -7,16 +7,9 @@ from django.views.generic.simple import redirect_to
 admin.autodiscover()
 
 
-urlpatterns = patterns('data_catalog.views',
+urlpatterns = patterns('causes.views',
     url(r'^$', 'home'),
-    url(r'^data$', 'data'),
-    url(r'^apps$', 'apps'),
-    url(r'^ideas$', 'ideas'),
-    url(r'^search$', 'search'),
-    url(r'^autocomplete$', 'autocomplete'),
-    url(r'^submit/app/$', 'submit_app'),
-    url(r'^submit/idea/$', 'submit_idea'),
-    url(r'^submit/data/$', 'submit_data'),
+    url(r'^cause/(?P<slug>[-\w]+)$', 'home'),
     url(r'^(?P<name>\w+)\.txt$', 'send_text_file'),
 )
 
