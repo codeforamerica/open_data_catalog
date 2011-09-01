@@ -2,15 +2,17 @@
 
 from django.db import models
 from autoslug import AutoSlugField
+from caching.base import CachingMixin, CachingManager
 
 
-class Cause(models.Model):
+class Cause(CachingMixin, models.Model):
 	"""An individual cause."""
 	name = models.CharField(max_length=150)
 	slug = AutoSlugField(populate_from='name', unique=True)
 	video_url = models.URLField('Video URL', verify_exists=False)
 	image = models.ImageField()
 	description = models.TextField()
+	objects = CachingManager()
 
 	def __unicode__(self):
 		return self.name
