@@ -1,10 +1,7 @@
 """Models for the data catalog."""
 
-from collections import defaultdict
-
 from django.db import models
 from autoslug import AutoSlugField
-from markdown import markdown
 
 
 class Tag(models.Model):
