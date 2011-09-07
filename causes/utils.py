@@ -3,21 +3,8 @@
 from django.db.models import Model
 from django.db.models.query import QuerySet
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 from django.utils.encoding import force_unicode
 from django.utils.simplejson import dumps, JSONEncoder
-
-
-def render_response(request, *args, **kwargs):
-    """
-    Django Snippet:  http://djangosnippets.org/snippets/3/
-
-    Simplified `render_to_response` function that doesn't require the
-    request `context_instance` to always be reset to `RequestContext`.
-    """
-    kwargs['context_instance'] = RequestContext(request)
-    return render_to_response(*args, **kwargs)
 
 
 # The following snippets are taken from:

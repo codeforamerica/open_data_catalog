@@ -1,15 +1,15 @@
 """Views for the Boston Data Catalog."""
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 
 from data_catalog.models import App, Data, Idea, Tag
-from data_catalog.utils import render_response, JSONResponse
+from data_catalog.utils import JSONResponse
 
 
 def home(request):
     """Render the home page."""
-    return render_response(request, 'home.html')
+    return render(request, 'home.html')
 
 
 def apps(request):
@@ -35,7 +35,7 @@ def reduce_results(request, related_name, template):
     """
     tag = request.GET.get('tag')
     results = Tag.categorize(related_name, tag)
-    return render_response(request, template, results)
+    return render(request, template, results)
 
 
 def search(request):
@@ -46,7 +46,7 @@ def search(request):
     else:
         results = Tag.search_resources(query)
         context = {'results': results}
-    return render_response(request, 'base.html', context)
+    return render(request, 'base.html', context)
 
 
 def autocomplete(request):
@@ -70,7 +70,7 @@ def submit_app(request):
     Allow users that are logged in to submit an app built off
     of our data.
     """
-    return render_response(request, 'submit/app.html')
+    return render(request, 'submit/app.html')
 
 
 @login_required
@@ -79,7 +79,7 @@ def submit_idea(request):
     Allow users that are logged in to submit an idea for the
     data catalog.
     """
-    return render_response(request, 'submit/idea.html')
+    return render(request, 'submit/idea.html')
 
 
 @login_required
@@ -88,10 +88,9 @@ def submit_data(request):
     Allow users that are logged in to submit data that should be
     added to the data catalog.
     """
-    return render_response(request, 'submit/data.html')
+    return render(request, 'submit/data.html')
 
 
 def send_text_file(request, name):
     """Easiest way to send `robots.txt` and `humans.txt` files."""
-    return render_response(request, 'text_files/%s.txt' % name,
-                           mimetype='text/plain')
+    return render(request, 'text_files/%s.txt' % name, mimetype='text/plain')
