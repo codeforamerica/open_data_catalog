@@ -28,6 +28,7 @@ class Cause(CachingMixin, models.Model):
         if hosting_provider == 'youtube':
             embed_url = 'http://www.youtube.com/embed/%s' % (video_id)
         elif hosting_provider == 'vimeo':
+            # Haven't added a color parameter yet.
             params = urlencode({
                 'byline': 0,
                 'portrait': 0,
