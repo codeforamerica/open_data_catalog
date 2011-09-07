@@ -13,9 +13,9 @@
 			animation;
 
 		if (e.type == 'focusin') {
-			animation = { width: '+=25%' };
+			//animation = { width: '+=25%' };
 		} else {
-			animation = { width: '100%' };
+			//animation = { width: '100%' };
 		}
 
 		self.animate(animation, time);

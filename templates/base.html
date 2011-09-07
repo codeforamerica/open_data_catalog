@@ -35,22 +35,21 @@
 
 <body>
   <div id="container">
+    {% block header %}
     <header>
     <ul class="clearfix">
         <li class="float_left city_name">
             <a href="/" class="ir">{{ settings.CITY_NAME }} Data Catalog</a>
         </li>
-        <li class="float_left search">
+        <li class="search">
           <form autocomplete="off" action="/search" method="GET">
             <input type="text" name="q" class="search_bar"
                    autocomplete="off" tabindex=1 />
           </form>
         </li>
-        <li class="sign_in">
-        <span>Have an account? <a href="login">Sign In</a></span>
-        </li>
     </ul>
     </header>
+    {% endblock %}
     <div id="main" role="main">
       {% block main %}{% endblock %}
     </div>
@@ -65,6 +64,7 @@
   <script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.6.2.min.js">\x3C/script>')</script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"
           charset="utf-8"></script>
+
   {% block library_js %}{% endblock %}
   <script src="/static/js/main.js" type="text/javascript" charset="utf-8"></script>
   {% block js %}{% endblock %}

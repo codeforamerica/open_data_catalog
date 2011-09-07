@@ -1,5 +1,5 @@
 @color: #6b1bdf;
-@width: 100%;
+@width: 90%;
 
 /* Link Color and Styles */
 a, a:active, a:visited { color: @color; }
@@ -10,6 +10,7 @@ a:hover { background: @color; color: white; text-decoration: none; }
 ::-moz-selection{ background:@color; color:#fff; text-shadow: none; }
 ::selection { background:@color; color:#fff; text-shadow: none; }
 
+/* Simple function for rounded corners. */
 .round_corners (@radius: 5px) {
   border-radius: @radius;
   -webkit-border-radius: @radius;
@@ -26,11 +27,9 @@ header, #main, footer{
 }
 
 header{
-    background: #666;
     display:block;
     margin-bottom: 25px;
     ul{
-        border-bottom:1px solid #eee;
         list-style: none;
         margin:0 auto;
         padding:10px 0;
@@ -45,18 +44,18 @@ header{
     li.city_name{
         padding-top: 10px;
         a{
-          background: url('http://dummyimage.com/300x50') no-repeat center center;
-          height: 50px;
-          width: 350px;
+          background: url('http://dummyimage.com/200x100/ddd&text=logo') no-repeat center center;
+          height: 100px;
+          width: 200px;
         }
     }
     form{
-        width: 200px;
+        font-size: 18px;
         input{
-            background: url('/static/img/search.png') #fff no-repeat right center;
-            border: 1px solid #888;
-            padding: 5px;
-            width: 100%;
+            background: url('/static/img/search.png') #fff no-repeat 95% center;
+            border: 1px solid #ddd;
+            padding: 7px;
+            width: 275px;
         }
     }
     .sign_in{
@@ -73,14 +72,30 @@ header{
         }
     }
 }
-
+.home{
+  .top{
+    margin: 50px 0;
+  }
+  .bottom{
+  }
+  .left{
+    float: left;
+    width: 48%;
+    a {
+      background: #ddd;
+      height: 300px;
+    }
+  }
+  .right{
+    float: right;
+    width: 48%;
+    a {
+      background: #ddd;
+      height: 300px;
+    }
+  }
+}
 footer{
     display: block;
     margin: 100px auto 50px;
-}
-
-/* Just a little image preloading. */
-footer:after{
-    content: url('/static/img/super_z_color.png');
-    display: none;
 }
