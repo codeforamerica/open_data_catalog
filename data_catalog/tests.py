@@ -4,10 +4,11 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.utils import simplejson as json
-from mock import patch, Mock, MagicMock
+from mock import patch, Mock
 
 from data_catalog.models import Tag, App, Data, Idea
 from data_catalog.context_processors import settings_context
+from data_catalog.search import Search
 from data_catalog.utils import JSONResponse
 
 
@@ -125,14 +126,14 @@ class TestModels(TestCase):
         app = App.objects.create(name='Test', description='Test', url='test.com')
         app.tags.add(gis)
         app.save()
-        results = Tag.search_resources('gis')
+        results = Search.find_resources('gis')
         self.assertQuerysetEqual(results['apps'], ['Test'],
                                  lambda app: app.name)
         self.assertFalse(results['data'])
         self.assertFalse(results['ideas'])
 
     def test_tag_search_resources_for_nonexisting_tag(self):
-        results = Tag.search_resources('foo')
+        results = Search.find_resources('foo')
         self.assertFalse(results['apps'])
         self.assertFalse(results['data'])
         self.assertFalse(results['ideas'])
@@ -140,12 +141,12 @@ class TestModels(TestCase):
     def test_tag_search_resources_can_find_app_by_name(self):
         App.objects.create(name='Test data', description='test',
                 url='http://test.com').save()
-        results = Tag.search_resources('data')
+        results = Search.find_resources('data')
         self.assertQuerysetEqual(results['apps'], ['Test data'],
                                  lambda app: app.name)
 
     def test_tag_categorize_for_unknown_related_model(self):
-        results = Tag.categorize('test', 'tag')
+        results = Search.category('test', 'tag')
 
 
     def test_data_does_not_need_an_url(self):
