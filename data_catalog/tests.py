@@ -120,35 +120,6 @@ class TestModels(TestCase):
         self.assertQuerysetEqual(gis.apps.all(), ['My App'],
                                  lambda app: app.name)
 
-    def test_tag_search_resources_method(self):
-        gis = Tag.objects.create(name='GIS')
-        gis.save()
-        app = App.objects.create(name='Test', description='Test', url='test.com')
-        app.tags.add(gis)
-        app.save()
-        results = Search.find_resources('gis')
-        self.assertQuerysetEqual(results['apps'], ['Test'],
-                                 lambda app: app.name)
-        self.assertFalse(results['data'])
-        self.assertFalse(results['ideas'])
-
-    def test_tag_search_resources_for_nonexisting_tag(self):
-        results = Search.find_resources('foo')
-        self.assertFalse(results['apps'])
-        self.assertFalse(results['data'])
-        self.assertFalse(results['ideas'])
-
-    def test_tag_search_resources_can_find_app_by_name(self):
-        App.objects.create(name='Test data', description='test',
-                url='http://test.com').save()
-        results = Search.find_resources('data')
-        self.assertQuerysetEqual(results['apps'], ['Test data'],
-                                 lambda app: app.name)
-
-    def test_tag_categorize_for_unknown_related_model(self):
-        results = Search.category('test', 'tag')
-
-
     def test_data_does_not_need_an_url(self):
         test = Tag.objects.create(name='test')
         test.save()
@@ -171,6 +142,38 @@ class TestModels(TestCase):
                             description='An idea for an app.')
         self.assertQuerysetEqual(Idea.objects.all(), ['App Idea'],
                                  lambda idea: idea.name)
+
+
+class TestSearch(TestCase):
+
+    def test_tag_search_resources_method(self):
+        gis = Tag.objects.create(name='GIS')
+        gis.save()
+        app = App.objects.create(name='Test', description='Test', url='test.com')
+        app.tags.add(gis)
+        app.save()
+        results = Search.find_resources('gis')
+        self.assertQuerysetEqual(results['apps'], ['Test'],
+                                 lambda app: app.name)
+        self.assertFalse(results['data'])
+        self.assertFalse(results['ideas'])
+
+    def test_tag_search_resources_for_nonexisting_tag(self):
+        results = Search.find_resources('foo')
+        self.assertFalse(results['apps'])
+        self.assertFalse(results['data'])
+        self.assertFalse(results['ideas'])
+
+    def test_tag_search_resources_can_find_app_by_name(self):
+        App.objects.create(name='Test data', description='test',
+                           url='http://test.com').save()
+        results = Search.find_resources('data')
+        self.assertQuerysetEqual(results['apps'], ['Test data'],
+                                 lambda app: app.name)
+
+    def test_search_category_for_unknown_related_model(self):
+        results = Search.category('test', 'tag')
+        self.assertEquals(results, {'results': None})
 
 
 class TestContextProcessor(TestCase):
