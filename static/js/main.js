@@ -27,7 +27,9 @@
 		search.bind('focusin focusout', ns.event.searchFocus)
 			  .autocomplete({
 				  // Need to implement Ajax sources.
-				  source: ['abc', 'def', 'ghi'],
+				  source: ['abc', 'abcdef', 'abcdefghi',
+                           'def', 'defghi', 'defghijkl',
+                           'ghi', 'ghijkl', 'ghijklmno'],
 				  select: function(e) {
 					var form = $('form');
 					form.submit();

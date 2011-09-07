@@ -1,4 +1,4 @@
-@color: #6b1bdf;
+@color: #d5246b;
 @width: 90%;
 
 /* Link Color and Styles */
@@ -52,10 +52,24 @@ header{
     form{
         font-size: 18px;
         input{
-            background: url('/static/img/search.png') #fff no-repeat 95% center;
             border: 1px solid #ddd;
+            float: left;
+            .round_corners(3px);
+        }
+        .search_bar{
             padding: 7px;
             width: 275px;
+        }
+        .submit{
+            background: url('/static/img/search.png') @color no-repeat center center;
+            border: 1px solid @color;
+            margin-left: 5px;
+            padding: 7px;
+            text-indent: -999em;
+            width: 75px;
+        }
+        .submit:hover{
+            background-color: darken(@color, 3%);
         }
     }
     .sign_in{
@@ -98,4 +112,7 @@ header{
 footer{
     display: block;
     margin: 100px auto 50px;
+    .cfa_logo{
+        /* Put the CfA logo in the footer. */
+    }
 }

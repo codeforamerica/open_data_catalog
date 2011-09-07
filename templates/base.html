@@ -42,9 +42,11 @@
             <a href="/" class="ir">{{ settings.CITY_NAME }} Data Catalog</a>
         </li>
         <li class="search">
-          <form autocomplete="off" action="/search" method="GET">
+          <form autocomplete="off" action="/search" method="GET"
+                class="clearfix">
             <input type="text" name="q" class="search_bar"
                    autocomplete="off" tabindex=1 />
+            <input type="submit" class="submit" value="Submit" name="" />
           </form>
         </li>
     </ul>
@@ -54,6 +56,7 @@
       {% block main %}{% endblock %}
     </div>
     <footer>
+      <a href="http://codeforamerica.org" class="cfa_logo ir">Code for America</a>
     </footer>
   </div> <!--! end of #container -->
 
