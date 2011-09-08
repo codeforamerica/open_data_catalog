@@ -3,8 +3,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
-from data_catalog.models import App, Data, Idea, Tag
+from data_catalog.models import Tag
 from data_catalog.utils import JSONResponse
+from data_catalog.search import Search
 
 
 def home(request):
@@ -34,7 +35,7 @@ def reduce_results(request, related_name, template):
     reduce the number of model instances returned by a specific tag.
     """
     tag = request.GET.get('tag')
-    results = Tag.categorize(related_name, tag)
+    results = Search.category(related_name, tag)
     return render(request, template, results)
 
 
@@ -44,7 +45,7 @@ def search(request):
     if not query:
         context = {'results': None}
     else:
-        results = Tag.search_resources(query)
+        results = Search.find_resources(query)
         context = {'results': results}
     return render(request, 'base.html', context)
 
