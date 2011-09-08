@@ -22,8 +22,8 @@ class DataForm(forms.ModelForm):
 
 
 class CauseForm(forms.ModelForm):
-    """Form for users to submit a cause."""
+    """Form to add a cause."""
 
     class Meta:
         model = Cause
-        exclude = ('slug',)
+        fields = ('name', 'video_url', 'image', 'description')

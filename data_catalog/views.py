@@ -85,7 +85,7 @@ def submit_app(request):
 @login_required
 def submit_cause(request):
     """
-    Allow users that are logged in to submit an idea for the
+    Allow users that are logged in to submit a cause for the
     data catalog.
     """
     return render(request, 'submit/cause.html')
