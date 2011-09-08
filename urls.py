@@ -7,10 +7,13 @@ from django.views.generic.simple import redirect_to
 admin.autodiscover()
 
 
-urlpatterns = patterns('causes.views',
+urlpatterns = patterns('data_catalog.views',
     url(r'^$', 'home'),
-    url(r'^cause/(?P<slug>[-\w]+)$', 'home'),
     url(r'^(?P<name>\w+)\.txt$', 'send_text_file'),
+)
+
+urlpatterns += patterns('causes.views',
+    url(r'^cause/(?P<slug>[-\w]+)$', 'home'),
 )
 
 
