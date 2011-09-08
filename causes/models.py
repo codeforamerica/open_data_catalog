@@ -14,7 +14,7 @@ class Cause(CachingMixin, models.Model):
     slug = AutoSlugField(populate_from='name', unique=True)
     video_url = models.URLField('Video URL', verify_exists=False)
     embed_url = models.URLField('Embed URL', verify_exists=False, blank=True)
-    image = models.ImageField(upload_to='causes')
+    image = models.ImageField(upload_to='causes', blank=True, null=True)
     description = models.TextField()
     objects = CachingManager()
 
@@ -55,20 +55,20 @@ class Cause(CachingMixin, models.Model):
             hosting_provider, video_id = None, None
         return hosting_provider, video_id
 
-    def save(self):
+    def save(self, **kwargs):
         """
         Overwrite the normal save method so that an `embed_url` is generated
         for the model.
         """
-        self.embed_video()
-        super(Cause, self).save()
+        self.save_embed_url()
+        super(Cause, self).save(**kwargs)
 
 
 class Supporter(models.Model):
     """An individual who supports a cause."""
     name = models.CharField(max_length=150)
     causes = models.ManyToManyField(Cause, related_name='supporters')
-    links = models.ForeignKey('Link')
+    links = models.ManyToManyField('Link', related_name='supporters')
 
     def __unicode__(self):
         return self.name
