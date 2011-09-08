@@ -4,7 +4,6 @@ from data_catalog.models import App, Data, Idea, Tag
 
 
 class Search(object):
-
     """
     This class has static methods used to search through the models for
     matching instances.
