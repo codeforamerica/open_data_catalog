@@ -3,10 +3,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
-from data_catalog.models import Tag
+from data_catalog.models import Tag, Cause
 from data_catalog.utils import JSONResponse
 from data_catalog.search import Search
-from causes.models import Cause
 
 
 def home(request):
