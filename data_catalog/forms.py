@@ -1,7 +1,7 @@
 """Forms used by the data catalog."""
 
 from django import forms
-from models import App, Idea, Data, Tag
+from models import App, Cause, Data, Tag
 
 
 class AppForm(forms.ModelForm):
@@ -21,9 +21,9 @@ class DataForm(forms.ModelForm):
         exclude = ('slug',)
 
 
-class IdeaForm(forms.ModelForm):
-    """Form for users to submit an idea."""
+class CauseForm(forms.ModelForm):
+    """Form for users to submit a cause."""
 
     class Meta:
-        model = Idea
+        model = Cause
         exclude = ('slug',)

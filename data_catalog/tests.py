@@ -6,7 +6,7 @@ from django.db import IntegrityError
 from django.utils import simplejson as json
 from mock import patch, Mock
 
-from data_catalog.models import Tag, App, Data, Idea
+from data_catalog.models import Tag, App, Data, Cause, Supporter, Link
 from data_catalog.context_processors import settings_context
 from data_catalog.search import Search
 from data_catalog.utils import JSONResponse
@@ -130,19 +130,26 @@ class TestModels(TestCase):
         self.assertQuerysetEqual(Data.objects.all(), ['My Data'],
                                  lambda data: data.name)
 
-    def test_creating_an_idea(self):
-        Idea.objects.create(name='Test', description='A test idea.')
-        self.assertQuerysetEqual(Idea.objects.all(), ['Test'],
-                                 lambda idea: idea.name)
-        idea = Idea.objects.get(name='Test')
-        self.assertEquals(str(idea), 'Test')
+    def test_that_a_cause_can_be_created(self):
+        Cause.objects.create(name='Test', description='A test cause.',
+                             video_url='http://vimeo.com/12345').save()
+        self.assertQuerysetEqual(Cause.objects.all(), ['Test'],
+                                 lambda cause: cause.name)
+        cause = Cause.objects.get(name='Test')
+        self.assertEquals(str(cause), 'Test')
 
-    def test_an_idea_can_have_a_type(self):
-        Idea.objects.create(name='App Idea', type='app',
-                            description='An idea for an app.')
-        self.assertQuerysetEqual(Idea.objects.all(), ['App Idea'],
-                                 lambda idea: idea.name)
-
+    def test_a_supporter_must_have_links_and_causes(self):
+        cause = Cause.objects.create(name='Test', description='Test cause.',
+                                     video_url='http://vimeo.com/12345')
+        cause.save()
+        link = Link.objects.create(url='http://test.com')
+        link.save()
+        supporter = Supporter.objects.create(name='Test')
+        supporter.links.add(link)
+        supporter.causes.add(cause)
+        supporter.save()
+        self.assertQuerysetEqual(Supporter.objects.all(), ['Test'],
+                                 lambda supporter: supporter.name)
 
 class TestSearch(TestCase):
 
@@ -156,13 +163,13 @@ class TestSearch(TestCase):
         self.assertQuerysetEqual(results['apps'], ['Test'],
                                  lambda app: app.name)
         self.assertFalse(results['data'])
-        self.assertFalse(results['ideas'])
+        self.assertFalse(results['causes'])
 
     def test_tag_search_resources_for_nonexisting_tag(self):
         results = Search.find_resources('foo')
         self.assertFalse(results['apps'])
         self.assertFalse(results['data'])
-        self.assertFalse(results['ideas'])
+        self.assertFalse(results['causes'])
 
     def test_tag_search_resources_can_find_app_by_name(self):
         App.objects.create(name='Test data', description='test',

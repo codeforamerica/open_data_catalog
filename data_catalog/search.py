@@ -1,6 +1,6 @@
 """Search functionality for the data catalog."""
 
-from data_catalog.models import App, Data, Idea, Tag
+from data_catalog.models import App, Data, Cause, Tag
 
 
 class Search(object):
@@ -29,11 +29,11 @@ class Search(object):
         except Tag.DoesNotExist:
             results['apps'] = App.objects.filter(name__icontains=keyword)
             results['data'] = Data.objects.filter(name__icontains=keyword)
-            results['ideas'] = Idea.objects.filter(name__icontains=keyword)
+            results['causes'] = Cause.objects.filter(name__icontains=keyword)
         else:
             results['apps'] = tag.apps.all()
             results['data'] = tag.data.all()
-            results['ideas'] = tag.ideas.all()
+            results['causes'] = tag.causes.all()
         return results
 
     @staticmethod
@@ -44,7 +44,7 @@ class Search(object):
         If not, all of the available records of the `related_name` model are
         returned.
         """
-        available_models = {'apps': App, 'data': Data, 'ideas': Idea}
+        available_models = {'apps': App, 'data': Data, 'causes': Cause}
         if related_name not in available_models:
             results = None
         elif tag:
