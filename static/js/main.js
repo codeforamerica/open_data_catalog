@@ -21,20 +21,35 @@
 		self.animate(animation, time);
 	}
 
+    ns.event.ajaxAutocomplete = function(request, response) {
+        // Autocomplete functionality for searching.
+        $.ajax({
+            url: '/autocomplete',
+            dataType: 'json',
+            data: {
+                q: request.term
+            },
+            success: function(data) {
+                response($.map(data.tags, function(item){
+                    return {
+                        label: item,
+                        value: item
+                    }
+                }));
+            }
+        });
+    }
+
 	ns.dom.search = function(e) {
 		// Bind the searchFocus function and add autocomplete.
 		var search = $('input.search_bar');
-		search.bind('focusin focusout', ns.event.searchFocus)
-			  .autocomplete({
-				  // Need to implement Ajax sources.
-				  source: ['abc', 'abcdef', 'abcdefghi',
-                           'def', 'defghi', 'defghijkl',
-                           'ghi', 'ghijkl', 'ghijklmno'],
-				  select: function(e) {
-					var form = $('form');
-					form.submit();
-				  }
-			  });
+		search.autocomplete({
+            source: ns.event.ajaxAutocomplete,
+            select: function(e) {
+                var form = $('form');
+                form.submit();
+            }
+		});
 	}
 
 	ns.dom.init = function(){

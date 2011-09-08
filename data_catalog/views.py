@@ -67,8 +67,12 @@ def autocomplete(request):
     if not query:
         data['tags'] = None
     else:
-        tags = Tag.objects.filter(name__istartswith=query)
-        data['tags'] = tags
+        # TODO: Use Tag model rather than boilerplate tags
+        # tags = Tag.objects.filter(name__istartswith=query)
+        tags = ['abc', 'abcdef', 'abcdefghi', 'def', 'defghi',
+                'defghijkl', 'ghi', 'ghijkl', 'ghijklmno']
+        matching_tags = [tag for tag in tags if query in tag]
+        data['tags'] = matching_tags
     return JSONResponse(data)
 
 
