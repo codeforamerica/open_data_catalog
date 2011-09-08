@@ -141,7 +141,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'causes',
     'data_catalog',
     'registration',
     'south',
