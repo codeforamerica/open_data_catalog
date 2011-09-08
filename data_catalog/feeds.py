@@ -1,7 +1,7 @@
 """Feeds for the data catalog."""
 
 from django.contrib.syndication.views import Feed
-from causes.models import Cause
+from data_catalog.models import Cause
 
 
 class LatestCauses(Feed):
