@@ -3,7 +3,8 @@
 	// Set up a namespace.
 	var ns = {
 		dom: {},
-		event: {}
+		event: {},
+        cache: {}
 	};
 
 	ns.event.searchFocus = function(e) {
@@ -23,19 +24,33 @@
 
     ns.event.ajaxAutocomplete = function(request, response) {
         // Autocomplete functionality for searching.
+        var term = request.term,
+            cache = ns.cache;
+
+        if (term in cache) {
+            // Serve the cached response.
+            response(cache[term]);
+            return;
+        }
+
         $.ajax({
             url: '/autocomplete',
             dataType: 'json',
             data: {
-                q: request.term
+                q: term
             },
             success: function(data) {
-                response($.map(data.tags, function(item){
+                var cache = ns.cache,
+                    responseData;
+
+                responseData = $.map(data.tags, function(item){
                     return {
                         label: item,
                         value: item
                     }
-                }));
+                });
+                cache[term] = responseData;
+                response(responseData);
             }
         });
     }
