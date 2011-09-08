@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from data_catalog.models import Tag
 from data_catalog.utils import JSONResponse
 from data_catalog.search import Search
+from causes.models import Cause
 
 
 def home(request):
@@ -23,9 +24,16 @@ def data(request):
     return reduce_results(request, 'data', 'data.html')
 
 
-def ideas(request):
-    """Render the ideas page."""
-    return reduce_results(request, 'ideas', 'ideas.html')
+def causes(request):
+    """Render all the available causes."""
+    return render(request, 'causes.html')
+
+
+def individual_cause(request, slug):
+    """Render a specific cause."""
+    specific_cause = get_object_or_404(Cause, slug=slug)
+    context = {'cause': specific_cause}
+    return render(request, 'individual_cause.html', context)
 
 
 def reduce_results(request, related_name, template):
@@ -75,12 +83,12 @@ def submit_app(request):
 
 
 @login_required
-def submit_idea(request):
+def submit_cause(request):
     """
     Allow users that are logged in to submit an idea for the
     data catalog.
     """
-    return render(request, 'submit/idea.html')
+    return render(request, 'submit/cause.html')
 
 
 @login_required
@@ -94,4 +102,4 @@ def submit_data(request):
 
 def send_text_file(request, name):
     """Easiest way to send `robots.txt` and `humans.txt` files."""
-    return render(request, 'text_files/%s.txt' % name, mimetype='text/plain')
+    return render(request, 'text_files/%s.txt' % name, content_type='text/plain')

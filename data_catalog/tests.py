@@ -29,8 +29,8 @@ class TestViews(TestCase):
         response = self.client.get('/apps')
         self.assertEquals(response.status_code, 200)
 
-    def test_ideas_page_is_working(self):
-        response = self.client.get('/ideas')
+    def test_causes_page_is_working(self):
+        response = self.client.get('/causes')
         self.assertEquals(response.status_code, 200)
 
     def test_submit_app_page(self):
@@ -38,9 +38,9 @@ class TestViews(TestCase):
         response = self.client.get('/submit/app/')
         self.assertEquals(response.status_code, 200)
 
-    def test_submit_idea_page(self):
+    def test_submit_cause_page(self):
         self.client.login(username='foo', password='bar')
-        response = self.client.get('/submit/idea/')
+        response = self.client.get('/submit/cause/')
         self.assertEquals(response.status_code, 200)
 
     def test_submit_data_page(self):
@@ -58,13 +58,13 @@ class TestViews(TestCase):
         response = self.client.get('/humans.txt')
         self.assertEquals(response.status_code, 200)
 
-    @patch('data_catalog.views.Tag')
+    @patch('data_catalog.views.Search')
     def test_search_works_for_queries(self, model):
         response = self.client.get('/search?q=test')
         self.assertTrue(model.method_calls)
         self.assertEquals(response.status_code, 200)
 
-    @patch('data_catalog.views.Tag')
+    @patch('data_catalog.views.Search')
     def test_search_works_without_query(self, model):
         response = self.client.get('/search?q=')
         self.assertFalse(model.method_calls)

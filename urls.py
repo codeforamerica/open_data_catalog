@@ -9,11 +9,16 @@ admin.autodiscover()
 
 urlpatterns = patterns('data_catalog.views',
     url(r'^$', 'home'),
+    url(r'^apps$', 'apps'),
+    url(r'^causes$', 'causes'),
+    url(r'^cause/(?P<slug>[-\w]+)$', 'individual_cause'),
+    url(r'^data$', 'data'),
+    url(r'^search$', 'search'),
+    url(r'^autocomplete$', 'autocomplete'),
+    url(r'^submit/app/$', 'submit_app'),
+    url(r'^submit/cause/$', 'submit_cause'),
+    url(r'^submit/data/$', 'submit_data'),
     url(r'^(?P<name>\w+)\.txt$', 'send_text_file'),
-)
-
-urlpatterns += patterns('causes.views',
-    url(r'^cause/(?P<slug>[-\w]+)$', 'home'),
 )
 
 
