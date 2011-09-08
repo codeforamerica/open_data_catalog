@@ -7,8 +7,8 @@ header,#main,footer{margin:0 auto;width:90%;}
 header{display:block;margin-bottom:25px;}header ul{list-style:none;margin:0 auto;padding:10px 0;}
 header li{float:right;padding-top:24px;}
 header li.float_left{float:left;}
-header li.city_name{padding-top:10px;}header li.city_name a{background:url('http://dummyimage.com/200x100/ddd&text=logo') no-repeat center center;height:100px;width:200px;}
-header form{font-size:18px;}header form input{border:1px solid #ddd;float:left;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
+header li.city_name{padding-top:10px;}header li.city_name a{background:url('http://dummyimage.com/200x100/ddd') no-repeat center center;height:100px;width:200px;}
+header form{font-size:18px;margin-top:20px;}header form input{border:1px solid #ddd;float:left;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
 header form .search_bar{padding:7px;width:275px;}
 header form .submit{background:url('/static/img/search.png') #d5246b no-repeat center center;border:1px solid #d5246b;margin-left:5px;padding:7px;text-indent:-999em;width:75px;}
 header form .submit:hover{background-color:#c82264;}
@@ -17,4 +17,4 @@ header .sign_in a{color:#fff;font-size:24px;padding:0 20px;text-decoration:none;
 .home .top{margin:50px 0;}
 .home .left{float:left;width:48%;}.home .left a{background:#ddd;height:300px;}
 .home .right{float:right;width:48%;}.home .right a{background:#ddd;height:300px;}
-footer{display:block;margin:100px auto 50px;}footer .cfa_logo{}
+footer{display:block;margin:100px auto 50px;}footer .cfa_logo{background:url('/static/img/cfa_dark.png') no-repeat center center;height:45px;margin:0 auto;width:100px;}
