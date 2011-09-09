@@ -11,7 +11,7 @@ a:hover { background: @color; color: white; text-decoration: none; }
 ::selection { background:@color; color:#fff; text-shadow: none; }
 
 /* Simple function for rounded corners. */
-.round_corners (@radius: 5px) {
+.round_corners (@radius: 3px) {
   border-radius: @radius;
   -webkit-border-radius: @radius;
   -moz-border-radius: @radius;
@@ -55,7 +55,7 @@ header{
         input{
             border: 1px solid #ddd;
             float: left;
-            .round_corners(3px);
+            .round_corners;
         }
         .search_bar{
             padding: 7px;
@@ -120,4 +120,12 @@ footer{
         margin: 0 auto;
         width: 100px;
     }
+}
+
+/* Overwrite some of the existing jQuery UI CSS */
+.ui-corner-all{
+    .round_corners;
+}
+.ui-widget {
+    font-family: sans-serif;
 }
