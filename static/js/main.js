@@ -1,4 +1,4 @@
-(function(window, $){
+(function(window, $) {
 
     // Set up a namespace.
     var ns = {
@@ -43,12 +43,13 @@
                 var cache = ns.cache,
                     responseData;
 
-                responseData = $.map(data.tags, function(item){
+                responseData = $.map(data.tags, function(item) {
                     return {
                         label: item,
                         value: item
                     }
                 });
+
                 cache[term] = responseData;
                 response(responseData);
             }
@@ -67,13 +68,13 @@
         });
     }
 
-    ns.dom.init = function(){
+    ns.dom.init = function() {
         // Initalize function for DOM functionality.
         var dom = ns.dom;
         dom.search();
     }
 
-    ns.main = (function(){
+    ns.main = (function() {
         // Anonymous function that acts much like C's ``int main``.
         var dom = ns.dom;
         dom.init();
