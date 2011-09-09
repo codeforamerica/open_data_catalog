@@ -49,6 +49,7 @@ class Data(Resource):
 
 class Cause(CachingMixin, Resource):
     """An individual cause."""
+    organization = models.CharField(max_length=150)
     video_url = models.URLField('Video URL', verify_exists=False)
     embed_url = models.URLField('Embed URL', verify_exists=False, blank=True)
     image = models.ImageField(upload_to='causes', blank=True, null=True)

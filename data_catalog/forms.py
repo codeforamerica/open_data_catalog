@@ -26,4 +26,4 @@ class CauseForm(forms.ModelForm):
 
     class Meta:
         model = Cause
-        fields = ('name', 'video_url', 'image', 'description')
+        fields = ('name', 'organization', 'video_url', 'image', 'description')
