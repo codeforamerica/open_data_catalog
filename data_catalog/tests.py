@@ -93,6 +93,15 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200)
 
 
+class TestContextProcessors(TestCase):
+
+    def test_settings_context_processors(self):
+        request = Mock()
+        settings = settings_context(request)['settings']
+        self.assertEqual(settings['CITY_NAME'], 'Boston')
+        self.assertEqual(settings['CATALOG_URL'], 'opendataboston.org')
+
+
 class TestModels(TestCase):
 
     def test_creating_a_tag(self):
@@ -151,6 +160,7 @@ class TestModels(TestCase):
         self.assertQuerysetEqual(Supporter.objects.all(), ['Test'],
                                  lambda supporter: supporter.name)
 
+
 class TestSearch(TestCase):
 
     def test_tag_search_resources_method(self):
@@ -181,15 +191,6 @@ class TestSearch(TestCase):
     def test_search_category_for_unknown_related_model(self):
         results = Search.category('test', 'tag')
         self.assertEquals(results, {'results': None})
-
-
-class TestContextProcessor(TestCase):
-
-    def test_settings_context_context_processor(self):
-        request = Mock()
-        settings = settings_context(request)['settings']
-        self.assertEqual(settings['CITY_NAME'], 'Boston')
-        self.assertEqual(settings['CATALOG_URL'], 'opendataboston.org')
 
 
 class TestUtils(TestCase):
