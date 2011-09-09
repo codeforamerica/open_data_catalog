@@ -3,9 +3,11 @@
 {% include "_formalize.html" %}
 
 {% block main %}
-<form action="." method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" class="submit" value="Submit" />
-</form>
+<div class="registration">
+    <form action="." method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="submit" value="Submit" />
+    </form>
+</div>
 {% endblock %}
