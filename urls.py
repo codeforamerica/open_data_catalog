@@ -27,5 +27,5 @@ urlpatterns += patterns('',
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout_then_login'),
     url(r'^accounts/login/$', redirect_to, {'url': '/login/'}),
-    url(r'^accounts/', include('registration.urls')),
+    url(r'^', include('registration.urls')),
 )
