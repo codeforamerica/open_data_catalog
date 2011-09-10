@@ -5,18 +5,8 @@ from urllib import urlencode
 
 from django.db import models
 from autoslug import AutoSlugField
+from taggit.managers import TaggableManager
 from caching.base import CachingMixin, CachingManager
-
-
-class Tag(models.Model):
-    """
-    A model for unique tags. The name field is indexed in order for fast
-    queries.
-    """
-    name = models.CharField(max_length=100, unique=True, db_index=True)
-
-    def __unicode__(self):
-        return self.name
 
 
 class Resource(models.Model):
@@ -24,6 +14,7 @@ class Resource(models.Model):
     name = models.CharField(max_length=150, db_index=True)
     slug = AutoSlugField(populate_from='name', unique=True)
     description = models.TextField()
+    tags = TaggableManager()
 
     class Meta:
         abstract = True
@@ -35,13 +26,11 @@ class Resource(models.Model):
 class App(Resource):
     """A model for a submitted application."""
     url = models.URLField('URL', verify_exists=False)
-    tags = models.ManyToManyField(Tag, related_name='apps')
 
 
 class Data(Resource):
     """A model for submitted data."""
     url = models.URLField('URL', verify_exists=False, blank=True)
-    tags = models.ManyToManyField(Tag, related_name='data')
 
     class Meta:
         verbose_name_plural = 'Data'
@@ -53,7 +42,6 @@ class Cause(CachingMixin, Resource):
     video_url = models.URLField('Video URL', verify_exists=False)
     embed_url = models.URLField('Embed URL', verify_exists=False, blank=True)
     image = models.ImageField(upload_to='causes', blank=True, null=True)
-    tags = models.ManyToManyField(Tag, related_name='causes')
     objects = CachingManager()
 
     def save_embed_url(self):

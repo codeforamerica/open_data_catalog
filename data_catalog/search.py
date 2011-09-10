@@ -1,6 +1,7 @@
 """Search functionality for the data catalog."""
 
-from data_catalog.models import App, Data, Cause, Tag
+from taggit.models import Tag
+from data_catalog.models import App, Data, Cause
 
 
 class Search(object):
@@ -25,15 +26,15 @@ class Search(object):
         """
         results = {}
         try:
-            tag = Tag.objects.select_related().get(name__iexact=keyword)
+            tag = Tag.objects.get(name__iexact=keyword)
         except Tag.DoesNotExist:
             results['apps'] = App.objects.filter(name__icontains=keyword)
             results['data'] = Data.objects.filter(name__icontains=keyword)
             results['causes'] = Cause.objects.filter(name__icontains=keyword)
         else:
-            results['apps'] = tag.apps.all()
-            results['data'] = tag.data.all()
-            results['causes'] = tag.causes.all()
+            results['apps'] = App.objects.filter(tags=tag)
+            results['data'] = Data.objects.filter(tags=tag)
+            results['causes'] = Cause.objects.filter(tags=tag)
         return results
 
     @staticmethod

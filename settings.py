@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'data_catalog',
     'registration',
+    'taggit',
     'south',
     'debug_toolbar',
 )

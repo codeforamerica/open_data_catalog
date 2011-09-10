@@ -1,16 +1,23 @@
 """Forms used by the data catalog."""
 
 from django import forms
-from models import App, Cause, Data, Tag
+from models import App, Cause, Data
 
 
 class AppForm(forms.ModelForm):
     """Form for users to submit an application."""
-    input_tags = forms.CharField(100)
 
     class Meta:
         model = App
-        exclude = ('slug',)
+        fields = ('name', 'description', 'url')
+
+
+class CauseForm(forms.ModelForm):
+    """Form to submit a cause."""
+
+    class Meta:
+        model = Cause
+        fields = ('name', 'organization', 'video_url', 'image', 'description')
 
 
 class DataForm(forms.ModelForm):
@@ -18,12 +25,6 @@ class DataForm(forms.ModelForm):
 
     class Meta:
         model = Data
-        exclude = ('slug',)
+        fields = ('name', 'description', 'url')
 
 
-class CauseForm(forms.ModelForm):
-    """Form to add a cause."""
-
-    class Meta:
-        model = Cause
-        fields = ('name', 'organization', 'video_url', 'image', 'description')

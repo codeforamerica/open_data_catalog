@@ -4,10 +4,12 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.utils import simplejson as json
+from taggit.models import Tag
 from mock import patch, Mock
 
-from data_catalog.models import Tag, App, Data, Cause, Supporter, Link
+from data_catalog.models import App, Data, Cause, Supporter, Link
 from data_catalog.context_processors import settings_context
+from data_catalog.forms import AppForm, CauseForm, DataForm
 from data_catalog.search import Search
 from data_catalog.utils import JSONResponse
 
@@ -74,7 +76,11 @@ class TestViews(TestCase):
         Tag.objects.create(name='GIS').save()
         response = self.client.get('/autocomplete?q=g')
         data = json.loads(response.content)
-        expected_data = {u'tags': [{u'id': u'1', u'name': u'GIS'}]}
+        expected_data = {u'tags': [{
+            u'id': u'1',
+            u'name': u'GIS',
+            u'slug': u'gis'
+        }]}
         self.assertEqual(data, expected_data)
 
     def test_autocomplete_works_without_query(self):
@@ -110,24 +116,20 @@ class TestModels(TestCase):
         gis = Tag.objects.get(name='GIS')
         self.assertEqual(str(gis), 'GIS')
 
-    def test_tag_names_are_unique(self):
+    def test_tag_slugs_are_unique(self):
         Tag.objects.create(name='GIS').save()
-        self.assertRaises(IntegrityError, Tag.objects.create, name='GIS')
+        Tag.objects.create(name='GIS').save()
+        self.assertQuerysetEqual(Tag.objects.all(), ['gis', 'gis_1'],
+                                 lambda t: t.slug)
 
     def test_an_app_can_have_tags(self):
-        gis = Tag.objects.create(name='GIS')
-        gis.save()
-        pollution = Tag.objects.create(name='pollution')
-        pollution.save()
         app = App.objects.create(name='My App', url='http://myapp.com',
                                  description='This is my test app.')
-        app.tags.add(gis, pollution)
+        app.tags.add('GIS', 'pollution')
         app.save()
         self.assertEquals(str(app), 'My App')
         self.assertQuerysetEqual(app.tags.all(), ['GIS', 'pollution'],
                                  lambda tag: tag.name)
-        self.assertQuerysetEqual(gis.apps.all(), ['My App'],
-                                 lambda app: app.name)
 
     def test_data_does_not_need_an_url(self):
         test = Tag.objects.create(name='test')
@@ -161,13 +163,33 @@ class TestModels(TestCase):
                                  lambda supporter: supporter.name)
 
 
+class TestForms(TestCase):
+
+    def test_app_form_is_valid(self):
+        form = AppForm({
+            'name': 'test app',
+            'description': 'This is a test form.',
+            'url': 'http://testapp.com',
+        })
+
+    def test_cause_form_is_valid_without_image(self):
+        form = CauseForm({
+            'name': 'test cause',
+            'organization': 'test organization',
+            'video_url': 'http://vimeo.com/12345',
+            'description': 'This is a test form.',
+        })
+        self.assertTrue(form.is_valid)
+        self.assertTrue(form.is_multipart)
+        form.save()
+        self.assertEquals(Cause.objects.count(), 1)
+
+
 class TestSearch(TestCase):
 
     def test_tag_search_resources_method(self):
-        gis = Tag.objects.create(name='GIS')
-        gis.save()
         app = App.objects.create(name='Test', description='Test', url='test.com')
-        app.tags.add(gis)
+        app.tags.add('GIS')
         app.save()
         results = Search.find_resources('gis')
         self.assertQuerysetEqual(results['apps'], ['Test'],
