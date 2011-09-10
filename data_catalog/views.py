@@ -26,16 +26,7 @@ def data(request):
 
 def causes(request):
     """Render all the available causes."""
-    return render(request, 'causes.html')
-
-
-def individual_resource(request, resource, slug):
-    """Render a specific cause."""
-    available_resources = {'app': App, 'data': Data, 'cause': Cause}
-    model = available_resources[resource]
-    actual_resource = get_object_or_404(model, slug=slug)
-    context = {'resource': actual_resource}
-    return render(request, 'individual_resource.html', context)
+    return reduce_results(request, 'causes', 'causes.html')
 
 
 def reduce_results(request, related_name, template):
@@ -47,6 +38,15 @@ def reduce_results(request, related_name, template):
     tag = request.GET.get('tag')
     results = Search.category(related_name, tag)
     return render(request, template, results)
+
+
+def individual_resource(request, resource, slug):
+    """Render a specific cause."""
+    available_resources = {'app': App, 'data': Data, 'cause': Cause}
+    model = available_resources[resource]
+    actual_resource = get_object_or_404(model, slug=slug)
+    context = {'resource': actual_resource}
+    return render(request, 'individual_resource.html', context)
 
 
 def search(request):
@@ -81,30 +81,13 @@ def autocomplete(request):
 
 
 @login_required
-def submit_app(request):
+def submit_resource(request, resource):
     """
-    Allow users that are logged in to submit an app built off
+    Allow users that are logged in to submit a resource built off
     of our data.
     """
-    return render(request, 'submit/app.html')
-
-
-@login_required
-def submit_cause(request):
-    """
-    Allow users that are logged in to submit a cause for the
-    data catalog.
-    """
-    return render(request, 'submit/cause.html')
-
-
-@login_required
-def submit_data(request):
-    """
-    Allow users that are logged in to submit data that should be
-    added to the data catalog.
-    """
-    return render(request, 'submit/data.html')
+    template = 'submit/%s.html' % resource
+    return render(request, template)
 
 
 def send_text_file(request, name):

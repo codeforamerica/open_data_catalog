@@ -2,14 +2,13 @@
 
 from django.test import TestCase
 from django.contrib.auth.models import User
-from django.db import IntegrityError
 from django.utils import simplejson as json
 from taggit.models import Tag
 from mock import patch, Mock
 
 from data_catalog.models import App, Data, Cause, Supporter, Link
 from data_catalog.context_processors import settings_context
-from data_catalog.forms import AppForm, CauseForm, DataForm
+from data_catalog.forms import AppForm, CauseForm
 from data_catalog.search import Search
 from data_catalog.utils import JSONResponse
 

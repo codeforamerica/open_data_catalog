@@ -16,9 +16,7 @@ urlpatterns = patterns('data_catalog.views',
     url(r'^data$', 'data'),
     url(r'^search$', 'search'),
     url(r'^autocomplete$', 'autocomplete'),
-    url(r'^submit/app/$', 'submit_app'),
-    url(r'^submit/cause/$', 'submit_cause'),
-    url(r'^submit/data/$', 'submit_data'),
+    url(r'^submit/(?P<resource>app|data|cause)/$', 'submit_resource'),
     url(r'^(?P<name>\w+)\.txt$', 'send_text_file'),
 )
 
