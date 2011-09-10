@@ -35,6 +35,12 @@ class TestViews(TestCase):
         response = self.client.get('/causes')
         self.assertEquals(response.status_code, 200)
 
+    def test_individual_cause_page_is_working(self):
+        Cause.objects.create(name='Test', description='A test cause.',
+                             video_url='http://vimeo.com/12345').save()
+        response = self.client.get('/cause/test')
+        self.assertEquals(response.status_code, 200)
+
     def test_submit_app_page(self):
         self.client.login(username='foo', password='bar')
         response = self.client.get('/submit/app/')
