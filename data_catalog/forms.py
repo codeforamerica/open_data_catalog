@@ -9,7 +9,7 @@ class AppForm(forms.ModelForm):
 
     class Meta:
         model = App
-        fields = ('name', 'description', 'url')
+        exclude = ('slug',)
 
 
 class CauseForm(forms.ModelForm):
@@ -17,7 +17,7 @@ class CauseForm(forms.ModelForm):
 
     class Meta:
         model = Cause
-        fields = ('name', 'organization', 'video_url', 'image', 'description')
+        exclude = ('slug',)
 
 
 class DataForm(forms.ModelForm):
@@ -25,6 +25,4 @@ class DataForm(forms.ModelForm):
 
     class Meta:
         model = Data
-        fields = ('name', 'description', 'url')
-
-
+        fields = ('name', 'description', 'url', 'tags')

@@ -165,24 +165,32 @@ class TestModels(TestCase):
 
 class TestForms(TestCase):
 
-    def test_app_form_is_valid(self):
+    def test_app_form_is_valid_with_tags(self):
         form = AppForm({
             'name': 'test app',
             'description': 'This is a test form.',
             'url': 'http://testapp.com',
+            'tags': 'GIS, test'
         })
+        self.assertTrue(form.is_valid)
+        form.save()
+        tags = App.objects.get().tags.all()
+        self.assertQuerysetEqual(tags, ['test', 'GIS'], lambda tag: tag.name)
 
-    def test_cause_form_is_valid_without_image(self):
+    def test_cause_form_is_valid_without_image_and_tags_are_created(self):
         form = CauseForm({
             'name': 'test cause',
             'organization': 'test organization',
             'video_url': 'http://vimeo.com/12345',
             'description': 'This is a test form.',
+            'tags': 'test, data, foobar'
         })
         self.assertTrue(form.is_valid)
         self.assertTrue(form.is_multipart)
         form.save()
-        self.assertEquals(Cause.objects.count(), 1)
+        tags = Cause.objects.get(name='test cause').tags.all()
+        self.assertQuerysetEqual(tags, ['test', 'foobar', 'data'],
+                                 lambda tag: tag.name)
 
 
 class TestSearch(TestCase):
@@ -192,10 +200,10 @@ class TestSearch(TestCase):
         app.tags.add('GIS')
         app.save()
         results = Search.find_resources('gis')
-        self.assertQuerysetEqual(results['apps'], ['Test'],
-                                 lambda app: app.name)
         self.assertFalse(results['data'])
         self.assertFalse(results['causes'])
+        self.assertQuerysetEqual(results['apps'], ['Test'],
+                                 lambda app: app.name)
 
     def test_tag_search_resources_for_nonexisting_tag(self):
         results = Search.find_resources('foo')
