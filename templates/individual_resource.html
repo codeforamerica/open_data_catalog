@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="resource">
+    <div class="content">
+        <p class="name">{{ resource.name }}</p>
+        <p class="organization">{{ resource.organization }}</p>
+        <p class="description">{{ resource.description }}</p>
+    </div>
+    <iframe src="{{ resource.embed_url }}" class="video" frameborder="0"></iframe>
+</div>
+{% endblock %}

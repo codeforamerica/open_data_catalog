@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from taggit.models import Tag
 
-from data_catalog.models import Cause
+from data_catalog.models import App, Cause, Data
 from data_catalog.utils import JSONResponse
 from data_catalog.search import Search
 
@@ -29,11 +29,13 @@ def causes(request):
     return render(request, 'causes.html')
 
 
-def individual_cause(request, slug):
+def individual_resource(request, resource, slug):
     """Render a specific cause."""
-    specific_cause = get_object_or_404(Cause, slug=slug)
-    context = {'cause': specific_cause}
-    return render(request, 'individual_cause.html', context)
+    available_resources = {'app': App, 'data': Data, 'cause': Cause}
+    model = available_resources[resource]
+    actual_resource = get_object_or_404(model, slug=slug)
+    context = {'resource': actual_resource}
+    return render(request, 'individual_resource.html', context)
 
 
 def reduce_results(request, related_name, template):
