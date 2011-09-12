@@ -9,9 +9,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('data_catalog.views',
     url(r'^$', 'home'),
-    url(r'^apps/$', 'apps'),
-    url(r'^causes/$', 'causes'),
-    url(r'^data/$', 'data'),
+    url(r'^apps$', 'apps'),
+    url(r'^causes$', 'causes'),
+    url(r'^data$', 'data'),
     url(r'^(?P<resource>app|data|cause)/(?P<slug>[-\w]+)$',
          'individual_resource'),
     url(r'^search$', 'search'),
@@ -23,8 +23,5 @@ urlpatterns = patterns('data_catalog.views',
 
 urlpatterns += patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^login/$', 'django.contrib.auth.views.login'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout_then_login'),
-    url(r'^accounts/login/$', redirect_to, {'url': '/login/'}),
     url(r'^', include('registration.urls')),
 )
