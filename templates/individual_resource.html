@@ -7,6 +7,9 @@
         <p class="organization">{{ resource.organization }}</p>
         <p class="description">{{ resource.description }}</p>
     </div>
-    <iframe src="{{ resource.embed_url }}" class="video" frameborder="0"></iframe>
+    {% if resource.embed_url %}
+    <iframe src="{{ resource.embed_url }}" class="youtube-player"
+            height="640" width="480" frameborder="0"></iframe>
+    {% endif %}
 </div>
 {% endblock %}
