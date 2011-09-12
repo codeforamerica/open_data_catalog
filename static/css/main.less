@@ -1,10 +1,10 @@
+/* Change the global JavaScript `ns.color` attribute, too. */
 @color: #d5246b;
 @width: 90%;
 
 /* Link Color and Styles */
 a, a:active, a:visited { color: @color; }
 a:hover { background: @color; color: white; text-decoration: none; }
-
 
 /* Custom highlight */
 ::-moz-selection{ background:@color; color:#fff; text-shadow: none; }
@@ -17,6 +17,16 @@ a:hover { background: @color; color: white; text-decoration: none; }
   -moz-border-radius: @radius;
 }
 
+/* These styles help offset the formalize settings. */
+.offset_formalize{
+    font: 16px sans-serif;
+    box-sizing: initial;
+    -moz-box-sizing: initial;
+    -webkit-box-sizing: initial;
+    .round_corners;
+}
+
+
 body{
     color: #444;
 }
@@ -25,14 +35,7 @@ header, #main, footer{
   margin: 0 auto;
   width: @width;
 }
-.offset_formalize{
-    /* These styles help offset the formalize settings. */
-    font: 16px sans-serif;
-    box-sizing: initial;
-    -moz-box-sizing: initial;
-    -webkit-box-sizing: initial;
-    .round_corners;
-}
+
 header{
     display:block;
     margin-bottom: 25px;
@@ -108,6 +111,8 @@ header{
   }
   .left{
     float: left;
+    height: 300px;
+    position: relative;
     width: 48%;
     a {
       background: #ddd;
@@ -116,6 +121,8 @@ header{
   }
   .right{
     float: right;
+    height: 300px;
+    position: relative;
     width: 48%;
     a {
       background: #ddd;
@@ -144,4 +151,9 @@ footer{
 }
 .ui-widget {
     font-family: sans-serif;
+}
+.ui-tooltip{
+    padding: 8px;
+    position: absolute;
+    width: 200px;
 }

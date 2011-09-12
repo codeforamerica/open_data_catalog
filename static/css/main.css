@@ -2,9 +2,9 @@ a,a:active,a:visited{color:#d5246b;}
 a:hover{background:#d5246b;color:white;text-decoration:none;}
 ::-moz-selection{background:#d5246b;color:#fff;text-shadow:none;}
 ::selection{background:#d5246b;color:#fff;text-shadow:none;}
+.offset_formalize{font:16px sans-serif;box-sizing:initial;-moz-box-sizing:initial;-webkit-box-sizing:initial;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
 body{color:#444;}
 header,#main,footer{margin:0 auto;width:90%;}
-.offset_formalize{font:16px sans-serif;box-sizing:initial;-moz-box-sizing:initial;-webkit-box-sizing:initial;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
 header{display:block;margin-bottom:25px;}header ul{list-style:none;margin:0 auto;padding:10px 0;}
 header li{float:right;padding-top:24px;}
 header li.float_left{float:left;}
@@ -16,9 +16,10 @@ header form .submit:hover{background-color:#c82264;}
 header .sign_in{margin:0 25px;}header .sign_in span{color:#bbb;font-size:16px;}
 header .sign_in a{color:#fff;font-size:24px;padding:0 20px;text-decoration:none;}
 .home .top{margin:50px 0;}
-.home .left{float:left;width:48%;}.home .left a{background:#ddd;height:300px;}
-.home .right{float:right;width:48%;}.home .right a{background:#ddd;height:300px;}
+.home .left{float:left;height:300px;position:relative;width:48%;}.home .left a{background:#ddd;height:300px;}
+.home .right{float:right;height:300px;position:relative;width:48%;}.home .right a{background:#ddd;height:300px;}
 footer{display:block;margin:100px auto 50px;}footer .cfa_logo{background:url('/static/img/cfa_dark.png') no-repeat center center;height:45px;margin:0 auto;width:100px;}
 .ui-corner-all{border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
 .ui-menu-item a{color:#333;}
 .ui-widget{font-family:sans-serif;}
+.ui-tooltip{padding:8px;position:absolute;width:200px;}
