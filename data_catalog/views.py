@@ -70,12 +70,13 @@ def autocomplete(request):
     if not query:
         data['tags'] = None
     else:
-        # TODO: Use Tag model rather than fake tags.
-        tags = Tag.objects.filter(name__istartswith=query)
-        if not tags:
+        results = Tag.objects.filter(name__istartswith=query).values('name')
+        if not results:
             fake_tags = ['abc', 'abcdef', 'abcdefghi', 'def', 'defghi',
                          'defghijkl', 'ghi', 'ghijkl', 'ghijklmno']
             tags = [tag for tag in fake_tags if query in tag]
+        else:
+            tags = [tag['name'] for tag in results]
         data['tags'] = tags
     return JSONResponse(data)
 
