@@ -160,12 +160,13 @@ class TestModels(TestCase):
         cause.save()
         link = Link.objects.create(url='http://test.com')
         link.save()
-        supporter = Supporter.objects.create(name='Test')
+        user = User.objects.create_user('foo', 'foo@bar.com', 'bar')
+        supporter = Supporter.objects.create(user=user, name='Test')
         supporter.links.add(link)
         supporter.causes.add(cause)
         supporter.save()
-        self.assertQuerysetEqual(Supporter.objects.all(), ['Test'],
-                                 lambda supporter: supporter.name)
+        self.assertQuerysetEqual(Supporter.objects.all(), user,
+                                 lambda supporter: supporter.user)
 
 
 class TestForms(TestCase):

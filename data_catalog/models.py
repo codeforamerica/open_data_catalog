@@ -4,6 +4,7 @@ import re
 from urllib import urlencode
 
 from django.db import models
+from django.contrib.auth.models import User
 from autoslug import AutoSlugField
 from taggit.managers import TaggableManager
 from caching.base import CachingMixin, CachingManager
@@ -89,8 +90,7 @@ class Cause(CachingMixin, Resource):
 
 class Supporter(models.Model):
     """An individual who supports a cause."""
-    # TODO: Supporter should be linked to a User
-    name = models.CharField(max_length=150)
+    user = models.OneToOneField(User)
     causes = models.ManyToManyField(Cause, related_name='supporters')
     links = models.ManyToManyField('Link', related_name='supporters')
 
