@@ -25,7 +25,14 @@ header, #main, footer{
   margin: 0 auto;
   width: @width;
 }
-
+.offset_formalize{
+    /* These styles help offset the formalize settings. */
+    font: 16px sans-serif;
+    box-sizing: initial;
+    -moz-box-sizing: initial;
+    -webkit-box-sizing: initial;
+    .round_corners;
+}
 header{
     display:block;
     margin-bottom: 25px;
@@ -58,16 +65,22 @@ header{
             .round_corners;
         }
         .search_bar{
+            border: 1px solid #ddd;
+            color: inherit;
+            height: 20px;
             padding: 7px;
             width: 275px;
+            .offset_formalize;
         }
         .submit{
             background: url('/static/img/search.png') @color no-repeat center center;
             border: 1px solid @color;
+            height: 20px;
             margin-left: 5px;
             padding: 7px;
             text-indent: -999em;
             width: 75px;
+            .offset_formalize;
         }
         .submit:hover{
             background-color: darken(@color, 3%);

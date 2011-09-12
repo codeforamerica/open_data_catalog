@@ -4,13 +4,14 @@ a:hover{background:#d5246b;color:white;text-decoration:none;}
 ::selection{background:#d5246b;color:#fff;text-shadow:none;}
 body{color:#444;}
 header,#main,footer{margin:0 auto;width:90%;}
+.offset_formalize{font:16px sans-serif;box-sizing:initial;-moz-box-sizing:initial;-webkit-box-sizing:initial;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
 header{display:block;margin-bottom:25px;}header ul{list-style:none;margin:0 auto;padding:10px 0;}
 header li{float:right;padding-top:24px;}
 header li.float_left{float:left;}
 header li.city_name{padding-top:10px;}header li.city_name a{background:url('http://dummyimage.com/200x100/ddd') no-repeat center center;height:100px;width:200px;}
 header form{font-size:18px;margin-top:20px;}header form input{border:1px solid #ddd;float:left;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
-header form .search_bar{padding:7px;width:275px;}
-header form .submit{background:url('/static/img/search.png') #d5246b no-repeat center center;border:1px solid #d5246b;margin-left:5px;padding:7px;text-indent:-999em;width:75px;}
+header form .search_bar{border:1px solid #ddd;color:inherit;height:20px;padding:7px;width:275px;font:16px sans-serif;box-sizing:initial;-moz-box-sizing:initial;-webkit-box-sizing:initial;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
+header form .submit{background:url('/static/img/search.png') #d5246b no-repeat center center;border:1px solid #d5246b;height:20px;margin-left:5px;padding:7px;text-indent:-999em;width:75px;font:16px sans-serif;box-sizing:initial;-moz-box-sizing:initial;-webkit-box-sizing:initial;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
 header form .submit:hover{background-color:#c82264;}
 header .sign_in{margin:0 25px;}header .sign_in span{color:#bbb;font-size:16px;}
 header .sign_in a{color:#fff;font-size:24px;padding:0 20px;text-decoration:none;}
