@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
-{% block js %}
+{% block library_js %}
+<script src="/static/js/jquery.ui.tooltip.js" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
 
 
@@ -8,18 +9,18 @@
 <div class="home">
   <div class="top clearfix">
     <div class="left">
-      <a class="ir" href="#">Browse Solutions</a>
+      <a class="ir" href="#" title="Browse Solutions">Browse Solutions</a>
     </div>
     <div class="right">
-      <a class="ir" href="#">Find Opportunities</a>
+      <a class="ir" href="#" title="Find Opportunities">Find Opportunities</a>
     </div>
   </div>
   <div class="bottom clearfix">
     <div class="left">
-      <a class="ir" href="#">Post Opportunities</a>
+      <a class="ir" href="#" title="Post Opportunities">Post Opportunities</a>
     </div>
     <div class="right">
-      <a class="ir" href="#">Browse Data</a>
+      <a class="ir" href="#" title="Browse Data">Browse Data</a>
     </div>
   </div>
 </div>
