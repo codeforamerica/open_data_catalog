@@ -50,8 +50,9 @@ class Search(object):
             results = None
         elif tag:
             try:
-                tag_model = Tag.objects.get(name=tag)
-                results = getattr(tag_model, related_name).all()
+                tag = Tag.objects.get(name=tag)
+                model = available_models[related_name]
+                results = model.objects.filter(tags=tag)
             except:
                 results = []
         else:
