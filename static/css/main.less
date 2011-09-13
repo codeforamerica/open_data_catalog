@@ -107,6 +107,7 @@ header{
         }
     }
 }
+
 nav{
     background: #cfe2e8;
     display: block;
@@ -138,6 +139,7 @@ nav{
         }
     }
 }
+
 .home{
   .top{
     margin: 50px 0;
@@ -165,6 +167,7 @@ nav{
     }
   }
 }
+
 footer{
     background: #ddd;
     display: block;
@@ -172,25 +175,44 @@ footer{
     padding: 50px 0;
     .box_shadow(inset 0 0 5px rgba(0, 0, 0, .25));
     .cfa_logo{
-        /* Put the CfA logo in the footer. */
         background: url('/static/img/cfa_dark.png') no-repeat center center;
         height: 45px;
         margin: 0 auto;
         width: 100px;
     }
 }
+
 .site_map{
+    color: #555;
     margin: 0 auto 50px;
     width: 50%;
     ul{
         float: left;
         list-style: none;
         margin: 0 auto;
-        padding: 0;
-        width: 33%;
+        padding: 0 5%;
+        width: 23%;
     }
     li{
         padding: 2px 0;
+    }
+    strong{
+        display: block;
+        padding: 5px;
+        text-transform: uppercase;
+    }
+    a{
+        color: #777;
+        display: block;
+        padding: 5px;
+        text-decoration: none;
+        width: 100%;
+    }
+    a:hover{
+        color: #fff;
+    }
+    .left a{
+        font-weight: bold;
     }
 }
 
