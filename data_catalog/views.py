@@ -69,7 +69,7 @@ def autocomplete(request):
     if not query:
         data['tags'] = None
     else:
-        results = Tag.objects.filter(name__istartswith=query).values('name')
+        results = Tag.objects.filter(name__icontains=query).values('name')
         if not results:
             fake_tags = ['abc', 'abcdef', 'abcdefghi', 'def', 'defghi',
                          'defghijkl', 'ghi', 'ghijkl', 'ghijklmno']
