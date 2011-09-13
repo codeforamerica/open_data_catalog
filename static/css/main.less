@@ -1,14 +1,15 @@
 /* Change the global JavaScript `ns.color` attribute, too. */
-@color: #d5246b;
+@pink: #d5246b;
+@teal: #22a894;
 @width: 90%;
 
 /* Link Color and Styles */
-a, a:active, a:visited { color: @color; }
-a:hover { background: @color; color: white; text-decoration: none; }
+a, a:active, a:visited { color: @pink; }
+a:hover { background: @pink; color: white; text-decoration: none; }
 
 /* Custom highlight */
-::-moz-selection{ background:@color; color:#fff; text-shadow: none; }
-::selection { background:@color; color:#fff; text-shadow: none; }
+::-moz-selection{ background:@pink; color:#fff; text-shadow: none; }
+::selection { background:@pink; color:#fff; text-shadow: none; }
 
 /* Simple function for rounded corners. */
 .round_corners (@radius: 3px) {
@@ -86,13 +87,13 @@ header{
             .box_shadow(0 0 5px rgba(0, 0, 0, .5));
         }
         .search_bar:focus{
-            border: 1px solid @color;
+            border: 1px solid @pink;
             outline: none;
-            .box_shadow(@color 0 0 10px);
+            .box_shadow(@pink 0 0 10px);
         }
         .submit{
-            background: url('/static/img/search.png') @color no-repeat center center;
-            border: 1px solid @color;
+            background: url('/static/img/search.png') @pink no-repeat center center;
+            border: 1px solid @pink;
             height: 20px;
             margin-left: 5px;
             padding: 7px;
@@ -102,12 +103,12 @@ header{
             .box_shadow(0 0 5px rgba(0, 0, 0, .5));
         }
         .submit:hover{
-            background-color: darken(@color, 3%);
+            background-color: darken(@pink, 3%);
         }
     }
 }
 nav{
-    background: #ddd;
+    background: #cfe2e8;
     display: block;
     ul{
         margin: 0 auto;
@@ -118,10 +119,21 @@ nav{
         float: left;
         padding: 25px 0;
         width: 16%;
-        a{
+        .links{
+            background: #9fc6d1;
+            color: white;
             display: block;
+            font-size: 15px;
+            margin: 0 auto;
+            padding: 10px;
             text-align: center;
-            width: 100%;
+            text-decoration: none;
+            width: 80%;
+            .round_corners;
+            .box_shadow(inset 0 0 5px rgba(0, 0, 0, .1));
+        }
+        .links:hover{
+            background: @teal;
         }
     }
 }
