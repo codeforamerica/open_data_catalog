@@ -81,11 +81,7 @@ class TestViews(TestCase):
         Tag.objects.create(name='GIS').save()
         response = self.client.get('/autocomplete?q=g')
         data = json.loads(response.content)
-        expected_data = {u'tags': [{
-            u'id': u'1',
-            u'name': u'GIS',
-            u'slug': u'gis'
-        }]}
+        expected_data = {u'tags': ['GIS']}
         self.assertEqual(data, expected_data)
 
     def test_autocomplete_works_without_query(self):
@@ -161,11 +157,11 @@ class TestModels(TestCase):
         link = Link.objects.create(url='http://test.com')
         link.save()
         user = User.objects.create_user('foo', 'foo@bar.com', 'bar')
-        supporter = Supporter.objects.create(user=user, name='Test')
+        supporter = Supporter.objects.create(user=user)
         supporter.links.add(link)
         supporter.causes.add(cause)
         supporter.save()
-        self.assertQuerysetEqual(Supporter.objects.all(), user,
+        self.assertQuerysetEqual(Supporter.objects.all(), [user],
                                  lambda supporter: supporter.user)
 
 
