@@ -31,9 +31,8 @@ def causes(request):
 
 def reduce_results(request, related_name, template):
     """
-    Given a request, the `relative_name` of a view's specific model for Tag
-    objects, and a template name, this function determines whether it can
-    reduce the number of model instances returned by a specific tag.
+    This function determines whether it can reduce the number of
+    model instances returned by a specific tag.
     """
     tag = request.GET.get('tag')
     results = Search.category(related_name, tag)
@@ -46,7 +45,7 @@ def individual_resource(request, resource, slug):
     model = available_resources[resource]
     actual_resource = get_object_or_404(model, slug=slug)
     context = {'resource': actual_resource}
-    return render(request, 'individual_resource.html', context)
+    return render(request, 'resource.html', context)
 
 
 def search(request):
