@@ -36,6 +36,8 @@ def reduce_results(request, related_name, template):
     """
     tag = request.GET.get('tag')
     results = Search.category(related_name, tag)
+    current_path = related_name.rstrip('s')
+    results.update({'path': current_path})
     return render(request, template, results)
 
 
@@ -44,8 +46,8 @@ def individual_resource(request, resource, slug):
     available_resources = {'app': App, 'data': Data, 'cause': Cause}
     model = available_resources[resource]
     actual_resource = get_object_or_404(model, slug=slug)
-    context = {'resource': actual_resource}
-    return render(request, 'resource.html', context)
+    context = {'resource': actual_resource, 'path': resource}
+    return render(request, 'individual_resource.html', context)
 
 
 def search(request):
