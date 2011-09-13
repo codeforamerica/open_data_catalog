@@ -60,6 +60,24 @@ it to Tulsa).
     CATALOG_URL = 'opendatatulsa.org'
 
 
+### Restarting the Server
+
+If you've closed your terminal -- and therefore killed the running
+server -- here's a quick couple steps to get back up running.
+
+Make sure you `cd` into the `open_data_catalog` directory.
+
+    $ cd path/to/open_data_catalog
+
+Now, we need to `source` our virtual environment again.
+
+    $ source env/bin/activate
+
+And then we can run the server once again.
+
+    $ python manage.py runserver
+
+
 ### Uploading to DotCloud ###
 
 If you've already signed up for an account on DotCloud and installed the
