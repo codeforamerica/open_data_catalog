@@ -38,15 +38,16 @@ the Open Data Catalog up and running.
 
 Running the Open Data Catalog in development is then pretty simple:
 
+    $ python manage.py schemamigration data_catalog --init
     $ python manage.py syncdb
-    $ python manage.py migrate
+    $ python manage.py migrate data_catalog
 
 You can then start up the development server.
 
     $ python manage.py runserver
 
 You should then be able to use your web browser to pull up the
-application.
+application on `http://localhost:8000`.
 
 If you're looking to change the Open Data Catalog to use your city with
 the provided templates, then you simply need to edit the
