@@ -56,7 +56,7 @@
         });
     }
 
-    ns.dom.search = function(e) {
+    ns.dom.search = function() {
         // Bind the searchFocus function and add autocomplete.
         var search = $('input.search_bar');
         search.autocomplete({
