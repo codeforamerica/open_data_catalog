@@ -28,6 +28,10 @@ def causes(request):
     """Render all the available causes."""
     return reduce_results(request, 'causes', 'causes.html')
 
+def community(request):
+    """Render the community page."""
+    return render(request, 'community.html')
+
 
 def reduce_results(request, related_name, template):
     """
