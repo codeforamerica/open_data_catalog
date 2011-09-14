@@ -34,6 +34,7 @@
 </head>
 
 <body>
+  <div class="ribbon"></div>
   <div id="container">
 
     {% block header %}
@@ -54,15 +55,39 @@
     </header>
 
     <nav>
-        <ul class="clearfix">
+        <ul class="top clearfix">
             <li>
                 <a class="links" href="{% url data_catalog.views.community %}">Community</a>
+                <ul class="subnav">
+                    <li>
+                        <a href="#">Lorem</a>
+                    </li>
+                    <li>
+                        <a href="#">Ipsum</a>
+                    </li>
+                </ul>
             </li>
             <li>
-            <a class="links" href="{% url data_catalog.views.projects %}">Projects</a>
+                <a class="links" href="{% url data_catalog.views.projects %}">Projects</a>
+                <ul class="subnav">
+                    <li>
+                        <a href="#">Lorem</a>
+                    </li>
+                    <li>
+                        <a href="#">Ipsum</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a class="links" href="{% url data_catalog.views.apps %}">Apps</a>
+                <ul class="subnav">
+                    <li>
+                        <a href="#">Lorem</a>
+                    </li>
+                    <li>
+                        <a href="#">Ipsum</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a class="links" href="http://datacouch.com">Data</a>
