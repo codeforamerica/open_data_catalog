@@ -1,6 +1,6 @@
 /* Change the global JavaScript `ns.color` attribute, too. */
 @pink: #d5246b;
-@teal: #22a894;
+@blue: #1e65a0;
 @width: 90%;
 
 /* Link Color and Styles */
@@ -34,6 +34,15 @@ a:hover { background: @pink; color: white; text-decoration: none; }
     .round_corners;
 }
 
+/* Don't like the default UL styling from HTML5 Boilerplate */
+ul{
+    margin: 0;
+    padding: 0;
+    li{
+        list-style: none;
+    }
+}
+
 
 body{
     color: #444;
@@ -52,7 +61,7 @@ header{
     ul{
         list-style: none;
         margin:0 auto;
-        padding:0 0 10px;
+        padding:0 0 15px;
     }
     li{
         float: right;
@@ -64,7 +73,7 @@ header{
     li.city_name{
         padding-top: 10px;
         a{
-          background: url('http://dummyimage.com/250x75/ddd') no-repeat center center;
+          background: url('http://dummyimage.com/250x75/222/fff') no-repeat center center;
           height: 75px;
           width: 250px;
         }
@@ -89,7 +98,7 @@ header{
         .search_bar:focus{
             border: 1px solid @pink;
             outline: none;
-            .box_shadow(@pink 0 0 10px);
+            .box_shadow(0 0 20px @pink);
         }
         .submit{
             background: url('/static/img/search.png') @pink no-repeat center center;
@@ -109,63 +118,32 @@ header{
 }
 
 nav{
-    background: #cfe2e8;
     display: block;
-    .box_shadow(inset 0 0 5px rgba(0, 0, 0, .1));
+    .box_shadow(inset 0 0 3px rgba(0, 0, 0, .75));
     ul{
+        border-bottom: 1px solid #658eb1;
         margin: 0 auto;
-        padding-left: 4%;
-        width: 96%;
     }
     li{
         float: left;
-        padding: 25px 0;
-        width: 16%;
+        margin: 0 auto;
+        width: 25%;
         .links{
-            background: #9fc6d1;
+            background: #6f9cc2;
+            border-left: 1px solid #83b8e4;
             color: white;
             display: block;
-            font-size: 15px;
+            font-size: 18px;
             margin: 0 auto;
-            padding: 10px;
+            padding: 15px;
             text-align: center;
             text-decoration: none;
-            width: 80%;
-            .round_corners;
-            .box_shadow(inset 0 0 5px rgba(0, 0, 0, .1));
+            .box_shadow(inset 2px 0 2px rgba(0, 0, 0, .05));
         }
         .links:hover{
-            background: @teal;
+            background: @blue;
         }
     }
-}
-
-.home{
-  .top{
-    margin: 50px 0;
-  }
-  .bottom{
-  }
-  .left{
-    float: left;
-    height: 300px;
-    position: relative;
-    width: 48%;
-    a {
-      background: #ddd;
-      height: 300px;
-    }
-  }
-  .right{
-    float: right;
-    height: 300px;
-    position: relative;
-    width: 48%;
-    a {
-      background: #ddd;
-      height: 300px;
-    }
-  }
 }
 
 footer{
@@ -234,20 +212,52 @@ footer{
     }
 }
 
-/* This way the navigation element do not overflow */
-@media all and (min-width:1250px) {
-    nav li a.links{
-        font-size: 18px;
+/* Styling for home page */
+.home{
+    .headline{
+        background: #ddd;
+        height: 350px;
+        margin: 50px 0;
+        .round_corners;
+    }
+    .featured_container{
+        background: #ddd;
     }
 }
-@media all and (max-width: 990px) and (min-width:820px) {
-    nav li a.links{
-        font-size: 12px;
+
+/* Styles for featured project */
+.featured_project{
+    margin: 50px 0;
+    h2{
+        display: block;
+        text-align: center;
+    }
+    iframe{
+        float: left;
+        background: #444;
     }
 }
-@media all and (max-width: 820px) {
-    nav li a.links{
-        font-size: 11px;
+
+/* Styles for recent resources (apps, projects, community members) */
+.recent{
+    width: 100%;
+    .apps, .projects, .community{
+        float: left;
+        width: 33%;
+    }
+    h3, a{
+        display: block;
+        padding: 5px;
+    }
+    h3{
+        background: @blue;
+        margin: 0 auto;
+        text-align: center;
+    }
+    ul{
+        color: #fff;
+        margin: 0 auto;
+        width: 75%;
     }
 }
 

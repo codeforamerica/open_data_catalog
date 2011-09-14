@@ -3,23 +3,21 @@ a:hover{background:#d5246b;color:white;text-decoration:none;}
 ::-moz-selection{background:#d5246b;color:#fff;text-shadow:none;}
 ::selection{background:#d5246b;color:#fff;text-shadow:none;}
 .offset_formalize{font:16px sans-serif;box-sizing:initial;-moz-box-sizing:initial;-webkit-box-sizing:initial;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
+ul{margin:0;padding:0;}ul li{list-style:none;}
 body{color:#444;min-width:800px;}
 header ul,#main{margin:0 auto;width:90%;}
-header{background:#222;display:block;-webkit-box-shadow:inset 0 0 10px rgba(0, 0, 0, 0.5);-moz-box-shadow:inset 0 0 10px rgba(0, 0, 0, 0.5);box-shadow:inset 0 0 10px rgba(0, 0, 0, 0.5);}header ul{list-style:none;margin:0 auto;padding:0 0 10px;}
+header{background:#222;display:block;-webkit-box-shadow:inset 0 0 10px rgba(0, 0, 0, 0.5);-moz-box-shadow:inset 0 0 10px rgba(0, 0, 0, 0.5);box-shadow:inset 0 0 10px rgba(0, 0, 0, 0.5);}header ul{list-style:none;margin:0 auto;padding:0 0 15px;}
 header li{float:right;padding-top:24px;}
 header li.float_left{float:left;}
-header li.city_name{padding-top:10px;}header li.city_name a{background:url('http://dummyimage.com/250x75/ddd') no-repeat center center;height:75px;width:250px;}
+header li.city_name{padding-top:10px;}header li.city_name a{background:url('http://dummyimage.com/250x75/222/fff') no-repeat center center;height:75px;width:250px;}
 header form{font-size:18px;margin-top:8px;}header form input{border:1px solid #ddd;float:left;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
 header form .search_bar{border:1px solid #fff;color:inherit;height:20px;padding:7px;width:275px;font:16px sans-serif;box-sizing:initial;-moz-box-sizing:initial;-webkit-box-sizing:initial;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;-webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);-moz-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);box-shadow:0 0 5px rgba(0, 0, 0, 0.5);}
-header form .search_bar:focus{border:1px solid #d5246b;outline:none;-webkit-box-shadow:#d5246b 0 0 10px;-moz-box-shadow:#d5246b 0 0 10px;box-shadow:#d5246b 0 0 10px;}
+header form .search_bar:focus{border:1px solid #d5246b;outline:none;-webkit-box-shadow:0 0 20px #d5246b;-moz-box-shadow:0 0 20px #d5246b;box-shadow:0 0 20px #d5246b;}
 header form .submit{background:url('/static/img/search.png') #d5246b no-repeat center center;border:1px solid #d5246b;height:20px;margin-left:5px;padding:7px;text-indent:-999em;width:75px;font:16px sans-serif;box-sizing:initial;-moz-box-sizing:initial;-webkit-box-sizing:initial;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;-webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);-moz-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);box-shadow:0 0 5px rgba(0, 0, 0, 0.5);}
 header form .submit:hover{background-color:#c82264;}
-nav{background:#cfe2e8;display:block;-webkit-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.1);-moz-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.1);box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.1);}nav ul{margin:0 auto;padding-left:4%;width:96%;}
-nav li{float:left;padding:25px 0;width:16%;}nav li .links{background:#9fc6d1;color:white;display:block;font-size:15px;margin:0 auto;padding:10px;text-align:center;text-decoration:none;width:80%;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;-webkit-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.1);-moz-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.1);box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.1);}
-nav li .links:hover{background:#22a894;}
-.home .top{margin:50px 0;}
-.home .left{float:left;height:300px;position:relative;width:48%;}.home .left a{background:#ddd;height:300px;}
-.home .right{float:right;height:300px;position:relative;width:48%;}.home .right a{background:#ddd;height:300px;}
+nav{display:block;-webkit-box-shadow:inset 0 0 3px rgba(0, 0, 0, 0.75);-moz-box-shadow:inset 0 0 3px rgba(0, 0, 0, 0.75);box-shadow:inset 0 0 3px rgba(0, 0, 0, 0.75);}nav ul{border-bottom:1px solid #658eb1;margin:0 auto;}
+nav li{float:left;margin:0 auto;width:25%;}nav li .links{background:#6f9cc2;border-left:1px solid #83b8e4;color:white;display:block;font-size:18px;margin:0 auto;padding:15px;text-align:center;text-decoration:none;-webkit-box-shadow:inset 2px 0 2px rgba(0, 0, 0, 0.05);-moz-box-shadow:inset 2px 0 2px rgba(0, 0, 0, 0.05);box-shadow:inset 2px 0 2px rgba(0, 0, 0, 0.05);}
+nav li .links:hover{background:#1e65a0;}
 footer{background:#ddd;display:block;margin:100px auto 0;padding:50px 0 25px;-webkit-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);-moz-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);}footer .logos{margin:75px auto 0;width:330px;}footer .logos a{float:left;margin:0 auto;padding:0 25px;width:115px;}
 footer .logos .cfa_logo{background:url('/static/img/cfa_logo.png') no-repeat 0 9px;height:50px;}
 footer .logos .cfa_logo:hover{background-position-y:-41px;}
@@ -31,7 +29,15 @@ footer .logos .new_urban:hover{background-position-y:-48px;}
 .site_map a{color:#777;display:block;padding:5px;text-decoration:none;width:100%;}
 .site_map a:hover{color:#fff;}
 .site_map .left a{font-weight:bold;}
-@media all and (min-width:1250px){nav li a.links{font-size:18px;}}@media all and (max-width: 990px) and (min-width:820px){nav li a.links{font-size:12px;}}@media all and (max-width: 820px){nav li a.links{font-size:11px;}}.ui-corner-all{border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
+.home .headline{background:#ddd;height:350px;margin:50px 0;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
+.home .featured_container{background:#ddd;}
+.featured_project{margin:50px 0;}.featured_project h2{display:block;text-align:center;}
+.featured_project iframe{float:left;background:#444;}
+.recent{width:100%;}.recent .apps,.recent .projects,.recent .community{float:left;width:33%;}
+.recent h3,.recent a{display:block;padding:5px;}
+.recent h3{background:#1e65a0;margin:0 auto;text-align:center;}
+.recent ul{color:#fff;margin:0 auto;width:75%;}
+.ui-corner-all{border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
 .ui-menu-item a{color:#333;}
 .ui-widget{font-family:sans-serif;}
 .ui-tooltip{padding:8px;position:absolute;width:200px;}
