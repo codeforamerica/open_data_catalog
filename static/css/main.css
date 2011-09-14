@@ -19,8 +19,8 @@ nav{display:block;-webkit-box-shadow:inset 0 0 3px rgba(0, 0, 0, 0.75);-moz-box-
 nav li{float:left;margin:0 auto;width:25%;}nav li .links{background:#6f9cc2;border-left:1px solid #83b8e4;color:white;display:block;font-size:18px;margin:0 auto;padding:15px;text-align:center;text-decoration:none;-webkit-box-shadow:inset 2px 0 2px rgba(0, 0, 0, 0.05);-moz-box-shadow:inset 2px 0 2px rgba(0, 0, 0, 0.05);box-shadow:inset 2px 0 2px rgba(0, 0, 0, 0.05);}
 nav li .links:hover{background:#1e65a0;}
 footer{background:#ddd;display:block;margin:100px auto 0;padding:50px 0 25px;-webkit-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);-moz-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);}footer .logos{margin:75px auto 0;width:330px;}footer .logos a{float:left;margin:0 auto;padding:0 25px;width:115px;}
-footer .logos .cfa_logo{background:url('/static/img/cfa_logo.png') no-repeat 0 9px;height:50px;}
-footer .logos .cfa_logo:hover{background-position-y:-41px;}
+footer .logos .cfa_logo{background:url('/static/img/cfa_logo.png') no-repeat 0 8px;height:50px;}
+footer .logos .cfa_logo:hover{background-position-y:-45px;}
 footer .logos .new_urban{background:url('/static/img/new_urban.png') no-repeat 0 5px;height:50px;}
 footer .logos .new_urban:hover{background-position-y:-48px;}
 .site_map{color:#555;margin:0 auto 50px;width:50%;}.site_map ul{float:left;list-style:none;margin:0 auto;padding:0 5%;width:23%;}
