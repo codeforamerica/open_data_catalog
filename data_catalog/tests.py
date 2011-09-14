@@ -221,8 +221,8 @@ class TestSearch(TestCase):
                                  lambda app: app.name)
 
     def test_search_by_tag_for_unknown_related_model(self):
-        results = Search.by_tag('test', 'tag')
-        self.assertEquals(results, {'results': None})
+        results = Search.by_tag('test_model', 'tag')
+        self.assertEquals(results, None)
 
 
 class TestUtils(TestCase):

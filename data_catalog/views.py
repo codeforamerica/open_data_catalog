@@ -16,33 +16,36 @@ def home(request):
 
 def apps(request):
     """Render the apps page."""
-    return reduce_results(request, 'apps', 'apps.html')
+    context = create_context(request, 'apps')
+    return render(request, 'apps.html', context)
 
 
 def data(request):
     """Render the data page."""
-    return reduce_results(request, 'data', 'data.html')
+    context = create_context(request, 'data')
+    return render(request, 'data.html', context)
 
 
 def projects(request):
     """Render all the available projects."""
-    return reduce_results(request, 'projects', 'projects.html')
+    context = create_context(request, 'projects')
+    return render(request, 'projects.html', context)
 
 def community(request):
     """Render the community page."""
     return render(request, 'community.html')
 
 
-def reduce_results(request, related_name, template):
+def create_context(request, model_name):
     """
-    This function determines whether it can reduce the number of
-    model instances returned by a specific tag.
+    This function reduces boilerplate by creating a common context dictionary,
+    and also determines whether the number of model instances returned can be
+    reduced by a tag.
     """
     tag = request.GET.get('tag')
-    results = Search.by_tag(related_name, tag)
-    current_path = related_name.rstrip('s')
-    results.update({'path': current_path})
-    return render(request, template, results)
+    results = Search.by_tag(model_name, tag)
+    path = model_name.rstrip('s')
+    return {'results': results, 'path': path}
 
 
 def individual_resource(request, resource, slug):

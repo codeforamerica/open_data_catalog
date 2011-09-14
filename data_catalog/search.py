@@ -57,5 +57,4 @@ class Search(object):
         else:
             model = available_models[model_name]
             results = model.objects.all()
-        context = {'results': results}
-        return context
+        return results
