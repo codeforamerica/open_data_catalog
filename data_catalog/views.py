@@ -65,7 +65,7 @@ def search(request):
     else:
         results = Search.find_resources(query)
         context = {'results': results}
-    return render(request, 'base.html', context)
+    return render(request, 'search.html', context)
 
 
 def autocomplete(request):
