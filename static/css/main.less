@@ -1,6 +1,7 @@
 /* Change the global JavaScript `ns.color` attribute, too. */
 @pink: #d5246b;
 @blue: #1e65a0;
+@light_blue: #6f9cc2;
 @width: 90%;
 
 /* Link Color and Styles */
@@ -136,7 +137,7 @@ nav{
         width: 25%;
     }
     .links{
-        background: #6f9cc2;
+        background: @light_blue;
         border-right: 1px solid #83b8e4;
         color: white;
         display: block;
@@ -151,19 +152,27 @@ nav{
         background-color: @blue;
     }
     .subnav{
-        background: blue;
+        background-color: #fff;
+        border-top: 1px solid #658eb1;
         display: none;
         left: 0;
-        padding: 10px 0 15px;
         position: absolute;
         width: 100%;
+        .box_shadow(0 2px 5px black);
         li{
             clear: both;
             width: 100%;
             a{
+                border-bottom: 1px solid #ddd;
+                color: #444;
                 display: block;
-                font-size: 14px;
-                padding: 5px 0 5px 5px;
+                font-size: 16px;
+                padding: 12px;
+                text-decoration: none;
+            }
+            a:hover{
+                background-color: #eee;
+                color: @blue;
             }
         }
     }
