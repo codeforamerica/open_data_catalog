@@ -58,7 +58,7 @@
 
     ns.dom.search = function() {
         // Bind the searchFocus function and add autocomplete.
-        var search = $('input.search_bar');
+        var search = $('.search_bar');
         search.autocomplete({
             source: ns.event.ajaxAutocomplete,
             select: function(e) {
@@ -68,10 +68,34 @@
         });
     }
 
+    ns.event.navigationHover = function(e) {
+        // Only navigation links with subnavigation menus will
+        // be called with this function.
+        var self = $(this),
+            subnav = self.find('.subnav'),
+            link = subnav.siblings('.links');
+        if (subnav.is(':visible')) {
+            subnav.hide();
+            link.removeClass('navigation_hover');
+        } else {
+            subnav.show();
+            link.addClass('navigation_hover');
+        }
+    }
+
+    ns.dom.navigation = function() {
+        // Navigation links should show subnavigation menus
+        // on hover.
+        var nav = $('.links').parent(),
+            navigationHover = ns.event.navigationHover;
+        nav.hover(navigationHover);
+    }
+
     ns.dom.init = function() {
         // Initalize function for DOM functionality.
         var dom = ns.dom;
         dom.search();
+        dom.navigation();
     }
 
     ns.main = (function() {
