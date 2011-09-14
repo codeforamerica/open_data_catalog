@@ -90,12 +90,12 @@ class TestViews(TestCase):
         expected_data = {'tags': None}
         self.assertEquals(data, expected_data)
 
-    def test_category_view_is_working_for_found_tag(self):
+    def test_apps_view_is_working_for_found_tag(self):
         Tag.objects.create(name='GIS').save()
         response = self.client.get('/apps?tag=GIS')
         self.assertEquals(response.status_code, 200)
 
-    def test_category_view_with_no_matching_tags(self):
+    def test_apps_view_with_no_matching_tags(self):
         response = self.client.get('/apps?tag=GIS')
         self.assertEquals(response.status_code, 200)
 
@@ -220,8 +220,8 @@ class TestSearch(TestCase):
         self.assertQuerysetEqual(results['apps'], ['Test data'],
                                  lambda app: app.name)
 
-    def test_search_category_for_unknown_related_model(self):
-        results = Search.category('test', 'tag')
+    def test_search_by_tag_for_unknown_related_model(self):
+        results = Search.by_tag('test', 'tag')
         self.assertEquals(results, {'results': None})
 
 

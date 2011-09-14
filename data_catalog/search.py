@@ -38,25 +38,24 @@ class Search(object):
         return results
 
     @staticmethod
-    def category(related_name, tag):
+    def by_tag(model_name, tag):
         """
-        Given the model `related_name` attribute of the Tag model (apps,
-        projects, data), this function will check to see if a specific tag can
-        be found.  If not, all of the available records of the `related_name`
+        Given a model or model name, this function will check to see if a
+        specific tag can be found.  If not, all of the available records of the
         model are returned.
         """
         available_models = {'apps': App, 'data': Data, 'projects': Project}
-        if related_name not in available_models:
+        if model_name not in available_models:
             results = None
         elif tag:
             try:
                 tag = Tag.objects.get(name=tag)
-                model = available_models[related_name]
+                model = available_models[model_name]
                 results = model.objects.filter(tags=tag)
             except:
                 results = []
         else:
-            model = available_models[related_name]
+            model = available_models[model_name]
             results = model.objects.all()
         context = {'results': results}
         return context

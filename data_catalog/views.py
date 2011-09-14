@@ -39,7 +39,7 @@ def reduce_results(request, related_name, template):
     model instances returned by a specific tag.
     """
     tag = request.GET.get('tag')
-    results = Search.category(related_name, tag)
+    results = Search.by_tag(related_name, tag)
     current_path = related_name.rstrip('s')
     results.update({'path': current_path})
     return render(request, template, results)
