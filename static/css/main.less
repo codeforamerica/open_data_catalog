@@ -147,16 +147,14 @@ nav{
         text-decoration: none;
         .box_shadow(inset 2px 0 2px rgba(0, 0, 0, .05));
     }
-    .links:hover{
-        background: @blue;
-    }
-    .navigation_hover{
-        background: @blue;
+    .links:hover, .navigation_hover{
+        background-color: @blue;
     }
     .subnav{
         background: blue;
         display: none;
         left: 0;
+        padding: 10px 0 15px;
         position: absolute;
         width: 100%;
         li{
@@ -164,6 +162,7 @@ nav{
             width: 100%;
             a{
                 display: block;
+                font-size: 14px;
                 padding: 5px 0 5px 5px;
             }
         }
