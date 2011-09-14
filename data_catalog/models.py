@@ -37,12 +37,12 @@ class Data(Resource):
         verbose_name_plural = 'Data'
 
 
-class Cause(CachingMixin, Resource):
-    """An individual cause."""
+class Project(CachingMixin, Resource):
+    """An individual project."""
     organization = models.CharField(max_length=150)
     video_url = models.URLField('Video URL', verify_exists=False)
     embed_url = models.URLField('Embed URL', verify_exists=False, blank=True)
-    image = models.ImageField(upload_to='causes', blank=True, null=True)
+    image = models.ImageField(upload_to='projects', blank=True, null=True)
     objects = CachingManager()
 
     def save_embed_url(self):
@@ -85,13 +85,13 @@ class Cause(CachingMixin, Resource):
         for the model.
         """
         self.save_embed_url()
-        super(Cause, self).save(**kwargs)
+        super(Project, self).save(**kwargs)
 
 
 class Supporter(models.Model):
-    """An individual who supports a cause."""
+    """An individual who supports a project."""
     user = models.OneToOneField(User)
-    causes = models.ManyToManyField(Cause, related_name='supporters')
+    projects = models.ManyToManyField(Project, related_name='supporters')
     links = models.ManyToManyField('Link', related_name='supporters')
 
     def __unicode__(self):
@@ -99,7 +99,7 @@ class Supporter(models.Model):
 
 
 class Link(models.Model):
-    """A link to apps or repositories related to a cause."""
+    """A link to apps or repositories related to a project."""
     url = models.URLField('URL', verify_exists=False)
 
     def __unicode__(self):

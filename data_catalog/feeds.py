@@ -1,17 +1,17 @@
 """Feeds for the data catalog."""
 
 from django.contrib.syndication.views import Feed
-from data_catalog.models import Cause
+from data_catalog.models import Project
 
 
-class LatestCauses(Feed):
-    """A feed for the latest causes."""
-    title = 'Causes'
+class LatestProject(Feed):
+    """A feed for the latest projects."""
+    title = 'Projects'
     link = '/'
-    description = 'New causes.'
+    description = 'New projects.'
 
     def items(self):
-		return Cause.objects.all().reverse()[:5]
+		return Project.objects.all().reverse()[:5]
 
     def item_title(self, item):
         return item.name

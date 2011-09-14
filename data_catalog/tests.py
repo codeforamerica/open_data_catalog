@@ -6,9 +6,9 @@ from django.utils import simplejson as json
 from taggit.models import Tag
 from mock import patch, Mock
 
-from data_catalog.models import App, Data, Cause, Supporter, Link
+from data_catalog.models import App, Data, Project, Supporter, Link
 from data_catalog.context_processors import settings_context
-from data_catalog.forms import AppForm, CauseForm
+from data_catalog.forms import AppForm, ProjectForm
 from data_catalog.search import Search
 from data_catalog.utils import JSONResponse
 
@@ -30,14 +30,14 @@ class TestViews(TestCase):
         response = self.client.get('/apps')
         self.assertEquals(response.status_code, 200)
 
-    def test_causes_page_is_working(self):
-        response = self.client.get('/causes')
+    def test_projects_page_is_working(self):
+        response = self.client.get('/projects')
         self.assertEquals(response.status_code, 200)
 
-    def test_individual_cause_page_is_working(self):
-        Cause.objects.create(name='Test', description='A test cause.',
+    def test_individual_project_page_is_working(self):
+        Project.objects.create(name='Test', description='A test cause.',
                              video_url='http://vimeo.com/12345').save()
-        response = self.client.get('/cause/test')
+        response = self.client.get('/project/test')
         self.assertEquals(response.status_code, 200)
 
     def test_submit_app_page(self):
@@ -45,9 +45,9 @@ class TestViews(TestCase):
         response = self.client.get('/submit/app/')
         self.assertEquals(response.status_code, 200)
 
-    def test_submit_cause_page(self):
+    def test_submit_project_page(self):
         self.client.login(username='foo', password='bar')
-        response = self.client.get('/submit/cause/')
+        response = self.client.get('/submit/project/')
         self.assertEquals(response.status_code, 200)
 
     def test_submit_data_page(self):
@@ -142,24 +142,24 @@ class TestModels(TestCase):
         self.assertQuerysetEqual(Data.objects.all(), ['My Data'],
                                  lambda data: data.name)
 
-    def test_that_a_cause_can_be_created(self):
-        Cause.objects.create(name='Test', description='A test cause.',
+    def test_that_a_project_can_be_created(self):
+        Project.objects.create(name='Test', description='A test cause.',
                              video_url='http://vimeo.com/12345').save()
-        self.assertQuerysetEqual(Cause.objects.all(), ['Test'],
-                                 lambda cause: cause.name)
-        cause = Cause.objects.get(name='Test')
-        self.assertEquals(str(cause), 'Test')
+        self.assertQuerysetEqual(Project.objects.all(), ['Test'],
+                                 lambda project: project.name)
+        project = Project.objects.get(name='Test')
+        self.assertEquals(str(project), 'Test')
 
-    def test_a_supporter_must_have_links_and_causes(self):
-        cause = Cause.objects.create(name='Test', description='Test cause.',
+    def test_a_supporter_must_have_links_and_projects(self):
+        project = Project.objects.create(name='Test', description='Test cause.',
                                      video_url='http://vimeo.com/12345')
-        cause.save()
+        project.save()
         link = Link.objects.create(url='http://test.com')
         link.save()
         user = User.objects.create_user('foo', 'foo@bar.com', 'bar')
         supporter = Supporter.objects.create(user=user)
         supporter.links.add(link)
-        supporter.causes.add(cause)
+        supporter.projects.add(project)
         supporter.save()
         self.assertQuerysetEqual(Supporter.objects.all(), [user],
                                  lambda supporter: supporter.user)
@@ -179,9 +179,9 @@ class TestForms(TestCase):
         tags = App.objects.get().tags.all()
         self.assertQuerysetEqual(tags, ['test', 'GIS'], lambda tag: tag.name)
 
-    def test_cause_form_is_valid_without_image_and_tags_are_created(self):
-        form = CauseForm({
-            'name': 'test cause',
+    def test_project_form_is_valid_without_image_and_tags_are_created(self):
+        form = ProjectForm({
+            'name': 'test project',
             'organization': 'test organization',
             'video_url': 'http://vimeo.com/12345',
             'description': 'This is a test form.',
@@ -190,7 +190,7 @@ class TestForms(TestCase):
         self.assertTrue(form.is_valid)
         self.assertTrue(form.is_multipart)
         form.save()
-        tags = Cause.objects.get(name='test cause').tags.all()
+        tags = Project.objects.get(name='test project').tags.all()
         self.assertQuerysetEqual(tags, ['test', 'foobar', 'data'],
                                  lambda tag: tag.name)
 
@@ -203,7 +203,7 @@ class TestSearch(TestCase):
         app.save()
         results = Search.find_resources('gis')
         self.assertFalse(results['data'])
-        self.assertFalse(results['causes'])
+        self.assertFalse(results['projects'])
         self.assertQuerysetEqual(results['apps'], ['Test'],
                                  lambda app: app.name)
 
@@ -211,7 +211,7 @@ class TestSearch(TestCase):
         results = Search.find_resources('foo')
         self.assertFalse(results['apps'])
         self.assertFalse(results['data'])
-        self.assertFalse(results['causes'])
+        self.assertFalse(results['projects'])
 
     def test_tag_search_resources_can_find_app_by_name(self):
         App.objects.create(name='Test data', description='test',

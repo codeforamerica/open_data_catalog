@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from taggit.models import Tag
 
-from data_catalog.models import App, Cause, Data
+from data_catalog.models import App, Project, Data
 from data_catalog.utils import JSONResponse
 from data_catalog.search import Search
 
@@ -24,9 +24,9 @@ def data(request):
     return reduce_results(request, 'data', 'data.html')
 
 
-def causes(request):
-    """Render all the available causes."""
-    return reduce_results(request, 'causes', 'causes.html')
+def projects(request):
+    """Render all the available projects."""
+    return reduce_results(request, 'projects', 'projects.html')
 
 def community(request):
     """Render the community page."""
@@ -46,8 +46,8 @@ def reduce_results(request, related_name, template):
 
 
 def individual_resource(request, resource, slug):
-    """Render a specific cause."""
-    available_resources = {'app': App, 'data': Data, 'cause': Cause}
+    """Render a specific resource."""
+    available_resources = {'app': App, 'data': Data, 'project': Project}
     model = available_resources[resource]
     actual_resource = get_object_or_404(model, slug=slug)
     context = {'resource': actual_resource, 'path': resource}
