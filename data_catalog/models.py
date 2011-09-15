@@ -43,6 +43,7 @@ class Project(CachingMixin, Resource):
     video_url = models.URLField('Video URL', verify_exists=False)
     embed_url = models.URLField('Embed URL', verify_exists=False, blank=True)
     image = models.ImageField(upload_to='projects', blank=True, null=True)
+    featured = models.BooleanField()
     objects = CachingManager()
 
     def save_embed_url(self):
@@ -79,12 +80,20 @@ class Project(CachingMixin, Resource):
             hosting_provider, video_id = None, None
         return hosting_provider, video_id
 
+    def only_one_featured(self):
+        """Only one Project instance can be `featured` at a time."""
+        if self.featured:
+            for project in Project.objects.filter(featured=True):
+                project.featured = False
+                project.save()
+
     def save(self, **kwargs):
         """
         Overwrite the normal save method so that an `embed_url` is generated
         for the model.
         """
         self.save_embed_url()
+        self.only_one_featured()
         super(Project, self).save(**kwargs)
 
 
