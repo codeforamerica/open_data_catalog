@@ -1,2 +1,10 @@
 {% for resource in results %}
+<div class="resource_container">
+    <div class="thumbnail">
+    </div>
+    <div class="content">
+        <p class="name"><a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a></p>
+        <p class="organization">{{ resource.organization }}</p>
+    </div>
+</div>
 {% endfor %}
