@@ -9,7 +9,7 @@ class AppForm(forms.ModelForm):
 
     class Meta:
         model = App
-        exclude = ('slug',)
+        fields = ('name', 'url', 'description', 'tags')
 
 
 class ProjectForm(forms.ModelForm):
@@ -17,7 +17,8 @@ class ProjectForm(forms.ModelForm):
 
     class Meta:
         model = Project
-        exclude = ('slug',)
+        fields = ('name', 'organization', 'video_url', 'description',
+                  'image', 'tags')
 
 
 class DataForm(forms.ModelForm):
@@ -25,4 +26,9 @@ class DataForm(forms.ModelForm):
 
     class Meta:
         model = Data
-        fields = ('name', 'description', 'url', 'tags')
+        fields = ('name', 'url', 'description', 'tags')
+
+
+class DataRequestForm(forms.Form):
+    """Form for requesting data."""
+    pass
