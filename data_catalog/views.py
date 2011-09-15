@@ -91,15 +91,27 @@ def autocomplete(request):
 
 
 @login_required
-def submit_resource(request, resource='app'):
+def submit_resource(request, resource):
     """
     Allow users that are logged in to submit a resource built off
     of our data.
     """
     forms = {'app': AppForm, 'data': DataForm, 'project': ProjectForm}
-    context = {'form': forms[resource]}
+    form_class = forms[resource]
+    if request.method == 'POST':
+        form = form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            return thanks(request, resource)
+    context = {'form': form_class}
     template = 'submit/%s.html' % resource
     return render(request, template, context)
+
+
+def thanks(request, resource):
+    """Thank a user for submitting a valid resource."""
+    context = {'resource': resource}
+    return render(request, 'thanks.html', context)
 
 
 def send_text_file(request, name):
