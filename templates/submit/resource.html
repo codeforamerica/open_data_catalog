@@ -1,0 +1,7 @@
+<div class="submit_form">
+    <form action="." method="POST" accept-charset="utf-8">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="submit" value="Submit" name="submit" />
+    </form>
+</div>
