@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from taggit.models import Tag
 
 from data_catalog.forms import AppForm, DataForm, ProjectForm
-from data_catalog.models import App, Data, Project
+from data_catalog.models import App, Data, Project, User
 from data_catalog.utils import JSONResponse
 from data_catalog.search import Search
 
@@ -13,9 +13,11 @@ from data_catalog.search import Search
 def home(request):
     """Render the home page."""
     recent_apps = App.objects.order_by('-id')[:3]
+    recent_data = Data.objects.order_by('-id')[:3]
     recent_projects = Project.objects.order_by('-id')[:3]
     context = {
         'recent_apps': recent_apps,
+        'recent_data': recent_data,
         'recent_projects': recent_projects,
     }
     return render(request, 'home.html', context)
@@ -38,9 +40,17 @@ def projects(request):
     context = create_context(request, 'projects')
     return render(request, 'projects.html', context)
 
+
 def community(request):
     """Render the community page."""
     return render(request, 'community.html')
+
+
+def community_member(request, username):
+    """Render the profile page of a community member by username."""
+    profile = User.objects.get(username=username)
+    context = {'profile': profile}
+    return render(request, 'profile_page.html', context)
 
 
 def create_context(request, model_name):
