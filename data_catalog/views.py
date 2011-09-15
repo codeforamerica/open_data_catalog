@@ -4,7 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from taggit.models import Tag
 
-from data_catalog.models import App, Project, Data
+from data_catalog.forms import AppForm, DataForm, ProjectForm
+from data_catalog.models import App, Data, Project
 from data_catalog.utils import JSONResponse
 from data_catalog.search import Search
 
@@ -90,13 +91,15 @@ def autocomplete(request):
 
 
 @login_required
-def submit_resource(request, resource):
+def submit_resource(request, resource='app'):
     """
     Allow users that are logged in to submit a resource built off
     of our data.
     """
+    forms = {'app': AppForm, 'data': DataForm, 'project': ProjectForm}
+    context = {'form': forms[resource]}
     template = 'submit/%s.html' % resource
-    return render(request, template)
+    return render(request, template, context)
 
 
 def send_text_file(request, name):
