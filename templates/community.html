@@ -1,1 +1,17 @@
 {% extends "base.html" %}
+
+{% block main %}
+<div class="community">
+    <div class="members clearfix">
+        <a class="left_arrow ir" href="#"></a>
+        <a class="right_arrow ir" href="#"></a>
+    </div>
+    <div class="list clearfix">
+        <div class="top"></div>
+        <div class="recent"></div>
+    </div>
+</div>
+<div class="featured_container">
+  {% include "featured_project.html" %}
+</div>
+{% endblock %}

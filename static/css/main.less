@@ -51,8 +51,11 @@ body{
 }
 
 header ul, #main{
-  margin: 0 auto;
-  width: @width;
+    margin: 0 auto;
+    width: @width;
+}
+#main{
+    margin-top: 50px;
 }
 
 .ribbon{
@@ -249,15 +252,35 @@ footer{
     .headline{
         background: #ddd;
         height: 350px;
-        margin: 50px 0;
         .round_corners;
     }
-    .featured_container{
-        background: #ddd;
+    .recent{
+        width: 100%;
+        .apps, .projects, .community{
+            float: left;
+            width: 33%;
+        }
+        h3, a{
+            display: block;
+            padding: 5px;
+        }
+        h3{
+            background: @blue;
+            margin: 0 auto;
+            text-align: center;
+        }
+        ul{
+            color: #fff;
+            margin: 0 auto;
+            width: 75%;
+        }
     }
 }
 
 /* Styles for featured project */
+.featured_container{
+        background: #ddd;
+}
 .featured_project{
     margin: 50px 0;
     h2{
@@ -270,39 +293,43 @@ footer{
     }
 }
 
-/* Styles for recent resources (apps, projects, community members) */
-.recent{
-    width: 100%;
-    .apps, .projects, .community{
+.community{
+    .members{
+        background: #ddd;
+        height: 200px;
+        .left_arrow, .right_arrow{
+            background: #444;
+            height: 200px;
+            width: 50px;
+        }
+        .left_arrow{
+            float: left;
+        }
+        .right_arrow{
+            float: right;
+        }
+    }
+    .list{
+        margin: 50px auto;
+    }
+    .top, .recent{
+        background: #ddd;
+        height: 400px;
+        width: 49%
+    }
+    .top{
         float: left;
-        width: 33%;
     }
-    h3, a{
-        display: block;
-        padding: 5px;
-    }
-    h3{
-        background: @blue;
-        margin: 0 auto;
-        text-align: center;
-    }
-    ul{
-        color: #fff;
-        margin: 0 auto;
-        width: 75%;
+    .recent{
+        float: right;
     }
 }
 
+
 /* Overwrite some of the existing jQuery UI CSS */
-.ui-corner-all{
-    .round_corners;
-}
-.ui-menu-item a{
-    color: #333;
-}
-.ui-widget {
-    font-family: sans-serif;
-}
+.ui-corner-all{ .round_corners; }
+.ui-menu-item a{ color: #333; }
+.ui-widget { font-family: sans-serif; }
 .ui-tooltip{
     padding: 8px;
     position: absolute;

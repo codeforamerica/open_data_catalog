@@ -6,6 +6,7 @@ a:hover{background:#d5246b;color:white;text-decoration:none;}
 ul{margin:0;padding:0;}ul li{list-style:none;}
 body{color:#444;min-width:800px;}
 header ul,#main{margin:0 auto;width:90%;}
+#main{margin-top:50px;}
 .ribbon{background:#1e65a0;height:5px;-webkit-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);-moz-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);}
 header{background:#222;display:block;-webkit-box-shadow:inset 0 0 10px rgba(0, 0, 0, 0.5);-moz-box-shadow:inset 0 0 10px rgba(0, 0, 0, 0.5);box-shadow:inset 0 0 10px rgba(0, 0, 0, 0.5);}header ul{list-style:none;margin:0 auto;padding:0 0 15px;}
 header li{float:right;padding-top:24px;}
@@ -33,14 +34,21 @@ footer .logos .new_urban:hover{background-position-y:-48px;}
 .site_map a{color:#777;display:block;padding:5px;text-decoration:none;width:100%;}
 .site_map a:hover{color:#fff;}
 .site_map .left a{font-weight:bold;}
-.home .headline{background:#ddd;height:350px;margin:50px 0;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
-.home .featured_container{background:#ddd;}
+.home .headline{background:#ddd;height:350px;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
+.home .recent{width:100%;}.home .recent .apps,.home .recent .projects,.home .recent .community{float:left;width:33%;}
+.home .recent h3,.home .recent a{display:block;padding:5px;}
+.home .recent h3{background:#1e65a0;margin:0 auto;text-align:center;}
+.home .recent ul{color:#fff;margin:0 auto;width:75%;}
+.featured_container{background:#ddd;}
 .featured_project{margin:50px 0;}.featured_project h2{display:block;text-align:center;}
 .featured_project iframe{float:left;background:#444;}
-.recent{width:100%;}.recent .apps,.recent .projects,.recent .community{float:left;width:33%;}
-.recent h3,.recent a{display:block;padding:5px;}
-.recent h3{background:#1e65a0;margin:0 auto;text-align:center;}
-.recent ul{color:#fff;margin:0 auto;width:75%;}
+.community .members{background:#ddd;height:200px;}.community .members .left_arrow,.community .members .right_arrow{background:#444;height:200px;width:50px;}
+.community .members .left_arrow{float:left;}
+.community .members .right_arrow{float:right;}
+.community .list{margin:50px auto;}
+.community .top,.community .recent{background:#ddd;height:400px;width:49%;}
+.community .top{float:left;}
+.community .recent{float:right;}
 .ui-corner-all{border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
 .ui-menu-item a{color:#333;}
 .ui-widget{font-family:sans-serif;}
