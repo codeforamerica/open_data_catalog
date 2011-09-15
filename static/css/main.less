@@ -102,7 +102,7 @@ header{
             padding: 7px;
             width: 275px;
             .offset_formalize;
-            .box_shadow(0 0 3px #333);
+            .box_shadow(0 0 5px rgba(0, 0, 0, .5));
         }
         .search_bar:focus{
             border: 1px solid @pink;
@@ -127,29 +127,30 @@ header{
 }
 
 nav{
+    background: url('/static/img/gradient_bg.png') @light_blue;
     display: block;
-    .box_shadow(inset 0 0 3px rgba(0, 0, 0, .75));
-    ul.top{
+    .topnav{
         border-bottom: 1px solid #658eb1;
         margin: 0 auto;
+        width: 90%;
     }
-    .top li{
+    .topnav li{
         float: left;
         margin: 0 auto;
         position: relative;
         width: 25%;
     }
     .links{
-        background: @light_blue;
-        border-right: 1px solid #83b8e4;
         color: white;
         display: block;
         font-size: 18px;
         margin: 0 auto;
-        padding: 15px;
+        padding: 10px;
         text-align: center;
         text-decoration: none;
-        .box_shadow(inset 2px 0 2px rgba(0, 0, 0, .05));
+    }
+    .last{
+        border-right: none;
     }
     .links:hover, .navigation_hover{
         background-color: @blue;
@@ -161,7 +162,7 @@ nav{
         left: 0;
         position: absolute;
         width: 100%;
-        .box_shadow(0 2px 5px black);
+        .box_shadow(0 2px 1px rgba(0, 0, 0, .75));
         li{
             clear: both;
             width: 100%;
@@ -174,7 +175,7 @@ nav{
                 text-decoration: none;
             }
             a:hover{
-                background-color: #eee;
+                background-color: #fff;
                 color: @blue;
             }
         }
