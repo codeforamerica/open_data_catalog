@@ -1,7 +1,7 @@
 """Views for the Boston Data Catalog."""
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from taggit.models import Tag
 
 from data_catalog.forms import AppForm, DataForm, ProjectForm
