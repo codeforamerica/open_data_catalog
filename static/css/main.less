@@ -88,7 +88,7 @@ header{
           width: 250px;
         }
     }
-    form{
+    .search_form{
         font-size: 18px;
         margin-top: 6px;
         input{
@@ -122,6 +122,37 @@ header{
         }
         .submit:hover{
             background-color: darken(@pink, 3%);
+        }
+    }
+    .login{
+        display: block;
+        font-size: 16px;
+        margin-top: 8px;
+        min-width: 200px;
+        position: relative;
+        width: 15%;
+        .login_button{
+            color: white;
+            display: block;
+            float: right;
+            padding: 7px;
+            text-align: center;
+            text-decoration: none;
+            width: 150px;
+            .round_corners;
+        }
+        .login_button:hover, .login_form_open{
+            background-color: #333;
+        }
+        .login_form{
+            background: #333;
+            display: none;
+            padding: 20px 15px 15px;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            z-index: 100;
+            .round_corners;
         }
     }
 }
@@ -167,7 +198,7 @@ nav{
             clear: both;
             width: 100%;
             a{
-                border-bottom: 1px solid #ddd;
+                border-bottom: 1px solid #e0e0e0;
                 color: #444;
                 display: block;
                 font-size: 16px;

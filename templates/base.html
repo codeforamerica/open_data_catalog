@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="/static/css/style.css">
   <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/smoothness/jquery-ui.css"
         rel="stylesheet">
-  {% block library_css %}{% endblock %}
+  <link href="/static/css/formalize.css" rel="stylesheet" />
   <link rel="stylesheet" href="/static/css/main.css">
   {% block css %}{% endblock %}
 
@@ -43,9 +43,18 @@
         <li class="float_left city_name">
             <a href="/" class="ir">{{ settings.CITY_NAME }} Data Catalog</a>
         </li>
+        <li class="login">
+            <a href="/login/" class="login_button">Login <span>or</span> sign up</a>
+            <form action="/login/" class="login_form" method="post">
+                {% csrf_token %}
+                <input type="text" name="username" value="" />
+                <input type="password" name="password" value="" />
+                <input type="submit" class="submit" value="Login" name="submit" />
+            </form>
+        </li>
         <li class="search">
           <form autocomplete="off" action="/search" method="GET"
-                class="clearfix">
+                class="clearfix search_form">
             <input type="text" name="q" class="search_bar"
                    autocomplete="off" tabindex=1 />
             <input type="submit" class="submit" value="Submit" name="" />
@@ -177,8 +186,7 @@
   <script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.6.2.min.js">\x3C/script>')</script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"
           charset="utf-8"></script>
-
-  {% block library_js %}{% endblock %}
+  <script src="/static/js/libs/jquery.formalize.min.js" type="text/javascript"></script>
   <script src="/static/js/main.js" type="text/javascript" charset="utf-8"></script>
   {% block js %}{% endblock %}
 

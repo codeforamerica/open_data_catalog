@@ -22,14 +22,14 @@
         self.animate(animation, time);
     }
 
-    ns.event.ajaxAutocomplete = function(request, response) {
+    ns.event.ajaxAutocomplete = function(request, callback) {
         // Autocomplete functionality for searching.
         var term = request.term,
             cache = ns.cache;
 
         if (term in cache) {
             // Serve the cached response.
-            response(cache[term]);
+            callback(cache[term]);
             return;
         }
 
@@ -41,17 +41,17 @@
             },
             success: function(data) {
                 var cache = ns.cache,
-                    responseData;
+                    response;
 
-                responseData = $.map(data.tags, function(item) {
+                response = $.map(data.tags, function(item) {
                     return {
                         label: item,
                         value: item
                     }
                 });
 
-                cache[term] = responseData;
-                response(responseData);
+                cache[term] = response;
+                callback(response);
             }
         });
     }
@@ -91,11 +91,40 @@
         nav.hover(navigationHover);
     }
 
+    ns.event.stopBubbling = function(e) {
+        e.stopPropagation();
+    }
+
+    ns.event.loginHover = function(e) {
+        // Event that fires when the login button is hovered over.
+        var self = $(this),
+            form = self.siblings('form'),
+            body = $(document.body),
+            stopBubbling = ns.event.stopBubbling;
+        self.addClass('login_form_open')
+            .click(stopBubbling);
+        form.show()
+            .click(stopBubbling);
+        body.click(function(e) {
+            var form = $('.login_form');
+            if (form.is(':visible')) {
+                form.hide();
+            }
+        });
+    }
+
+    ns.dom.loginButton = function() {
+        var button = $('.login_button'),
+            loginHover = ns.event.loginHover;
+        button.hover(loginHover);
+    }
+
     ns.dom.init = function() {
         // Initalize function for DOM functionality.
         var dom = ns.dom;
         dom.search();
         dom.navigation();
+        dom.loginButton();
     }
 
     ns.main = (function() {
