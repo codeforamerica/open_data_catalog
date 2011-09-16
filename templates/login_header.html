@@ -1,0 +1,18 @@
+{% if user.is_authenticated %}
+    {% load gravatar %}
+<li class="login gravatar">
+    <a href="/logout/?next=/" class="login_button">
+        <img src="{% gravatar_for_email user.email %}"
+             height="30px" width="30px" >
+    </a>
+{% else %}
+<li class="login">
+    <a href="/login/" class="login_button">Login <span>or</span> sign up</a>
+    <form action="/login/" class="login_form" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" value="" />
+        <input type="password" name="password" value="" />
+        <input type="submit" class="submit" value="Login" name="submit" />
+    </form>
+{% endif %}
+</li>
