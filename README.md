@@ -78,6 +78,16 @@ And then we can run the server once again.
     $ python manage.py runserver
 
 
+### Adding to the Models
+
+If you need to add or take away from the models that you've already
+synced with your database (currently `test.db`) -- then you need to run
+the following commands to migrate the changes.
+
+    $ python manage.py schemamigration data_catalog --auto
+    $ python manage.py migrate data_catalog
+
+
 ### Uploading to DotCloud ###
 
 If you've already signed up for an account on DotCloud and installed the
