@@ -95,16 +95,19 @@
         e.stopPropagation();
     }
 
-    ns.event.loginHover = function(e) {
+    ns.event.login = function(e) {
         // Event that fires when the login button is hovered over.
         var self = $(this),
             form = self.siblings('form'),
             body = $(document.body),
             stopBubbling = ns.event.stopBubbling;
+
         self.addClass('login_form_open')
             .click(stopBubbling);
+
         form.show()
             .click(stopBubbling);
+
         body.click(function(e) {
             var form = $('.login_form'),
                 button = form.siblings('a');
@@ -117,8 +120,8 @@
 
     ns.dom.loginButton = function() {
         var button = $('.login_button'),
-            loginHover = ns.event.loginHover;
-        button.hover(loginHover);
+            login = ns.event.login;
+        button.hover(login);
     }
 
     ns.dom.init = function() {
