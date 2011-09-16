@@ -59,6 +59,9 @@ class TestViews(TestCase):
         response = self.client.get('/submit/data/')
         self.assertEquals(response.status_code, 302)
 
+    def test_support_project(self):
+        pass
+
     def test_static_files_are_sent(self):
         response = self.client.get('/robots.txt')
         self.assertEquals(response.status_code, 200)
