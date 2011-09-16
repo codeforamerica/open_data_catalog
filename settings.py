@@ -142,9 +142,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'data_catalog',
+    'gravatar',
     'registration',
-    'taggit',
     'south',
+    'taggit',
     'debug_toolbar',
 )
 

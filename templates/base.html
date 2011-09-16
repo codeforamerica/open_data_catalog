@@ -44,6 +44,11 @@
             <a href="/" class="ir">{{ settings.CITY_NAME }} Data Catalog</a>
         </li>
         <li class="login">
+        {% if user.is_authenticated %}
+            {% load gravatar %}
+            <img src="{% gravatar_for_email user.email %}" width="40px"
+                 height="40px">
+        {% else %}
             <a href="/login/" class="login_button">Login <span>or</span> sign up</a>
             <form action="/login/" class="login_form" method="post">
                 {% csrf_token %}
@@ -51,6 +56,7 @@
                 <input type="password" name="password" value="" />
                 <input type="submit" class="submit" value="Login" name="submit" />
             </form>
+        {% endif %}
         </li>
         <li class="search">
           <form autocomplete="off" action="/search" method="GET"
