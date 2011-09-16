@@ -164,19 +164,57 @@ class TestModels(TestCase):
         self.assertQuerysetEqual(featured, ['Test 2'],
                                  lambda project: project.name)
 
-    def test_a_supporter_must_have_links_and_projects(self):
+    def test_a_supporter_does_not_need_links_and_projects(self):
         project = Project.objects.create(name='Test', description='Test cause.',
                                          video_url='http://vimeo.com/12345')
         project.save()
-        link = Link.objects.create(url='http://test.com')
-        link.save()
         user = User.objects.create_user('foo', 'foo@bar.com', 'bar')
         supporter = Supporter.objects.create(user=user)
-        supporter.links.add(link)
         supporter.projects.add(project)
         supporter.save()
         self.assertQuerysetEqual(Supporter.objects.all(), [user],
                                  lambda supporter: supporter.user)
+
+    def test_removing_a_supporter_from_a_project(self):
+        project = Project.objects.create(name='Test', description='Test cause.',
+                                         video_url='http://vimeo.com/12345')
+        project.save()
+        user = User.objects.create_user('foo', 'foo@bar.com', 'bar')
+        supporter = Supporter.objects.create(user=user)
+        supporter.projects.add(project)
+        self.assertQuerysetEqual(project.supporters.all(), ['foo'],
+                                 lambda supporter: supporter.user.username)
+        project.supporters.remove(supporter)
+        self.assertQuerysetEqual(project.supporters.all(), [],
+                                 lambda supporter: supporter.user.username)
+
+    def test_add_project_supporter_static_method(self):
+        project = Project.objects.create(name='Test', description='Test cause.',
+                                         video_url='http://vimeo.com/12345')
+        user = User.objects.create_user('foo', 'foo@bar.com', 'bar')
+        Supporter.add_project_supporter(project, user)
+        self.assertQuerysetEqual(project.supporters.all(), ['foo'],
+                                 lambda supporter: supporter.user.username)
+
+    def test_add_project_supporter_with_a_project_slug(self):
+        project = Project.objects.create(name='Test', description='Test cause.',
+                                         video_url='http://vimeo.com/12345')
+        user = User.objects.create_user('foo', 'foo@bar.com', 'bar')
+        project_slug = project.slug
+        Supporter.add_project_supporter(project_slug, user)
+        self.assertQuerysetEqual(project.supporters.all(), ['foo'],
+                                 lambda supporter: supporter.user.username)
+
+    def test_remove_project_supporter_static_method(self):
+        project = Project.objects.create(name='Test', description='Test cause.',
+                                         video_url='http://vimeo.com/12345')
+        user = User.objects.create_user('foo', 'foo@bar.com', 'bar')
+        Supporter.add_project_supporter(project, user)
+        self.assertQuerysetEqual(project.supporters.all(), ['foo'],
+                                 lambda supporter: supporter.user.username)
+        Supporter.remove_project_supporter(project, user)
+        self.assertQuerysetEqual(project.supporters.all(), [],
+                                 lambda supporter: supporter.user.username)
 
 
 class TestForms(TestCase):

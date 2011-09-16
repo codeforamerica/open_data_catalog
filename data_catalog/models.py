@@ -104,7 +104,28 @@ class Supporter(models.Model):
     links = models.ManyToManyField('Link', related_name='supporters')
 
     def __unicode__(self):
-        return self.name
+        return self.user.username
+
+    @staticmethod
+    def add_project_supporter(project, user):
+        """
+        Get or create a supporter instance from a user, and add that
+        supporter instance to a project.
+        """
+        if isinstance(project, unicode):
+            # Then it's actually a project slug.
+            project = Project.objects.get(slug=project)
+        supporter, existed = Supporter.objects.get_or_create(user=user)
+        project.supporters.add(supporter)
+
+    @staticmethod
+    def remove_project_supporter(project, user):
+        """Remove a supporter from a project."""
+        if isinstance(project, unicode):
+            # Then it's actually a project slug.
+            project = Project.objects.get(slug=project)
+        supporter, existed = Supporter.objects.get_or_create(user=user)
+        project.supporters.remove(supporter)
 
 
 class Link(models.Model):
