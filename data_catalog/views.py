@@ -105,14 +105,16 @@ def support_project(request, project_slug=""):
         return render(request, 'support/info.html')
     elif not user.is_authenticated():
         return render(request, 'support/info.html')
-    project = get_object_or_404(Project, slug=project_slug)
-    Supporter.add_project_supporter(project, user)
-    if request.is_ajax():
-        success = {'success': True}
-        return JSONResponse(success)
-    else:
-        url = '/project/%s' % (project_slug)
-        return redirect(url)
+    elif request.method == 'POST':
+        project = get_object_or_404(Project, slug=project_slug)
+        Supporter.add_project_supporter(project, user)
+        if request.is_ajax():
+            success = {'success': True}
+            return JSONResponse(success)
+        else:
+            url = '/project/%s' % (project_slug)
+            return redirect(url)
+    return render(request, 'support/info.html')
 
 
 def search(request):

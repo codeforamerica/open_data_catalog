@@ -37,7 +37,7 @@ class TestViews(TestCase):
     def test_individual_project_page_is_working(self):
         Project.objects.create(name='Test', description='A test cause.',
                              video_url='http://vimeo.com/12345').save()
-        response = self.client.get('/project/test')
+        response = self.client.get('/project/test/')
         self.assertEquals(response.status_code, 200)
 
     def test_submit_app_page(self):
@@ -63,14 +63,14 @@ class TestViews(TestCase):
         Project.objects.create(name='Test', description='A test cause.',
                                video_url='http://vimeo.com/12345').save()
         self.client.login(username='foo', password='bar')
-        self.client.post('/support/test', follow=True)
+        self.client.post('/support/test/', {'foo': 'bar'})
         self.assertQuerysetEqual(Supporter.objects.all(), ['foo'],
                                  lambda supporter: supporter.user.username)
 
     def test_a_non_user_can_not_support_a_project(self):
         Project.objects.create(name='Test', description='A test cause.',
                                video_url='http://vimeo.com/12345').save()
-        self.client.post('/support/test', follow=True)
+        self.client.post('/support/test/')
         self.assertQuerysetEqual(Supporter.objects.all(), [],
                                  lambda supporter: supporter.user.username)
 
