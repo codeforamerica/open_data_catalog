@@ -59,8 +59,20 @@ class TestViews(TestCase):
         response = self.client.get('/submit/data/')
         self.assertEquals(response.status_code, 302)
 
-    def test_support_project(self):
-        pass
+    def test_a_user_can_support_a_project(self):
+        Project.objects.create(name='Test', description='A test cause.',
+                               video_url='http://vimeo.com/12345').save()
+        self.client.login(username='foo', password='bar')
+        self.client.post('/support/test', follow=True)
+        self.assertQuerysetEqual(Supporter.objects.all(), ['foo'],
+                                 lambda supporter: supporter.user.username)
+
+    def test_a_non_user_can_not_support_a_project(self):
+        Project.objects.create(name='Test', description='A test cause.',
+                               video_url='http://vimeo.com/12345').save()
+        self.client.post('/support/test', follow=True)
+        self.assertQuerysetEqual(Supporter.objects.all(), [],
+                                 lambda supporter: supporter.user.username)
 
     def test_static_files_are_sent(self):
         response = self.client.get('/robots.txt')
@@ -147,7 +159,7 @@ class TestModels(TestCase):
 
     def test_that_a_project_can_be_created(self):
         Project.objects.create(name='Test', description='A test cause.',
-                             video_url='http://vimeo.com/12345').save()
+                               video_url='http://vimeo.com/12345').save()
         self.assertQuerysetEqual(Project.objects.all(), ['Test'],
                                  lambda project: project.name)
         project = Project.objects.get(name='Test')
