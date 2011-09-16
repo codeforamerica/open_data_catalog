@@ -1,5 +1,5 @@
-<form action="/support/{{ resource.slug }}" method="POST" class="support_project">
+<form action="/support/{{ resource.slug }}/" method="POST" class="support_project">
     {% csrf_token %}
-    <p><input type="hidden" name="some_name" value="{{ resource.slug }}"></p>
+    <p><input type="hidden" name="project" value="{{ resource.slug }}"></p>
     <p><input type="submit" value="Support" class="support_button"></p>
 </form>

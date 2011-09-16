@@ -102,13 +102,17 @@ def thanks(request, resource):
     return render(request, 'thanks.html', context)
 
 
-def support_project(request, project_slug=""):
+def support(request):
+    """General information on supporting a project."""
+    return render(request, 'support/info.html')
+
+
+def support_project(request, project_slug):
     """Allow a user to support a project."""
     user = request.user
-    if not project_slug:
-        return render(request, 'support/info.html')
-    elif not user.is_authenticated():
-        return render(request, 'support/info.html')
+    if not user.is_authenticated():
+        url = '/login/?next=project/%s' % (project_slug)
+        return redirect(url)
     elif request.method == 'POST':
         form = SupportForm(request.POST)
         if form.is_valid():
@@ -120,7 +124,7 @@ def support_project(request, project_slug=""):
             else:
                 url = '/project/%s' % (project_slug)
                 return redirect(url)
-    return render(request, 'support/info.html')
+    return redirect(support)
 
 
 def search(request):

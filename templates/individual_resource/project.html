@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block main %}
 <div class="individual_resource">
     {% if resource.embed_url %}
     <iframe src="{{ resource.embed_url }}" class="youtube-player"
@@ -8,4 +11,8 @@
         <p class="organization">{{ resource.organization }}</p>
         <p class="description">{{ resource.description }}</p>
     </div>
+    <div class="support">
+        {% include "support/support_form.html" %}
+    </div>
 </div>
+{% endblock %}
