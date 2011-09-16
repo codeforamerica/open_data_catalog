@@ -63,7 +63,7 @@ class TestViews(TestCase):
         Project.objects.create(name='Test', description='A test cause.',
                                video_url='http://vimeo.com/12345').save()
         self.client.login(username='foo', password='bar')
-        self.client.post('/support/test/', {'foo': 'bar'})
+        self.client.post('/support/test/', {'project': 'test'})
         self.assertQuerysetEqual(Supporter.objects.all(), ['foo'],
                                  lambda supporter: supporter.user.username)
 

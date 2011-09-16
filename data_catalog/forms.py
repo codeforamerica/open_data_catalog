@@ -29,6 +29,6 @@ class DataForm(forms.ModelForm):
         fields = ('name', 'url', 'description', 'tags')
 
 
-class DataRequestForm(forms.Form):
-    """Form for requesting data."""
-    pass
+class SupportForm(forms.Form):
+    """A form for supporting a project."""
+    project = forms.SlugField(max_length=200)

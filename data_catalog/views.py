@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from taggit.models import Tag
 
-from data_catalog.forms import AppForm, DataForm, ProjectForm
+from data_catalog.forms import AppForm, DataForm, ProjectForm, SupportForm
 from data_catalog.models import App, Data, Project, Supporter, User
 from data_catalog.utils import JSONResponse
 from data_catalog.search import Search
@@ -106,14 +106,16 @@ def support_project(request, project_slug=""):
     elif not user.is_authenticated():
         return render(request, 'support/info.html')
     elif request.method == 'POST':
-        project = get_object_or_404(Project, slug=project_slug)
-        Supporter.add_project_supporter(project, user)
-        if request.is_ajax():
-            success = {'success': True}
-            return JSONResponse(success)
-        else:
-            url = '/project/%s' % (project_slug)
-            return redirect(url)
+        form = SupportForm(request.POST)
+        if form.is_valid():
+            project = get_object_or_404(Project, slug=project_slug)
+            Supporter.add_project_supporter(project, user)
+            if request.is_ajax():
+                success = {'success': True}
+                return JSONResponse(success)
+            else:
+                url = '/project/%s' % (project_slug)
+                return redirect(url)
     return render(request, 'support/info.html')
 
 
