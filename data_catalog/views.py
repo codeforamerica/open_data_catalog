@@ -71,7 +71,11 @@ def individual_resource(request, resource, slug):
     model = available_resources[resource]
     actual_resource = get_object_or_404(model, slug=slug)
     context = {'resource': actual_resource, 'path': resource}
-    return render(request, 'individual_resource.html', context)
+    if resource == 'project':
+        template = 'individual_resource/project.html'
+    else:
+        template = 'individual_resource/generic.html'
+    return render(request, template, context)
 
 
 @login_required
