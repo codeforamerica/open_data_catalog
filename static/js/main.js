@@ -129,12 +129,41 @@
         button.hover(login);
     }
 
+    ns.event.supportProject = function(e) {
+        var self = $(this),
+            form = $('.support_project'),
+            csrf = form.children('div').children('input').val(),
+            project = form.children('p').eq(0).children('input').val(),
+            url = form.attr('action');
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: {
+                'csrfmiddlewaretoken': csrf,
+                'project': project
+            },
+            dataType: 'JSON',
+            success: function(data, response) {
+                console.log(data)
+                alert('YAY!')
+            }
+        });
+    }
+
+    ns.dom.supportButton = function() {
+        var button = $('.support_button'),
+            supportProject = ns.event.supportProject;
+        button.click(supportProject);
+    }
+
     ns.dom.init = function() {
         // Initalize function for DOM functionality.
         var dom = ns.dom;
         dom.search();
         dom.navigation();
         dom.loginButton();
+        dom.supportButton();
     }
 
     ns.main = (function() {
