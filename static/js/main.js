@@ -99,23 +99,26 @@
         // Event that fires when the login button is hovered over.
         var self = $(this),
             form = self.siblings('form'),
+            gravatar = $('.gravatar'),
             body = $(document.body),
             stopBubbling = ns.event.stopBubbling;
 
-        self.addClass('login_form_open')
-            .click(stopBubbling);
+        if (gravatar.length == 0) {
+            self.addClass('login_form_open')
+                .click(stopBubbling);
 
-        form.show()
-            .click(stopBubbling);
+            form.show()
+                .click(stopBubbling);
 
-        body.click(function(e) {
-            var form = $('.login_form'),
-                button = form.siblings('a');
-            if (form.is(':visible')) {
-                form.hide();
-                button.removeClass('login_form_open');
-            }
-        });
+            body.click(function(e) {
+                var form = $('.login_form'),
+                    button = form.siblings('a'),
+                if (form.is(':visible')) {
+                    form.hide();
+                    button.removeClass('login_form_open');
+                }
+            });
+        }
     }
 
     ns.dom.loginButton = function() {
