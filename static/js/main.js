@@ -112,7 +112,7 @@
 
             body.click(function(e) {
                 var form = $('.login_form'),
-                    button = form.siblings('a'),
+                    button = form.siblings('a');
                 if (form.is(':visible')) {
                     form.hide();
                     button.removeClass('login_form_open');
