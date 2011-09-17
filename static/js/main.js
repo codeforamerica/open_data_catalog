@@ -103,7 +103,9 @@
             body = $(document.body),
             stopBubbling = ns.event.stopBubbling;
 
-        if (gravatar.length == 0) {
+        if (gravatar.length > 0) {
+            // This should involve logging out.
+        } else {
             self.addClass('login_form_open')
                 .click(stopBubbling);
 
