@@ -144,9 +144,16 @@
                 'project': project
             },
             dataType: 'JSON',
-            success: function(data, response) {
-                console.log(data)
-                alert('YAY!')
+            success: function(data) {
+                // Support button should disappear, and the user should be
+                // notified he/she is now a supporter.
+                console.log(data);
+                alert('YAY!');
+            },
+            error: function(data){
+                // The user should be notified he/she needs to log in.
+                console.log(data);
+                alert('Error!');
             }
         });
     }
