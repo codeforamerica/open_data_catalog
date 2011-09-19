@@ -14,5 +14,10 @@
     <div class="support">
         {% include "support/support_form.html" %}
     </div>
+    <div class="supporters">
+        {% for supporter in supporters %}
+        <p>{{ supporter.user.username }}</p>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
