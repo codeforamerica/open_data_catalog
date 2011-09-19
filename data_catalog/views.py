@@ -69,6 +69,14 @@ def community_member(request, username):
     return render(request, 'profile_page.html', context)
 
 
+def request_data(request):
+    """
+    Direct the user in the best way for obtaining a currently
+    unavailable dataset.
+    """
+    return render(request, 'request_data.html')
+
+
 def individual_resource(request, resource, slug):
     """Render a specific resource."""
     available_resources = {'app': App, 'data': Data, 'project': Project}
