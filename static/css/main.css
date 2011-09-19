@@ -26,7 +26,8 @@ header .login .login_submit{display:block;margin:15px 0 0;}
 header .gravatar{margin-top:4px;}
 header .register{font-size:12px;}
 nav{background:url('/static/img/gradient_bg.png') #6f9cc2;display:block;}nav .topnav{border-bottom:1px solid #658eb1;margin:0 auto;width:90%;}
-nav .topnav li{float:left;margin:0 auto;position:relative;width:25%;}
+nav .topnav li{float:left;margin:0 auto;position:relative;width:20%;}
+nav .home .links:hover{background:url('/static/img/home.png') #1e65a0 no-repeat center center;text-indent:-999em;}
 nav .links{font-family:'Cabin',sans-serif;color:white;display:block;font-size:18px;margin:0 auto;padding:10px;text-align:center;text-decoration:none;}
 nav .last{border-right:none;}
 nav .links:hover,nav .navigation_hover{background-color:#1e65a0;}
@@ -49,7 +50,7 @@ footer .logos .new_urban:hover{background-position-y:-48px;}
 .home .recent h3{font-family:'Cabin',sans-serif;background:#1e65a0;margin:0 auto;text-align:center;}
 .home .recent ul{color:#fff;margin:0 auto;width:75%;}
 .featured_container{margin-bottom:125px;}
-.featured_project{margin:50px 0;}.featured_project h2{background:#d5246b;color:#fff;display:block;padding:10px;text-align:center;}
+.featured_project{margin:50px 0;}.featured_project h2{background:#d5246b;color:#fff;display:block;margin-bottom:25px;padding:10px;text-align:center;}
 .featured_project iframe{background:#444;float:left;margin-right:40px;}
 .featured_project .name a{color:#1e65a0;font-size:28px;text-decoration:none;}
 .featured_project .name a:hover{background:#1e65a0;color:#fff;}
