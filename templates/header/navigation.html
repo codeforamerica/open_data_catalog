@@ -1,7 +1,10 @@
 <nav>
     <ul class="topnav clearfix">
+        <li class="home">
+            <a class="links" href="{% url data_catalog.views.home %}" >Home</a>
+        </li>
         <li>
-            <a class="links first" href="{% url data_catalog.views.community %}">Community</a>
+            <a class="links" href="{% url data_catalog.views.community %}">Community</a>
         </li>
         <li>
             <a class="links" href="{% url data_catalog.views.projects %}">Projects</a>
