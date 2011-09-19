@@ -15,7 +15,7 @@ def home(request):
     recent_apps = App.objects.order_by('-id')[:3]
     recent_data = Data.objects.order_by('-id')[:3]
     recent_projects = Project.objects.order_by('-id')[:3]
-    featured = Project.objects.get(featured=True) or None
+    featured = featured_project()
     context = {
         'recent_apps': recent_apps,
         'recent_data': recent_data,
@@ -57,7 +57,7 @@ def create_context(request, model_name):
 
 def community(request):
     """Render the community page."""
-    featured = Project.objects.get(featured=True) or None
+    featured = featured_project()
     context = {'featured': featured}
     return render(request, 'community.html', context)
 
@@ -67,6 +67,15 @@ def community_member(request, username):
     profile = User.objects.get(username=username)
     context = {'profile': profile}
     return render(request, 'profile_page.html', context)
+
+
+def featured_project():
+    """Return the featured project."""
+    try:
+        featured = Project.objects.get(featured=True)
+    except:
+        featured = []
+    return featured
 
 
 def request_data(request):
