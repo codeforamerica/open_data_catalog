@@ -45,7 +45,7 @@
         <li class="float_left city_name">
             <a href="/" class="ir">{{ settings.CITY_NAME }} Data Catalog</a>
         </li>
-        {% include "login_header.html" %}
+        {% include "header/login_form.html" %}
         <li class="search">
           <form autocomplete="off" action="/search" method="GET"
                 class="clearfix search_form">
@@ -56,7 +56,7 @@
         </li>
     </ul>
     </header>
-    {% include "navigation.html" %}
+    {% include "header/navigation.html" %}
     {% endblock %}
 
     <div id="main" role="main">
