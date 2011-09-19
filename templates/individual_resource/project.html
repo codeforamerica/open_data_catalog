@@ -15,8 +15,9 @@
         {% include "support/support_form.html" %}
     </div>
     <div class="supporters">
+        {% load gravatar %}
         {% for supporter in supporters %}
-        <p>{{ supporter.user.username }}</p>
+            {% gravatar_img_for_user supporter.user %}
         {% endfor %}
     </div>
 </div>
