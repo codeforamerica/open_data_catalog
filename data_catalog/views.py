@@ -77,12 +77,12 @@ def request_data(request):
     return render(request, 'request_data.html')
 
 
-def individual_resource(request, resource_name, slug):
+def individual_resource(request, resource_type, slug):
     """Render a specific resource."""
     available_resources = {'app': App, 'data': Data, 'project': Project}
-    model = available_resources[resource_name]
+    model = available_resources[resource_type]
     resource = get_object_or_404(model, slug=slug)
-    context = {'resource': resource, 'path': resource_name}
+    context = {'resource': resource, 'path': resource_type}
     if resource == 'project':
         supporters = resource.supporters.all()
         context.update({'supporters': supporters})
