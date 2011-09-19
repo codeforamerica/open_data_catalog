@@ -13,7 +13,7 @@
     <ul id="mycarousel" class="gravatars jcarousel-skin-tango">
         {% load gravatar %}
         {% for member in community %}
-            <li>{% gravatar_img_for_user member %}</li>
+        <li><a href="#">{% gravatar_img_for_user member %}</a></li>
         {% endfor %}
     </ul>
     <div class="list clearfix">
