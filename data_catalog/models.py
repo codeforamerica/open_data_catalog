@@ -89,7 +89,7 @@ class Project(CachingMixin, Resource):
 
     @staticmethod
     def featured_project():
-        """Return the currently featured project or a None."""
+        """Return the currently featured project or None."""
         try:
             featured = Project.objects.get(featured=True)
         except:
