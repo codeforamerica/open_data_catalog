@@ -26,7 +26,7 @@ nav .topnav li{float:left;margin:0 auto;position:relative;width:25%;}
 nav .links{font-family:'Cabin',sans-serif;color:white;display:block;font-size:18px;margin:0 auto;padding:10px;text-align:center;text-decoration:none;}
 nav .last{border-right:none;}
 nav .links:hover,nav .navigation_hover{background-color:#1e65a0;}
-nav .subnav{background-color:#fff;border-top:1px solid #658eb1;display:none;left:0;position:absolute;width:100%;-webkit-box-shadow:0 2px 1px rgba(0, 0, 0, 0.75);-moz-box-shadow:0 2px 1px rgba(0, 0, 0, 0.75);box-shadow:0 2px 1px rgba(0, 0, 0, 0.75);}nav .subnav li{clear:both;width:100%;}nav .subnav li a{border-bottom:1px solid #e0e0e0;color:#444;display:block;font-size:16px;padding:12px;text-decoration:none;}
+nav .subnav{background-color:#fff;border-top:1px solid #658eb1;display:none;left:0;position:absolute;width:100%;z-index:100;-webkit-box-shadow:0 2px 1px rgba(0, 0, 0, 0.75);-moz-box-shadow:0 2px 1px rgba(0, 0, 0, 0.75);box-shadow:0 2px 1px rgba(0, 0, 0, 0.75);}nav .subnav li{clear:both;width:100%;}nav .subnav li a{border-bottom:1px solid #e0e0e0;color:#444;display:block;font-size:16px;padding:12px;text-decoration:none;}
 nav .subnav li a:hover{background-color:#fff;color:#1e65a0;}
 footer{font-family:'Cabin',sans-serif;background:#ddd;display:block;margin:100px auto 0;padding:50px 0 25px;-webkit-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);-moz-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);}footer .logos{margin:75px auto 0;width:330px;}footer .logos a{float:left;margin:0 auto;padding:0 25px;width:115px;}
 footer .logos .cfa_logo{background:url('/static/img/cfa_logo.png') no-repeat 0 8px;height:50px;}
@@ -50,7 +50,7 @@ footer .logos .new_urban:hover{background-position-y:-48px;}
 .community .members{background:#ddd;height:200px;}.community .members .left_arrow,.community .members .right_arrow{background:#444;height:200px;width:50px;}
 .community .members .left_arrow{float:left;}
 .community .members .right_arrow{float:right;}
-.community a{opacity:0.5;}
+.community a{opacity:0.75;}
 .community a:hover{opacity:1;}
 .community .list{margin:50px auto;}
 .community .top,.community .recent{background:#ddd;height:400px;width:49%;}
