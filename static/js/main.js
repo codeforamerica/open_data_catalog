@@ -168,6 +168,7 @@
         var carousel = $('#mycarousel');
         if (carousel.length > 0) {
             carousel.jcarousel({
+                scroll: 5,
                 wrap: 'circular'
             });
         }
