@@ -60,6 +60,9 @@ footer .logos .new_urban:hover{background-position-y:-48px;}
 .community .top,.community .recent{background:#ddd;height:400px;width:49%;}
 .community .top{float:left;}
 .community .recent{float:right;}
+.basic_label_styling{display:block;font-size:12px;padding:5px 0;text-transform:uppercase;}
+.resource_form label{display:block;font-size:12px;padding:5px 0;text-transform:uppercase;}
+.registration_form label{display:block;font-size:12px;padding:5px 0;text-transform:uppercase;}
 .ui-corner-all{border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
 .ui-menu-item a{color:#333;}
 .ui-widget{font-family:sans-serif;}

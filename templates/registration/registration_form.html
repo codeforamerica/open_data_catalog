@@ -1,8 +1,11 @@
 {% extends "formalize.html" %}
 
 {% block main %}
+<div class="gravatar">
+    <p>Here we should talk about using <a href="http://en.gravatar.com">Gravatar for user avatars</a>.</p> 
+</div>
 <div class="registration">
-    <form action="." method="POST">
+    <form action="." method="POST" class="registration_form">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" class="submit" value="Submit" />

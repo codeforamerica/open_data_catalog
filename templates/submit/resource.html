@@ -1,5 +1,6 @@
 <div class="submit_form">
-    <form action="/submit/{{ resource }}" method="POST" enctype="mutlipart/form-data">
+    <form action="/submit/{{ resource }}" method="POST"
+          enctype="mutlipart/form-data" class="resource_form">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" class="submit" value="Submit" name="submit" />

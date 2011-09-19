@@ -343,7 +343,6 @@ footer{
 .featured_project{
     margin: 50px 0;
     h2{
-        
         display: block;
         text-align: center;
     }
@@ -395,6 +394,25 @@ footer{
 .resource_container{
 }
 
+/* Styling for registration/resource forms */
+.basic_label_styling {
+    display: block;
+    font-size: 12px;
+    padding: 5px 0;
+    text-transform: uppercase;
+}
+
+.resource_form{
+    label{
+        .basic_label_styling;
+    }
+}
+
+.registration_form{
+    label{
+        .basic_label_styling;
+    }
+}
 
 /* Overwrite some of the existing jQuery UI CSS */
 .ui-corner-all{ .round_corners; }
