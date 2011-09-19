@@ -15,7 +15,7 @@ def home(request):
     recent_apps = App.objects.order_by('-id')[:3]
     recent_data = Data.objects.order_by('-id')[:3]
     recent_projects = Project.objects.order_by('-id')[:3]
-    featured = Project.objects.get(featured=True)
+    featured = Project.objects.get(featured=True) or None
     context = {
         'recent_apps': recent_apps,
         'recent_data': recent_data,
@@ -57,7 +57,7 @@ def create_context(request, model_name):
 
 def community(request):
     """Render the community page."""
-    featured = Project.objects.get(featured=True)
+    featured = Project.objects.get(featured=True) or None
     context = {'featured': featured}
     return render(request, 'community.html', context)
 
