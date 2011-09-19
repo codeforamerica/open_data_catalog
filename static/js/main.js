@@ -101,7 +101,8 @@
             form = self.siblings('form'),
             gravatar = $('.gravatar'),
             body = $(document.body),
-            stopBubbling = ns.event.stopBubbling;
+            stopBubbling = ns.event.stopBubbling,
+            hideLoginForm = ns.event.hideLoginForm;
 
         if (gravatar.length > 0) {
             // This should involve logging out.
@@ -112,14 +113,17 @@
             form.show()
                 .click(stopBubbling);
 
-            body.click(function(e) {
-                var form = $('.login_form'),
-                    button = form.siblings('a');
-                if (form.is(':visible')) {
-                    form.hide();
-                    button.removeClass('login_form_open');
-                }
-            });
+            body.click(hideLoginForm)
+                .find('nav').hover(hideLoginForm);
+        }
+    }
+
+    ns.event.hideLoginForm = function(e) {
+        var form = $('.login_form'),
+            button = form.siblings('a');
+        if (form.is(':visible')) {
+            form.hide();
+            button.removeClass('login_form_open');
         }
     }
 

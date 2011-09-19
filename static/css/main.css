@@ -20,6 +20,9 @@ header .search_form .submit:hover{background-color:#c82264;}
 header .login{display:block;font-size:16px;margin-top:8px;min-width:200px;position:relative;width:15%;}header .login .login_button{color:white;display:block;float:right;padding:7px;text-align:center;text-decoration:none;width:150px;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
 header .login .login_button:hover,header .login .login_form_open{background-color:#333;}
 header .login .login_form{background:#333;display:none;padding:20px 15px 15px;position:absolute;right:0;top:50px;z-index:100;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
+header .login label{color:#fff;display:block;font-size:12px;margin:5px 0 0;padding:3px 0;text-transform:uppercase;}
+header .login label.password{margin:15px 0 0;}
+header .login .login_submit{display:block;margin:15px 0 0;}
 header .gravatar{margin-top:4px;}
 nav{background:url('/static/img/gradient_bg.png') #6f9cc2;display:block;}nav .topnav{border-bottom:1px solid #658eb1;margin:0 auto;width:90%;}
 nav .topnav li{float:left;margin:0 auto;position:relative;width:25%;}

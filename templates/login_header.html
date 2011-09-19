@@ -10,11 +10,11 @@
     <a href="/login/" class="login_button">Login <span>or</span> sign up</a>
     <form action="/login/" class="login_form" method="post">
         {% csrf_token %}
-        <label for="username">Username</label>
-        <input type="text" name="username" value="" />
-        <label for="password">Password</label>
-        <input type="password" name="password" value="" />
-        <input type="submit" class="submit" value="Login" name="submit" />
+        <label for="username" class="username">Username</label>
+        <input id="username" type="text" name="username" value="" />
+        <label for="password" class="password">Password</label>
+        <input id="password" type="password" name="password" value="" />
+        <input type="submit" class="login_submit" value="Login" name="submit" />
     </form>
 {% endif %}
 </li>
