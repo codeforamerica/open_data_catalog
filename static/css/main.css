@@ -24,6 +24,7 @@ header .login label{color:#fff;display:block;font-size:12px;margin:5px 0 0;paddi
 header .login label.password{margin:15px 0 0;}
 header .login .login_submit{display:block;margin:15px 0 0;}
 header .gravatar{margin-top:4px;}
+header .register{font-size:12px;}
 nav{background:url('/static/img/gradient_bg.png') #6f9cc2;display:block;}nav .topnav{border-bottom:1px solid #658eb1;margin:0 auto;width:90%;}
 nav .topnav li{float:left;margin:0 auto;position:relative;width:25%;}
 nav .links{font-family:'Cabin',sans-serif;color:white;display:block;font-size:18px;margin:0 auto;padding:10px;text-align:center;text-decoration:none;}
