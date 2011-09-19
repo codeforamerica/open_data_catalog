@@ -87,6 +87,15 @@ class Project(CachingMixin, Resource):
                 project.featured = False
                 project.save()
 
+    @staticmethod
+    def featured_project():
+        """Return the currently featured project or a None."""
+        try:
+            featured = Project.objects.get(featured=True)
+        except:
+            featured = None
+        return featured
+
     def save(self, **kwargs):
         """
         Overwrite the normal save method so that an `embed_url` is generated
