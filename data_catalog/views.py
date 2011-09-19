@@ -58,7 +58,8 @@ def create_context(request, model_name):
 def community(request):
     """Render the community page."""
     featured = Project.featured_project()
-    context = {'featured': featured}
+    community = User.objects.all()
+    context = {'featured': featured, 'community': community}
     return render(request, 'community.html', context)
 
 

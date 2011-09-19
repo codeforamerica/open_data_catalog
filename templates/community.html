@@ -4,6 +4,12 @@
 <div class="community">
     <div class="members clearfix">
         <a class="left_arrow ir" href="#"></a>
+        <div class="gravatars">
+            {% load gravatar %}
+            {% for member in community %}
+            {% gravatar_img_for_user member %}
+            {% endfor %}
+        </div>
         <a class="right_arrow ir" href="#"></a>
     </div>
     <div class="list clearfix">
