@@ -83,7 +83,7 @@ def individual_resource(request, resource_type, slug):
     model = available_resources[resource_type]
     resource = get_object_or_404(model, slug=slug)
     context = {'resource': resource, 'path': resource_type}
-    if resource == 'project':
+    if resource_type == 'project':
         supporters = resource.supporters.all()
         context.update({'supporters': supporters})
         template = 'individual_resource/project.html'
