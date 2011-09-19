@@ -164,6 +164,15 @@
         button.click(supportProject);
     }
 
+    ns.dom.communityScroller = function() {
+        var carousel = $('#mycarousel');
+        if (carousel.length > 0) {
+            carousel.jcarousel({
+                wrap: 'circular'
+            });
+        }
+    }
+
     ns.dom.init = function() {
         // Initalize function for DOM functionality.
         var dom = ns.dom;
@@ -171,6 +180,7 @@
         dom.navigation();
         dom.loginButton();
         dom.supportButton();
+        dom.communityScroller();
     }
 
     ns.main = (function() {
