@@ -105,16 +105,15 @@ def submit_resource(request, resource):
         form = form_class(request.POST)
         if form.is_valid():
             form.save()
-            return thanks(request, resource)
-    context = {'form': form_class}
+            return redirect(thanks)
+    context = {'form': form_class, 'resource': resource}
     template = 'submit/%s.html' % resource
     return render(request, template, context)
 
 
-def thanks(request, resource):
+def thanks(request):
     """Thank a user for submitting a valid resource."""
-    context = {'resource': resource}
-    return render(request, 'thanks.html', context)
+    return render(request, 'thanks.html')
 
 
 def support(request):
