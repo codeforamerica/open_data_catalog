@@ -15,10 +15,12 @@ def home(request):
     recent_apps = App.objects.order_by('-id')[:3]
     recent_data = Data.objects.order_by('-id')[:3]
     recent_projects = Project.objects.order_by('-id')[:3]
+    featured = Project.objects.get(featured=True)
     context = {
         'recent_apps': recent_apps,
         'recent_data': recent_data,
         'recent_projects': recent_projects,
+        'featured': featured,
     }
     return render(request, 'home.html', context)
 
@@ -55,7 +57,9 @@ def create_context(request, model_name):
 
 def community(request):
     """Render the community page."""
-    return render(request, 'community.html')
+    featured = Project.objects.get(featured=True)
+    context = {'featured': featured}
+    return render(request, 'community.html', context)
 
 
 def community_member(request, username):
