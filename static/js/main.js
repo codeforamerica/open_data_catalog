@@ -66,6 +66,7 @@
                 form.submit();
             }
         });
+        return this;
     }
 
     ns.event.navigationHover = function(e) {
@@ -89,6 +90,7 @@
         var nav = $('.links').parent(),
             navigationHover = ns.event.navigationHover;
         nav.hover(navigationHover);
+        return this;
     }
 
     ns.event.stopBubbling = function(e) {
@@ -131,6 +133,7 @@
         var button = $('.login_button'),
             login = ns.event.login;
         button.hover(login);
+        return this;
     }
 
     ns.event.supportProject = function(e) {
@@ -166,6 +169,7 @@
         var button = $('.support_button'),
             supportProject = ns.event.supportProject;
         button.click(supportProject);
+        return this;
     }
 
     ns.dom.communityScroller = function() {
@@ -176,16 +180,17 @@
                 wrap: 'circular'
             });
         }
+        return this;
     }
 
     ns.dom.init = function() {
         // Initalize function for DOM functionality.
         var dom = ns.dom;
-        dom.search();
-        dom.navigation();
-        dom.loginButton();
-        dom.supportButton();
-        dom.communityScroller();
+        dom.search()
+           .navigation()
+           .loginButton()
+           .supportButton()
+           .communityScroller()
     }
 
     ns.main = (function() {
