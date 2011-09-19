@@ -1,72 +1,464 @@
-a,a:active,a:visited{color:#d5246b;}
-a:hover{background:#d5246b;color:white;text-decoration:none;}
-::-moz-selection{background:#d5246b;color:#fff;text-shadow:none;}
-::selection{background:#d5246b;color:#fff;text-shadow:none;}
-.offset_formalize{font-family:'Cabin',sans-serif;box-sizing:initial;-moz-box-sizing:initial;-webkit-box-sizing:initial;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
-ul{margin:0;padding:0;}ul li{list-style:none;}
-body{color:#444;min-width:800px;}
-header ul,#main{margin:0 auto;width:90%;}
-#main{margin-top:50px;}
-.ribbon{background:#1e65a0;height:5px;-webkit-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);-moz-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);}
-header{background:#222;display:block;-webkit-box-shadow:inset 0 0 10px rgba(0, 0, 0, 0.5);-moz-box-shadow:inset 0 0 10px rgba(0, 0, 0, 0.5);box-shadow:inset 0 0 10px rgba(0, 0, 0, 0.5);}header ul{list-style:none;margin:0 auto;padding:0 0 15px;}
-header li{float:right;padding-top:24px;}
-header li.float_left{float:left;}
-header li.city_name{padding-top:10px;}header li.city_name a{background:url('http://dummyimage.com/250x75/333/fff') no-repeat center center;height:75px;width:250px;}
-header .search_form{font-size:18px;margin-top:6px;}header .search_form input{float:left;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
-header .search_form .search_bar{border:1px solid #222;color:inherit;height:20px;padding:7px;width:275px;font-family:'Cabin',sans-serif;box-sizing:initial;-moz-box-sizing:initial;-webkit-box-sizing:initial;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;-webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);-moz-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);box-shadow:0 0 5px rgba(0, 0, 0, 0.5);}
-header .search_form .search_bar:focus{border:1px solid #d5246b;outline:none;-webkit-box-shadow:0 0 20px #d5246b;-moz-box-shadow:0 0 20px #d5246b;box-shadow:0 0 20px #d5246b;}
-header .search_form .submit{background:url('/static/img/search.png') #d5246b no-repeat center center;border:1px solid #222;height:20px;margin-left:5px;padding:7px;text-indent:-999em;width:75px;font-family:'Cabin',sans-serif;box-sizing:initial;-moz-box-sizing:initial;-webkit-box-sizing:initial;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;-webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);-moz-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);box-shadow:0 0 5px rgba(0, 0, 0, 0.5);}
-header .search_form .submit:hover{background-color:#c82264;}
-header .login{display:block;font-size:16px;margin-top:8px;min-width:200px;position:relative;width:15%;}header .login .login_button{color:white;display:block;float:right;padding:7px;text-align:center;text-decoration:none;width:150px;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
-header .login .login_button:hover,header .login .login_form_open{background-color:#333;}
-header .login .login_form{background:#333;display:none;padding:20px 15px 15px;position:absolute;right:0;top:50px;z-index:100;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
-header .login label{color:#fff;display:block;font-size:12px;margin:5px 0 0;padding:3px 0;text-transform:uppercase;}
-header .login label.password{margin:15px 0 0;}
-header .login .login_submit{display:block;margin:15px 0 0;}
-header .gravatar{margin-top:4px;}
-header .register{font-size:12px;}
-nav{background:url('/static/img/gradient_bg.png') #6f9cc2;display:block;}nav .topnav{border-bottom:1px solid #658eb1;margin:0 auto;width:90%;}
-nav .topnav li{float:left;margin:0 auto;position:relative;width:20%;}
-nav .home .links:hover{background:url('/static/img/home.png') #1e65a0 no-repeat center center;text-indent:-999em;}
-nav .links{font-family:'Cabin',sans-serif;color:white;display:block;font-size:18px;margin:0 auto;padding:10px;text-align:center;text-decoration:none;}
-nav .last{border-right:none;}
-nav .links:hover,nav .navigation_hover{background-color:#1e65a0;}
-nav .subnav{background-color:#fff;border-top:1px solid #658eb1;display:none;left:0;position:absolute;width:100%;z-index:100;-webkit-box-shadow:0 2px 1px rgba(0, 0, 0, 0.75);-moz-box-shadow:0 2px 1px rgba(0, 0, 0, 0.75);box-shadow:0 2px 1px rgba(0, 0, 0, 0.75);}nav .subnav li{clear:both;width:100%;}nav .subnav li a{border-bottom:1px solid #e0e0e0;color:#444;display:block;font-size:16px;padding:12px;text-decoration:none;}
-nav .subnav li a:hover{background-color:#fff;color:#1e65a0;}
-footer{font-family:'Cabin',sans-serif;background:#ddd;display:block;margin:100px auto 0;padding:50px 0 25px;-webkit-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);-moz-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);}footer .logos{margin:75px auto 0;width:330px;}footer .logos a{float:left;margin:0 auto;padding:0 25px;width:115px;}
-footer .logos .cfa_logo{background:url('/static/img/cfa_logo.png') no-repeat 0 8px;height:50px;}
-footer .logos .cfa_logo:hover{background-position-y:-45px;}
-footer .logos .new_urban{background:url('/static/img/new_urban.png') no-repeat 0 5px;height:50px;}
-footer .logos .new_urban:hover{background-position-y:-48px;}
-.site_map{color:#555;margin:0 auto 50px;width:50%;}.site_map ul{float:left;list-style:none;margin:0 auto;padding:0 5%;width:23%;}
-.site_map li{padding:2px 0;}
-.site_map strong{display:block;padding:5px;text-transform:uppercase;}
-.site_map a{color:#777;display:block;padding:5px;text-decoration:none;width:100%;}
-.site_map a:hover{color:#fff;}
-.site_map .left a{font-family:'Cabin',sans-serif;font-weight:bold;}
-.home .headline{background:#ddd;height:350px;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
-.home .recent{width:100%;}.home .recent .apps,.home .recent .projects,.home .recent .community{float:left;width:33%;}
-.home .recent h3,.home .recent a{font-family:'Cabin',sans-serif;display:block;padding:5px;}
-.home .recent h3{font-family:'Cabin',sans-serif;background:#1e65a0;margin:0 auto;text-align:center;}
-.home .recent ul{color:#fff;margin:0 auto;width:75%;}
-.featured_container{margin-bottom:125px;}
-.featured_project{margin:50px 0;}.featured_project h2{background:#d5246b;color:#fff;display:block;margin-bottom:25px;padding:10px;text-align:center;}
-.featured_project iframe{background:#444;float:left;margin-right:40px;}
-.featured_project .name a{color:#1e65a0;font-size:28px;text-decoration:none;}
-.featured_project .name a:hover{background:#1e65a0;color:#fff;}
-.community .members{background:#ddd;height:200px;}.community .members .left_arrow,.community .members .right_arrow{background:#444;height:200px;width:50px;}
-.community .members .left_arrow{float:left;}
-.community .members .right_arrow{float:right;}
-.community .gravatar_opacity{opacity:0.75;}
-.community .gravatar_opacity:hover{opacity:1;}
-.community .list{margin:50px auto;}
-.community .top,.community .recent{background:#ddd;height:400px;width:49%;}
-.community .top{float:left;}
-.community .recent{float:right;}
-.basic_label_styling{display:block;font-size:12px;padding:5px 0;text-transform:uppercase;}
-.resource_form label{display:block;font-size:12px;padding:5px 0;text-transform:uppercase;}
-.registration_form label{display:block;font-size:12px;padding:5px 0;text-transform:uppercase;}
-.ui-corner-all{border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
-.ui-menu-item a{color:#333;}
-.ui-widget{font-family:sans-serif;}
-.ui-tooltip{padding:8px;position:absolute;width:200px;}
+/* Change the global JavaScript `ns.color` attribute, too. */
+/* Link Color and Styles */
+a, a:active, a:visited {
+  color: #d5246b;
+}
+a:hover {
+  background: #d5246b;
+  color: white;
+  text-decoration: none;
+}
+/* Custom highlight */
+::-moz-selection {
+  background: #d5246b;
+  color: #fff;
+  text-shadow: none;
+}
+::selection {
+  background: #d5246b;
+  color: #fff;
+  text-shadow: none;
+}
+/* Simple function for rounded corners. */
+/* Easier function for adding box-shadow settings. */
+/* These styles help offset the formalize settings. */
+.offset_formalize {
+  font-family: 'Cabin', sans-serif;
+  box-sizing: initial;
+  -moz-box-sizing: initial;
+  -webkit-box-sizing: initial;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+/* Don't like the default UL styling from HTML5 Boilerplate */
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  list-style: none;
+}
+body {
+  color: #444;
+  min-width: 800px;
+}
+header ul, #main {
+  margin: 0 auto;
+  width: 90%;
+}
+#main {
+  margin-top: 50px;
+}
+.ribbon {
+  background: #1e65a0;
+  height: 5px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25);
+}
+header {
+  background: #222;
+  display: block;
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+header ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 0 15px;
+}
+header li {
+  float: right;
+  padding-top: 24px;
+}
+header li.float_left {
+  float: left;
+}
+header li.city_name {
+  padding-top: 10px;
+}
+header li.city_name a {
+  background: url('http://dummyimage.com/250x75/333/fff') no-repeat center center;
+  height: 75px;
+  width: 250px;
+}
+header .search_form {
+  font-size: 18px;
+  margin-top: 6px;
+}
+header .search_form input {
+  float: left;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+header .search_form .search_bar {
+  border: 1px solid #222;
+  color: inherit;
+  height: 20px;
+  padding: 7px;
+  width: 275px;
+  font-family: 'Cabin', sans-serif;
+  box-sizing: initial;
+  -moz-box-sizing: initial;
+  -webkit-box-sizing: initial;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+header .search_form .search_bar:focus {
+  border: 1px solid #d5246b;
+  outline: none;
+  -webkit-box-shadow: 0 0 20px #d5246b;
+  -moz-box-shadow: 0 0 20px #d5246b;
+  box-shadow: 0 0 20px #d5246b;
+}
+header .search_form .submit {
+  background: url('/static/img/search.png') #d5246b no-repeat center center;
+  border: 1px solid #222;
+  height: 20px;
+  margin-left: 5px;
+  padding: 7px;
+  text-indent: -999em;
+  width: 75px;
+  font-family: 'Cabin', sans-serif;
+  box-sizing: initial;
+  -moz-box-sizing: initial;
+  -webkit-box-sizing: initial;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+header .search_form .submit:hover {
+  background-color: #c82264;
+}
+header .login {
+  display: block;
+  font-size: 16px;
+  margin-top: 8px;
+  min-width: 200px;
+  position: relative;
+  width: 15%;
+}
+header .login .login_button {
+  color: white;
+  display: block;
+  float: right;
+  padding: 7px;
+  text-align: center;
+  text-decoration: none;
+  width: 150px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+header .login .login_button:hover, header .login .login_form_open {
+  background-color: #333;
+}
+header .login .login_form {
+  background: #333;
+  display: none;
+  padding: 20px 15px 15px;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  z-index: 100;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+header .login label {
+  color: #fff;
+  display: block;
+  font-size: 12px;
+  margin: 5px 0 0;
+  padding: 3px 0;
+  text-transform: uppercase;
+}
+header .login label.password {
+  margin: 15px 0 0;
+}
+header .login .login_submit {
+  display: block;
+  margin: 15px 0 0;
+}
+header .gravatar {
+  margin-top: 4px;
+}
+header .register {
+  font-size: 12px;
+}
+nav {
+  background: url('/static/img/gradient_bg.png') #6f9cc2;
+  display: block;
+}
+nav .topnav {
+  border-bottom: 1px solid #658eb1;
+  margin: 0 auto;
+  width: 90%;
+}
+nav .topnav li {
+  float: left;
+  margin: 0 auto;
+  position: relative;
+  width: 20%;
+}
+nav .home .links:hover {
+  background: url('/static/img/home.png') #1e65a0 no-repeat center center;
+  text-indent: -999em;
+}
+nav .links {
+  font-family: 'Cabin', sans-serif;
+  color: white;
+  display: block;
+  font-size: 18px;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+nav .last {
+  border-right: none;
+}
+nav .links:hover, nav .navigation_hover {
+  background-color: #1e65a0;
+}
+nav .subnav {
+  background-color: #fff;
+  border-top: 1px solid #658eb1;
+  display: none;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.75);
+}
+nav .subnav li {
+  clear: both;
+  width: 100%;
+}
+nav .subnav li a {
+  border-bottom: 1px solid #e0e0e0;
+  color: #444;
+  display: block;
+  font-size: 16px;
+  padding: 12px;
+  text-decoration: none;
+}
+nav .subnav li a:hover {
+  background-color: #fff;
+  color: #1e65a0;
+}
+footer {
+  font-family: 'Cabin', sans-serif;
+  background: #ddd;
+  display: block;
+  margin: 100px auto 0;
+  padding: 50px 0 25px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25);
+}
+footer .logos {
+  margin: 75px auto 0;
+  width: 330px;
+}
+footer .logos a {
+  float: left;
+  margin: 0 auto;
+  padding: 0 25px;
+  width: 115px;
+}
+footer .logos .cfa_logo {
+  background: url('/static/img/cfa_logo.png') no-repeat 0 8px;
+  height: 50px;
+}
+footer .logos .cfa_logo:hover {
+  background-position-y: -45px;
+}
+footer .logos .new_urban {
+  background: url('/static/img/new_urban.png') no-repeat 0 5px;
+  height: 50px;
+}
+footer .logos .new_urban:hover {
+  background-position-y: -48px;
+}
+.site_map {
+  color: #555;
+  margin: 0 auto 50px;
+  width: 50%;
+}
+.site_map ul {
+  float: left;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 5%;
+  width: 23%;
+}
+.site_map li {
+  padding: 2px 0;
+}
+.site_map strong {
+  display: block;
+  padding: 5px;
+  text-transform: uppercase;
+}
+.site_map a {
+  color: #777;
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+  width: 100%;
+}
+.site_map a:hover {
+  color: #fff;
+}
+.site_map .left a {
+  font-family: 'Cabin', sans-serif;
+  font-weight: bold;
+}
+/* Styling for home page */
+.home .headline {
+  background: #ddd;
+  height: 350px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+.home .recent {
+  width: 100%;
+}
+.home .recent .apps, .home .recent .projects, .home .recent .community {
+  float: left;
+  width: 33%;
+}
+.home .recent h3, .home .recent a {
+  font-family: 'Cabin', sans-serif;
+  font-style: bold;
+  display: block;
+  padding: 7px;
+}
+.home .recent h3 {
+  font-family: 'Cabin', sans-serif;
+  background: #1e65a0;
+  margin: 0 auto;
+  text-align: center;
+}
+.home .recent ul {
+  color: #fff;
+  margin: 0 auto;
+  width: 75%;
+}
+/* Styles for featured project */
+.featured_container {
+  margin-bottom: 125px;
+}
+.featured_project {
+  margin: 50px 0;
+}
+.featured_project h2 {
+  font-family: 'Cabin', sans-serif;
+  background: #d5246b;
+  color: #fff;
+  display: block;
+  margin-bottom: 25px;
+  padding: 10px;
+  text-align: center;
+}
+.featured_project iframe {
+  background: #444;
+  float: left;
+  margin-right: 40px;
+}
+.featured_project .name a {
+  font-family: 'Cabin', sans-serif;
+  color: #1e65a0;
+  font-size: 28px;
+  text-decoration: none;
+}
+.featured_project .name a:hover {
+  background: #1e65a0;
+  color: #fff;
+}
+.community .members {
+  background: #ddd;
+  height: 200px;
+}
+.community .members .left_arrow, .community .members .right_arrow {
+  background: #444;
+  height: 200px;
+  width: 50px;
+}
+.community .members .left_arrow {
+  float: left;
+}
+.community .members .right_arrow {
+  float: right;
+}
+.community .gravatar_opacity {
+  opacity: 0.75;
+}
+.community .gravatar_opacity:hover {
+  opacity: 1;
+}
+.community .list {
+  margin: 50px auto;
+}
+.community .top, .community .recent {
+  background: #ddd;
+  height: 400px;
+  width: 49%;
+}
+.community .top {
+  float: left;
+}
+.community .recent {
+  float: right;
+}
+/* Styling for resource names */
+/* Styling for registration/resource forms */
+.basic_label_styling {
+  display: block;
+  font-size: 12px;
+  padding: 5px 0;
+  text-transform: uppercase;
+}
+.resource_form label {
+  display: block;
+  font-size: 12px;
+  padding: 5px 0;
+  text-transform: uppercase;
+}
+.registration_form label {
+  display: block;
+  font-size: 12px;
+  padding: 5px 0;
+  text-transform: uppercase;
+}
+/* Overwrite some of the existing jQuery UI CSS */
+.ui-corner-all {
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+.ui-menu-item a {
+  color: #333;
+}
+.ui-widget {
+  font-family: sans-serif;
+}
+.ui-tooltip {
+  padding: 8px;
+  position: absolute;
+  width: 200px;
+}
