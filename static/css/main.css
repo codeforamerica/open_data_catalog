@@ -50,8 +50,8 @@ footer .logos .new_urban:hover{background-position-y:-48px;}
 .community .members{background:#ddd;height:200px;}.community .members .left_arrow,.community .members .right_arrow{background:#444;height:200px;width:50px;}
 .community .members .left_arrow{float:left;}
 .community .members .right_arrow{float:right;}
-.community a{opacity:0.75;}
-.community a:hover{opacity:1;}
+.community .gravatar_opacity{opacity:0.75;}
+.community .gravatar_opacity:hover{opacity:1;}
 .community .list{margin:50px auto;}
 .community .top,.community .recent{background:#ddd;height:400px;width:49%;}
 .community .top{float:left;}
