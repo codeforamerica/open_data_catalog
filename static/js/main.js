@@ -77,10 +77,10 @@
             link = subnav.siblings('.links');
         if (subnav.is(':visible')) {
             subnav.hide();
-            link.removeClass('navigation_hover');
+            link.removeClass('still_hovering');
         } else {
             subnav.show();
-            link.addClass('navigation_hover');
+            link.addClass('still_hovering');
         }
     }
 
