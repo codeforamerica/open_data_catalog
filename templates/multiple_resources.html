@@ -1,6 +1,7 @@
 {% for resource in results %}
 <div class="resource_container">
     <div class="thumbnail">
+        <img src="{{ MEDIA_URL }}{{ resource.image }}" alt="Screenshot of app" />
     </div>
     <div class="content">
         <p class="name"><a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a></p>

@@ -1,6 +1,7 @@
 """URL patterns for the website."""
 
 from django.contrib import admin
+from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
 from django.views.generic.simple import redirect_to
 
@@ -32,3 +33,9 @@ urlpatterns += patterns('',
     url(r'^', include('registration.urls')),
     url(r'^accounts/', include('registration.urls')),
 )
+
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+          'document_root': settings.MEDIA_ROOT}))
