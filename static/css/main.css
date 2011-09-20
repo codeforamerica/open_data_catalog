@@ -54,9 +54,9 @@ footer .logos .new_urban:hover{background-position-y:-48px;}
 .home .recent h3{font-family:'Cabin',sans-serif;background:#1e65a0;margin:0 auto;text-align:center;}
 .home .recent ul{color:#fff;margin:0 auto;width:75%;}
 .featured_container{margin-bottom:125px;}
-.featured_project{margin:50px 0;}.featured_project h2{font-family:'Cabin',sans-serif;background:#d5246b;color:#fff;display:block;margin-bottom:25px;padding:10px;text-align:center;}
+.featured_project{font-family:'Cabin',sans-serif;margin:50px 0;}.featured_project h2{background:#d5246b;color:#fff;display:block;margin-bottom:25px;padding:10px;text-align:center;}
 .featured_project iframe{background:#444;float:left;margin-right:40px;}
-.featured_project .name a{font-family:'Cabin',sans-serif;color:#1e65a0;font-size:28px;text-decoration:none;}
+.featured_project .name a{color:#1e65a0;font-size:28px;text-decoration:none;}
 .featured_project .name a:hover{background:#1e65a0;color:#fff;}
 .community .members{background:#ddd;height:200px;}.community .members .left_arrow,.community .members .right_arrow{background:#444;height:200px;width:50px;}
 .community .members .left_arrow{float:left;}
@@ -67,6 +67,11 @@ footer .logos .new_urban:hover{background-position-y:-48px;}
 .community .top,.community .recent{background:#ddd;height:400px;width:49%;}
 .community .top{float:left;}
 .community .recent{float:right;}
+.resource_container .name a{color:#1e65a0;font-size:28px;text-decoration:none;}
+.resource_container .name a:hover{background:#1e65a0;color:#fff;}
+.resource_container .content{border-top:1px dotted #ddd;padding-top:25px;}
+.resource_container img{float:left;width:200px;}
+.resource_container .description{float:left;margin-left:75px;}
 .basic_label_styling{display:block;font-size:12px;padding:5px 0;text-transform:uppercase;}
 .resource_form label{display:block;font-size:12px;padding:5px 0;text-transform:uppercase;}
 .registration_form label{display:block;font-size:12px;padding:5px 0;text-transform:uppercase;}

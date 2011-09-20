@@ -363,9 +363,9 @@ footer{
     margin-bottom: 125px;
 }
 .featured_project{
+    font-family: 'Cabin', sans-serif;
     margin: 50px 0;
     h2{
-        font-family: 'Cabin', sans-serif;
         background: @pink;
         color: #fff;
         display: block;
@@ -379,7 +379,6 @@ footer{
         margin-right: 40px;
     }
     .name a{
-        font-family: 'Cabin', sans-serif;
         color: @blue;
         font-size: 28px;
         text-decoration: none;
@@ -430,6 +429,27 @@ footer{
 
 /* Styling for resource names */
 .resource_container{
+    .name a{
+        color: @blue;
+        font-size: 28px;
+        text-decoration: none;
+    }
+    .name a:hover{
+        background: @blue;
+        color: #fff;
+    }
+    .content{
+        border-top: 1px dotted #ddd;
+        padding-top: 25px;
+    }
+    img{
+        float: left;
+        width: 200px;
+    }
+    .description{
+        float: left;
+        margin-left: 75px;
+    }
 }
 
 /* Styling for registration/resource forms */

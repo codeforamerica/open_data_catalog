@@ -1,11 +1,18 @@
 {% for resource in results %}
 <div class="resource_container">
-    <div class="thumbnail">
+    <p class="name">
+        <a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a>
+    </p>
+    {% if resource.organization %}
+    <p class="organization">{{ resource.organization }}</p>
+    {% endif %}
+    <div class="content clearfix">
+    {% if resource.organization %}
         <img src="{{ MEDIA_URL }}{{ resource.image }}" alt="Screenshot of app" />
-    </div>
-    <div class="content">
-        <p class="name"><a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a></p>
-        <p class="organization">{{ resource.organization }}</p>
+    {% else %}
+        <img src="{{ MEDIA_URL }}{{ resource.image }}" alt="Default Image" />
+    {% endif %}
+        <p class="description">{{ resource.description }}</p>
     </div>
 </div>
 {% endfor %}
