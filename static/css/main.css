@@ -32,6 +32,9 @@ nav .last{border-right:none;}
 nav .links:hover{background-color:#1e65a0;}
 nav .home:hover{background:url('/static/img/navigation/home.png') #1e65a0 no-repeat center center;text-indent:-999em;}
 nav .community:hover{background:url('/static/img/navigation/community.png') #1e65a0 no-repeat center center;text-indent:-999em;}
+nav .apps:hover{background:url('/static/img/navigation/apps.png') #1e65a0 no-repeat center center;text-indent:-999em;}
+nav .projects:hover{background:url('/static/img/navigation/projects.png') #1e65a0 no-repeat center center;text-indent:-999em;}
+nav .data:hover{background:url('/static/img/navigation/data.png') #1e65a0 no-repeat center center;text-indent:-999em;}
 nav .subnav{background-color:#fff;border-top:1px solid #658eb1;display:none;left:0;position:absolute;width:100%;z-index:100;-webkit-box-shadow:0 2px 1px rgba(0, 0, 0, 0.75);-moz-box-shadow:0 2px 1px rgba(0, 0, 0, 0.75);box-shadow:0 2px 1px rgba(0, 0, 0, 0.75);}nav .subnav li{clear:both;width:100%;}nav .subnav li a{border-bottom:1px solid #e0e0e0;color:#444;display:block;font-size:16px;padding:12px;text-decoration:none;}
 nav .subnav li a:hover{background-color:#fff;color:#1e65a0;}
 footer{font-family:'Cabin',sans-serif;background:#ddd;display:block;margin:100px auto 0;padding:50px 0 25px;-webkit-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);-moz-box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);box-shadow:inset 0 0 5px rgba(0, 0, 0, 0.25);}footer .logos{margin:75px auto 0;width:330px;}footer .logos a{float:left;margin:0 auto;padding:0 25px;width:115px;}
