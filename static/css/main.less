@@ -178,6 +178,12 @@ header{
     }
 }
 
+/* Helper function for navigation hover */
+.navigation_hover(@image){
+    background: url(@image) @blue no-repeat center center;
+    text-indent: -999em;
+}
+
 nav{
     background: url('/static/img/gradient_bg.png') @light_blue;
     display: block;
@@ -192,10 +198,6 @@ nav{
         position: relative;
         width: 20%;
     }
-    .home .links:hover{
-        background: url('/static/img/home.png') @blue no-repeat center center;
-        text-indent: -999em;
-    }
     .links{
         font-family: 'Cabin', sans-serif;
         color: white;
@@ -209,8 +211,14 @@ nav{
     .last{
         border-right: none;
     }
-    .links:hover, .navigation_hover{
+    .links:hover{
         background-color: @blue;
+    }
+    .home:hover{
+        .navigation_hover('/static/img/navigation/home.png');
+    }
+    .community:hover{
+        .navigation_hover('/static/img/navigation/community.png');
     }
     .subnav{
         background-color: #fff;
