@@ -27,6 +27,7 @@ class Resource(models.Model):
 class App(Resource):
     """A model for a submitted application."""
     url = models.URLField('URL', verify_exists=False)
+    image = models.ImageField(upload_to='apps', blank=True, null=True)
 
 
 class Data(Resource):
