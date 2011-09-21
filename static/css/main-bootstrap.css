@@ -6,6 +6,7 @@ footer{background:#eee;margin-top:0;min-height:150px;}
 .sign-in form #username,.sign-in form #password{margin:0 0 10px;}
 .sign-in form .btn{padding:7px;width:50%;}
 .sign-in form #sign-in-btn:hover{background-position-y:-15px;}
+#search-bar{position:relative;}#search-bar span{position:absolute;right:0;}#search-bar span a{background:url(/static/img/search.png) no-repeat center 60%;display:block;height:26px;text-indent:-999em;width:24px;}
 .whitespace{margin-top:75px;}
 .data-header{background:url(/static/img/documents.png) #eeeeee no-repeat right top;}.data-header a{margin-top:25px;}
 .featured-projects{min-height:300px;}
