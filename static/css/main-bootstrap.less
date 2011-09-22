@@ -1,7 +1,4 @@
 /* Override some defaults */
-body {
-    padding-top: 80px;
-}
 
 footer{
     background: #eee;
@@ -9,10 +6,14 @@ footer{
     min-height: 150px;
 }
 
+.menu-dropdown .sign-in{
+    display: inline-block;
+}
+
 .sign-in{
      form{
-        display: inline-block;
         fieldset{
+            margin-bottom: 10px;
             padding: 0 5px;
         }
         input{
@@ -27,6 +28,8 @@ footer{
             margin: 0 0 10px;
         }
         .btn{
+            color: #404040;
+            margin-top: 10px;
             padding: 7px;
             width: 50%;
         }
@@ -46,7 +49,28 @@ footer{
             display: block;
             height: 26px;
             text-indent: -999em;
-            width: 24px;
+            width: 36px;
+        }
+    }
+    input{
+        width: 95%;
+    }
+}
+
+.city{
+    background: #262626;
+    padding-top: 40px;
+    margin-bottom: 60px;
+    background: #262626;
+    p > a{
+        display: block;
+        margin-top: 1px;
+        padding: 10px 10px 11px;
+    }
+    .nav{
+        float: right;
+        a{
+            text-align: center;
         }
     }
 }
@@ -62,16 +86,6 @@ footer{
     }
 }
 
-.featured-projects {
-min-height: 300px;
-}
-
-.menu-dropdown{
-    .sign-in{
-        clear: both;
-        display: inline-block;
-    }
-}
 
 .btn.yellow-warning{
     color: #404040;
