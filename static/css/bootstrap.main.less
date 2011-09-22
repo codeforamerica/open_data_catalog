@@ -140,27 +140,48 @@ footer{
 }
 
 .city{
-    background: url(/static/img/header1.png) 41% 25%;
+    background: url(/static/img/header1.png) #111 no-repeat 44% 28%;
     @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
     .box-shadow(@shadow);
     border-bottom: 1px solid #111;
-    padding-top: 50px;
     margin: 40px 0 60px;
+    .row{
+        margin-bottom: 10px;
+    }
     .home{
         display: block;
         margin-top: 1px;
-        margin-left: 10px;
-        padding: 10px 10px 11px;
+        margin-left: -10px;
+        padding: 40px 10px 11px;
         text-indent: -999em;
-        width: 219px;
+        width: 250px;
     }
     .nav{
         float: right;
         a{
             color: #fff;
             font-family: 'Oswald', sans-serif;
+            padding-top: 50px;
             text-align: center;
             text-transform: uppercase;
+        }
+        .projects{
+            background: url(/static/img/navigation/projects.png) no-repeat center 20%;
+            &:hover{
+                background: url(/static/img/navigation/projectsglow.png) no-repeat center 20%;
+            }
+        }
+        .apps{
+            background: url(/static/img/navigation/apps.png) no-repeat center 20%;
+            &:hover{
+                background: url(/static/img/navigation/appsglow.png) no-repeat center 20%;
+            }
+        }
+        .data{
+            background: url(/static/img/navigation/data.png) no-repeat center 20%;
+            &:hover{
+                background: url(/static/img/navigation/dataglow.png) no-repeat center 20%;
+            }
         }
     }
 }
