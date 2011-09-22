@@ -24,53 +24,16 @@
 
   <body>
 
-    <div class="topbar">
-      <div class="fill">
-        <div class="container">
-
-          <ul class="nav">
-            <li class="menu dropdown" data-dropdown="dropdown">
-              <a href="#" class="menu">Login</a>
-              <ul class="menu-dropdown span5">
-                <li class="sign-in">
-
-                  <form action="/" method="GET">
-                    <fieldset>
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" value="" />
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" value="" />
-                    <input type="submit" class="btn primary" value="Sign in" id="sign-in-btn"/>
-                    </fieldset>
-                  </form>
-
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="#">Create an account</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-
-          <div class="pull-right">
-            <form action="/" method="GET" id="search-bar">
-                <span class="magnifying-glass">
-                    <a href="#">Search</a>
-                </span>
-              <input type="text" name="" value="" />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+  <header>
+  {% include "bootstrap/header.html" %}
+  </header>
 
     <div class="container">
 
       <div class="hero-unit data-header">
         <h1>Hello, data.</h1>
         <p>With great data, comes great responsibility.</p>
-        <a href="#" class="btn primary large">See our current projects &rarr;</a>
+        <a href="#" class="btn yellow large">See our current projects &rarr;</a>
       </div>
 
       <div class="content whitespace">
@@ -110,12 +73,12 @@
     </div>
   </div>
 
-    <footer>
-      <div class="container">
-      </div>
-    </footer>
+  <footer>
+  {% include "bootstrap/footer.html" %}
+  </footer>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
     <script src="/static/js/libs/bootstrap/bootstrap-dropdown.js" type="text/javascript"></script>
+    <script src="/static/js/bootstrap.main.js" type="text/javascript"></script>
   </body>
 </html>
