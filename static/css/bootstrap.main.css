@@ -22,3 +22,4 @@ footer{background-color:#444444;background-repeat:repeat-x;background-image:-kht
 footer strong{line-height:inherit;}
 footer .category{display:block;padding:5px;}
 footer a{color:#eee;display:block;margin:5px 0;padding:5px;width:70%;}footer a:hover{background:#888;color:#eee;text-decoration:none;}
+footer .unstyled{margin-left:35%;}
