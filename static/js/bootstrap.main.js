@@ -55,15 +55,22 @@
 
     controls.bind('hover click', function(e) {
         var parent = $(this).parent(),
+            div = parent.parent(),
             slider = $('.slider'),
             scrollAmount = 250,
-            index = parent.index() - 1;
+            index = parent.index(),
+            percent = index * 50 + '%';
 
         e.preventDefault();
 
         slider.animate({
             scrollTop: scrollAmount * index
         }, 300);
+
+        div.animate({
+            'background-position': '62% ' + percent
+        });
+
     });
 
 
