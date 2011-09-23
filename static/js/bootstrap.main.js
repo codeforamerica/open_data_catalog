@@ -63,7 +63,7 @@
 
         slider.animate({
             scrollTop: scrollAmount * index
-        }, 600);
+        }, 300);
     });
 
 
