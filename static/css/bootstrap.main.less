@@ -108,7 +108,8 @@
             width: 40%;
         }
         #sign-in-btn:hover{
-            background-position-y: -15px;
+            background: #eee;
+            #gradient > .vertical(#eee, #fff);
         }
     }
 }
@@ -195,7 +196,10 @@
 }
 
 footer{
-    #gradient > .vertical(#333, #444);
+    #gradient > .vertical(#333, #222);
+    @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+    .box-shadow(@shadow);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     border-top: 1px solid #222;
     margin-top: 0;
     min-height: 150px;
@@ -216,7 +220,7 @@ footer{
         padding: 5px;
         width: 70%;
         &:hover{
-            background: #888;
+            background: #777;
             color: #eee;
             text-decoration: none;
         }
