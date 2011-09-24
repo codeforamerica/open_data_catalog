@@ -55,7 +55,8 @@
 
     controls.bind('hover click', function(e) {
         var parent = $(this).parent(),
-            div = parent.parent(),
+            repeatDiv = parent.parent(),
+            parentDiv = repeatDiv.parent(),
             slider = $('.slider'),
             scrollAmount = 250,
             index = parent.index(),
@@ -67,8 +68,12 @@
             scrollTop: scrollAmount * index
         }, 300);
 
-        div.animate({
+        repeatDiv.animate({
             'background-position': '62% ' + percent
+        });
+
+        parentDiv.animate({
+            'background-position': '9% ' + percent
         });
 
     });
