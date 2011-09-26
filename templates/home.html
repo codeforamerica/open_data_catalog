@@ -1,54 +1,63 @@
 {% extends "base.html" %}
 
-{% block library_js %}
-<script src="/static/js/jquery.ui.tooltip.js" type="text/javascript" charset="utf-8"></script>
-{% endblock %}
-
 
 {% block main %}
-<div class="home">
-  <div class="headline">
+
+<div class="container">
+  <div class="hero-unit data-header">
+    <h1>Hello, data.</h1>
+    <p>With great data, comes great responsibility.</p>
+    <a href="#" class="btn yellow large">See our current projects &rarr;</a>
   </div>
-  <div class="featured_container">
-      {% include "featured_project.html" %}
+
+  <div class="content whitespace">
+    <div class="row slide_container">
+      <div class="span5">
+        <h2><a href="#" class="controls">Slide One</a></h2>
+        <h2><a href="#" class="controls">Slide Two</a></h2>
+        <h2><a href="#" class="controls">Slide Three</a></h2>
+      </div>
+      <div class="span10 offset1">
+        <div class="slider">
+          <div>
+            <h3>Projects built in Boston &mdash; for Boston.</h3>
+            <p>The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee. </p>
+            <p>Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing. </p>
+          </div>
+          <div>
+            <h3>Slide Two</h3>
+            <p>The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee. </p>
+            <p>Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing. </p>
+          </div>
+          <div>
+            <h3>Slide Three</h3>
+            <p>The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee. </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="recent clearfix">
-      <div class="apps">
-          <ul>
-              <li>
-                  <h3>Recent Apps</h3>
-              </li>
-              {% for app in recent_apps %}
-              <li>
-                  <a href="/app/{{ app.slug }}">{{ app.name }}</a>
-              </li>
-              {% endfor %}
-          </ul>
-      </div>
-      <div class="projects">
-          <ul>
-              <li>
-                  <h3>Recent Projects</h3>
-              </li>
-              {% for project in recent_projects %}
-              <li>
-                  <a href="/project/{{ project.slug }}">{{ project.name }}</a>
-              </li>
-              {% endfor %}
-          </ul>
-      </div>
-      <div class="community">
-          <ul>
-              <li>
-                  <h3>Recent Data</h3>
-              </li>
-               {% for data in recent_data %}
-              <li>
-                  <a href="/data/{{ data.slug }}">{{ data.name }}</a>
-              </li>
-              {% endfor %}
-          </ul>
-      </div>
+</div>
+
+<div class="quickstart whitespace">
+    <div class="container">
+      <div class="row">
+        <div class="span-one-third">
+          <h6>Community</h6>
+          <p>Organizations and individuals can now express their
+          technological needs with one another.</p>
+        </div>
+        <div class="span-one-third">
+          <h6>Developers</h6>
+          <p>Find projects to support or upload applications you've made
+          using open data.</p>
+        </div>
+        <div class="span-one-third">
+          <h6>Open Data</h6>
+          <p>Browse through open data already usable and accessible through
+          an API.</p>
+        </div>
+    </div>
   </div>
 </div>
 {% endblock %}
