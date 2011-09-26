@@ -36,12 +36,6 @@ urlpatterns += patterns('',
 )
 
 
-# For pivot/testing...
-urlpatterns += patterns('',
-    url(r'^testing', direct_to_template, {'template': 'testing.html'}),
-)
-
-
 if settings.DEBUG:
     urlpatterns += patterns('',
         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
