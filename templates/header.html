@@ -1,62 +1,64 @@
-    <div class="topbar">
-      <div class="fill">
-        <div class="container">
+<div class="topbar">
+  <div class="fill">
+    <div class="container">
 
-          <ul class="nav">
-            <li class="menu dropdown" data-dropdown="dropdown">
-              <a href="#" class="menu">Login</a>
-              <ul class="menu-dropdown span5">
-                <li class="sign-in">
-                  <form action="/" method="GET">
-                    <fieldset>
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" value="" />
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" value="" />
-                    <input type="submit" class="btn" value="Sign in" id="sign-in-btn"/>
-                    </fieldset>
-                  </form>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="#">Don't have an account?</a>
-                </li>
-              </ul>
+      <ul class="nav">
+        <li class="menu dropdown" data-dropdown="dropdown">
+          <a href="#" class="menu">Login</a>
+          <ul class="menu-dropdown span5">
+            <li class="sign-in">
+              <form action="/login/" method="POST">
+                {% csrf_token %}
+                <fieldset>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" value="" />
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" value="" />
+                <input type="submit" class="btn" value="Sign in" id="sign-in-btn"/>
+                </fieldset>
+              </form>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">Don't have an account?</a>
             </li>
           </ul>
+        </li>
+      </ul>
 
-          <div class="pull-right">
-            <form action="/" method="GET" id="search-bar" class="span4">
-                <span class="magnifying-glass">
-                    <a href="#">Search</a>
-                </span>
-              <input type="text" name="search" value="" />
-            </form>
-          </div>
-
-        </div>
+      <div class="pull-right">
+        <form action="/search" method="GET" id="search-bar" class="span4"
+              autocomplete="off">
+            <span class="magnifying-glass">
+                <a href="#">Search</a>
+            </span>
+          <input type="text" name="search" value="" autocomplete="off"/>
+        </form>
       </div>
-    </div>
 
-    <!-- End of fixed login and search bar -->
-
-  <div class="city">
-    <div class="container">
-      <div class="row clearfix">
-        <div class="span5">
-          <p><a class="home" href="/">Home</a></p>
-        </div>
-        <ul class="nav pull-right">
-          <li class="span2">
-            <a class="projects" href="#">Projects</a>
-          </li>
-          <li class="span2">
-            <a class="apps" href="#">Apps</a>
-          </li>
-          <li class="span2">
-            <a class="data" href="#">Data</a>
-          </li>
-        </ul>
-      </div>
     </div>
   </div>
+</div>
+
+  <!-- End of fixed login and search bar -->
+
+<div class="city">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="span5">
+        <p><a class="home" href="/">Home</a></p>
+      </div>
+      <ul class="nav pull-right">
+        <li class="span2">
+          <a class="projects" href="#">Projects</a>
+        </li>
+        <li class="span2">
+          <a class="apps" href="#">Apps</a>
+        </li>
+        <li class="span2">
+          <a class="data" href="#">Data</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
