@@ -79,6 +79,20 @@
     });
 
 
+    $(window).scroll(function(e) {
+        var self = $(this),
+            filters = $('.filters'),
+            scrollTop = self.scrollTop();
+
+        if (scrollTop > 110) {
+            filters.addClass('filters-scrolling');
+        } else {
+            filters.removeClass('filters-scrolling');
+        }
+    });
+
+
+
     // Connect namespace with window object.
     window.ns = ns;
 
