@@ -79,6 +79,12 @@
         font-family: Georgia, "Times New Roman", Times, serif;
         font-style: italic;
     }
+    p{
+        font-size: 12px;
+    }
+    [class*="span"] {
+        height: 65px;
+    }
 }
 
 .hero-unit{
@@ -159,7 +165,7 @@ footer{
     @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
     .box-shadow(@shadow);
     border-bottom: 1px solid #111;
-    margin: 40px 0 60px;
+    margin: 40px 0 0;
     .home{
         display: block;
         margin-top: 1px;
@@ -203,7 +209,6 @@ footer{
 }
 
 .data-header{
-    margin-top: 15px;
     background: url(/static/img/documents.png) #eee no-repeat right top;
     @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
     .box-shadow(@shadow);
