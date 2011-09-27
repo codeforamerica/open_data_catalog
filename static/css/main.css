@@ -173,7 +173,7 @@ footer strong {
   background: url(/static/img/navigation/dataglow.png) no-repeat center 20%;
 }
 .whitespace {
-  margin-top: 75px;
+  margin-top: 37px;
 }
 .data-header {
   background: url(/static/img/documents.png) #eeeeee no-repeat right top;
@@ -182,7 +182,7 @@ footer strong {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 .data-header a {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .slide_container {
   background: url(/static/img/featuredarrow.png) no-repeat 9% 0%;
@@ -198,7 +198,7 @@ footer strong {
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
   display: block;
-  padding: 26px 0;
+  padding: 20px 0;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
