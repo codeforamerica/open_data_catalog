@@ -42,21 +42,21 @@ class TestViews(TestCase):
 
     def test_submit_app_page(self):
         self.client.login(username='foo', password='bar')
-        response = self.client.get('/submit/app/')
+        response = self.client.get('/submit/app')
         self.assertEquals(response.status_code, 200)
 
     def test_submit_project_page(self):
         self.client.login(username='foo', password='bar')
-        response = self.client.get('/submit/project/')
+        response = self.client.get('/submit/project')
         self.assertEquals(response.status_code, 200)
 
     def test_submit_data_page(self):
         self.client.login(username='foo', password='bar')
-        response = self.client.get('/submit/data/')
+        response = self.client.get('/submit/data')
         self.assertEquals(response.status_code, 200)
 
     def test_submit_data_page_for_user_not_logged_in(self):
-        response = self.client.get('/submit/data/')
+        response = self.client.get('/submit/data')
         self.assertEquals(response.status_code, 302)
 
     def test_a_user_can_support_a_project(self):
