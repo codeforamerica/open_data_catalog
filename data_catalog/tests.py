@@ -6,7 +6,7 @@ from django.utils import simplejson as json
 from taggit.models import Tag
 from mock import patch, Mock
 
-from data_catalog.models import App, Data, Project, Supporter, Link
+from data_catalog.models import App, Data, Project, Supporter
 from data_catalog.context_processors import settings_context
 from data_catalog.forms import AppForm, ProjectForm
 from data_catalog.search import Search
