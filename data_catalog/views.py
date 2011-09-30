@@ -163,12 +163,10 @@ def autocomplete(request):
         data['tags'] = None
     else:
         results = Tag.objects.filter(name__icontains=query).values('name')
-        if not results:
-            fake_tags = ['abc', 'abcdef', 'abcdefghi', 'def', 'defghi',
-                         'defghijkl', 'ghi', 'ghijkl', 'ghijklmno']
-            tags = [tag for tag in fake_tags if query in tag]
-        else:
+        if results:
             tags = [tag['name'] for tag in results]
+        else:
+            tags = []
         data['tags'] = tags
     return JSONResponse(data)
 

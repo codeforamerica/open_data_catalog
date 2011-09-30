@@ -114,6 +114,14 @@ class TestViews(TestCase):
         response = self.client.get('/apps?tag=GIS')
         self.assertEquals(response.status_code, 200)
 
+    def test_community_page_exists(self):
+        response = self.client.get('/community')
+        self.assertEquals(response.status_code, 200)
+
+    def test_request_data_page_exists(self):
+        response = self.client.get('/request/data')
+        self.assertEquals(response.status_code, 200)
+
 
 class TestContextProcessors(TestCase):
 
