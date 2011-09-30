@@ -292,6 +292,20 @@ class TestSearch(TestCase):
         self.assertEquals(results, None)
 
 
+class TestTagging(TestCase):
+
+    def test_getting_all_objects_associated_with_a_tag(self):
+        app = App.objects.create(name='My App', description='test',
+                                 url='http://test.com')
+        app.tags.add('test', 'app')
+        project = Project.objects.create(name='Test', description='test',
+                                         video_url='http://vimeo.com/12345')
+        project.tags.add('test', 'project')
+        test = Tag.objects.get(name='test')
+        items = test.taggit_taggeditem_items.all()
+        self.assertTrue(len(items), 2)
+
+
 class TestUtils(TestCase):
 
     def test_JSON_response_against_model(self):
