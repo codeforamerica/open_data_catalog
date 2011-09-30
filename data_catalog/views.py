@@ -12,17 +12,7 @@ from data_catalog.search import Search
 
 def home(request):
     """Render the home page."""
-    recent_apps = App.objects.order_by('-id')[:3]
-    recent_data = Data.objects.order_by('-id')[:3]
-    recent_projects = Project.objects.order_by('-id')[:3]
-    featured = Project.featured_project()
-    context = {
-        'recent_apps': recent_apps,
-        'recent_data': recent_data,
-        'recent_projects': recent_projects,
-        'featured': featured,
-    }
-    return render(request, 'home.html', context)
+    return render(request, 'home.html')
 
 
 def apps(request):
