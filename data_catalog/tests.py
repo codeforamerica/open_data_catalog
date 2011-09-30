@@ -312,8 +312,8 @@ class TestTagging(TestCase):
         test = Tag.objects.get(name='test')
         items = test.taggit_taggeditem_items.all()
         self.assertTrue(len(items), 2)
-        content_types = map(lambda item: str(item.content_type), items)
-        self.assertEquals(content_types, ['app', 'project'])
+        self.assertQuerysetEqual(items, ['app', 'project'],
+                                 lambda item: str(item.content_type))
 
 
 class TestUtils(TestCase):
