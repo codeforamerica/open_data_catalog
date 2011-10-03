@@ -8,7 +8,7 @@
                 <div class="description">
                   <strong><a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a></strong>
                   <p class="user"><small>Max Ogden</small></p>
-                  <p>{{ resource.description }}</p>
+                  <p>{{ resource.description|truncatewords:20 }}</p>
                 </div>
                 <hr />
                 <div class="stats"></div>
