@@ -146,11 +146,11 @@ INSTALLED_APPS = (
     'registration',
     'south',
     'taggit',
-    #'debug_toolbar',
+    'debug_toolbar',
 )
 
 # Setting needed for Django Debug Toolbar.
-#INTERNAL_IPS = ('127.0.0.1',)
+INTERNAL_IPS = ('127.0.0.1',)
 
 
 # A sample logging configuration. The only tangible logging

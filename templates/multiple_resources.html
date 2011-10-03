@@ -1,18 +1,18 @@
-{% for resource in results %}
-<div class="resource_container">
-    <p class="name">
-        <a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a>
-    </p>
-    {% if resource.organization %}
-    <p class="organization">{{ resource.organization }}</p>
-    {% endif %}
-    <div class="content clearfix">
-    {% if resource.organization %}
-        <img src="{{ MEDIA_URL }}{{ resource.image }}" alt="Screenshot of app" />
-    {% else %}
-        <img src="{{ MEDIA_URL }}{{ resource.image }}" alt="Default Image" />
-    {% endif %}
-        <p class="description">{{ resource.description }}</p>
+<div class="container resource-list">
+    <div class="row">
+        <div class="resources">
+            {% for resource in resources %}
+            <div class="individual span4">
+                <a href="/{{ path }}/{{ resource.slug }}" class="thumbnail" alt="Project Name"></a>
+                <div class="description">
+                  <strong><a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a></strong>
+                  <p class="user"><small>Max Ogden</small></p>
+                  <p>{{ resource.description }}</p>
+                </div>
+                <hr />
+                <div class="stats"></div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
-{% endfor %}
