@@ -173,19 +173,17 @@ class TestModels(TestCase):
         project = Project.objects.get(name='Test')
         self.assertEquals(str(project), 'Test')
 
-    def test_only_one_project_can_be_featured_at_a_time(self):
+    def test_more_than_one_project_can_be_featured(self):
         Project.objects.create(name='Test 1', description='Featured project',
                                video_url='http://vimeo.com/12345',
                                featured=True).save()
         featured = Project.objects.filter(featured=True)
-        self.assertQuerysetEqual(featured, ['Test 1'],
-                                 lambda project: project.name)
+        self.assertTrue(len(featured), 1)
         Project.objects.create(name='Test 2', description='Another featured',
                                video_url='http://vimeo.com/123456',
                                featured=True).save()
         featured = Project.objects.filter(featured=True)
-        self.assertQuerysetEqual(featured, ['Test 2'],
-                                 lambda project: project.name)
+        self.assertTrue(len(featured), 2)
 
     def test_a_supporter_does_not_need_links_and_projects(self):
         project = Project.objects.create(name='Test', description='Test cause.',
