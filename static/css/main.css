@@ -1,6 +1,6 @@
 
 .btn.yellow{background-color:#ffd305;background-repeat:repeat-x;background-image:-khtml-gradient(linear, left top, left bottom, from(#ffd305), to(#ffc100));background-image:-moz-linear-gradient(top, #ffd305, #ffc100);background-image:-ms-linear-gradient(top, #ffd305, #ffc100);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffd305), color-stop(100%, #ffc100));background-image:-webkit-linear-gradient(top, #ffd305, #ffc100);background-image:-o-linear-gradient(top, #ffd305, #ffc100);background-image:linear-gradient(top, #ffd305, #ffc100);text-shadow:0 -1px 0 rgba(255, 255, 255, 0.25);border-color:#ffd305 #ffd305 #a19a00;border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);}.btn.yellow:hover{background-position-y:15px;}
-.quickstart h6,.quickstart p{font-family:Georgia,"Times New Roman",Times,serif;font-style:italic;}
+.quickstart h6,.quickstart p{font-family:Georgia,"Times New Roman",Times,serif;font-style:italic;text-shadow:0 1px 1px rgba(255, 255, 255, 0.75);}
 .quickstart p{font-size:12px;}
 .quickstart [class*="span"]{height:64px;padding:11px 19px 12px;}
 .hero-unit h1,.hero-unit p{text-shadow:0 1px 1px rgba(255, 255, 255, 0.8);}
