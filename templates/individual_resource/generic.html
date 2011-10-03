@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block main %}
+
+{% include "breadcrumb.html" %}
+
 <div class="individual_resource">
     {% if resource.embed_url %}
     <iframe src="{{ resource.embed_url }}" class="youtube-player"

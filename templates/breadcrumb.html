@@ -3,7 +3,13 @@
         <ul class="breadcrumb">
             <li><a href="/">Home</a></li>
             <span class="divider">/</span>
+            {% if resource %}
+            <li><a href="/{{ breadcrumb }}">{{ breadcrumb|capfirst }}</a></li>
+            <span class="divider">/</span>
+            <li class="active">{{ resource.name }}</li>
+            {% else %}
             <li class="active">{{ breadcrumb|capfirst }}</li>
+            {% endif %}
         </ul>
     </div>
 </div>

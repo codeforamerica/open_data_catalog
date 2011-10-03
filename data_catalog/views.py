@@ -42,7 +42,9 @@ def create_context(request, model_name):
     tag = request.GET.get('tag')
     resources = Search.by_tag(model_name, tag)
     path = model_name.rstrip('s')
-    return {'resources': resources, 'path': path, 'breadcrumb': model_name}
+    context = {'resources': resources, 'path': path}
+    context = add_breadcrumb(model_name, context)
+    return context
 
 
 def community(request):
@@ -80,7 +82,18 @@ def individual_resource(request, resource_type, slug):
         template = 'individual_resource/project.html'
     else:
         template = 'individual_resource/generic.html'
+    context = add_breadcrumb(resource_type, context)
     return render(request, template, context)
+
+
+def add_breadcrumb(resource_type, context):
+    """Add a breadcrumb key/value pair to the context dictionary."""
+    if resource_type == 'project' or resource_type == 'app':
+        breadcrumb = resource_type + 's'
+    else:
+        breadcrumb = resource_type
+    context.update({'breadcrumb': breadcrumb})
+    return context
 
 
 @login_required
