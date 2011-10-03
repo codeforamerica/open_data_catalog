@@ -84,7 +84,7 @@
             filters = $('.filters'),
             scrollTop = self.scrollTop();
 
-        if (scrollTop > 110) {
+        if (scrollTop > 260) {
             filters.addClass('filters-scrolling');
         } else {
             filters.removeClass('filters-scrolling');

@@ -40,9 +40,9 @@ def create_context(request, model_name):
     reduced by a tag.
     """
     tag = request.GET.get('tag')
-    results = Search.by_tag(model_name, tag)
+    resources = Search.by_tag(model_name, tag)
     path = model_name.rstrip('s')
-    return {'results': results, 'path': path}
+    return {'resources': resources, 'path': path}
 
 
 def community(request):

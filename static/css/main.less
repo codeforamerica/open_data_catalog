@@ -1,60 +1,9 @@
 /* Functions and mixins via Twitter's LESS CSS files. */
 
-.border-radius(@radius: 5px) {
-  -webkit-border-radius: @radius;
-     -moz-border-radius: @radius;
-          border-radius: @radius;
-}
-
-.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
-  -webkit-box-shadow: @shadow;
-     -moz-box-shadow: @shadow;
-          box-shadow: @shadow;
-}
-
-.default_background_gradient{
-    background-color: rgba(0, 0, 0, 0.15);
-    background-repeat: repeat-x;
-    background-image: -khtml-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.15)));
-    background-image: -moz-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
-    background-image: -ms-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, rgba(0, 0, 0, 0.15)));
-    background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
-    background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='rgba(0, 0, 0, 0.15)', GradientType=0)";
-    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.15));
-}
-
-#gradient{
-    .vertical (@startColor: #555, @endColor: #333) {
-        background-color: @endColor;
-        background-repeat: repeat-x;
-        background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); // Konqueror
-        background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
-        background-image: -ms-linear-gradient(top, @startColor, @endColor); // IE10
-        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
-        background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
-        background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
-        background-image: linear-gradient(top, @startColor, @endColor); // The standard
-        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down
-    }
-}
+@import "bootstrap/mixins.less";
 
 
 /* Override some defaults */
-
-.btn.yellow-warning{
-    color: #404040;
-    .default_background_gradient;
-    background-color: #FFD75A;
-    margin-bottom: 18px;
-    padding: 8px 15px;
-    color: white;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    &:hover{
-        background-position-y: 15px;
-    }
-}
 
 .btn.yellow{
     background-color: #ffd305;
@@ -77,7 +26,8 @@
 .quickstart {
     h6, p{
         font-family: Georgia, "Times New Roman", Times, serif;
-        font-style: italic,
+        font-style: italic;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
     }
     p{
         font-size: 12px;
@@ -86,6 +36,15 @@
         height: 64px;
         padding: 11px 19px 12px;
     }
+}
+
+.breadcrumb-container{
+    margin-top: 25px;
+}
+.breadcrumb{
+    background: #fff;
+    border: none;
+    margin-bottom: 0;
 }
 
 .hero-unit{
@@ -284,9 +243,12 @@ footer{
 
 
 /* CSS for list of projects */
-.project-list{
-    margin-bottom: 75px;
+.resource-list{
+    min-height: 400px;
     position: relative;
+}
+.resources{
+    margin-bottom: 75px;
     .individual{
         .whitespace;
         border: 3px solid #eee;
@@ -305,12 +267,14 @@ footer{
         padding: 0 20px;
     }
 }
+
 .filters{
     .whitespace;
     position: absolute;
     right: 0;
     top: 0;
 }
+
 .filters-scrolling{
     margin-top: 55px;
     margin-left: 800px;

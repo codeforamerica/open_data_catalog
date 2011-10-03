@@ -81,13 +81,6 @@ class Project(CachingMixin, Resource):
             hosting_provider, video_id = None, None
         return hosting_provider, video_id
 
-    def only_one_featured(self):
-        """Only one Project instance can be `featured` at a time."""
-        if self.featured:
-            for project in Project.objects.filter(featured=True):
-                project.featured = False
-                project.save()
-
     @staticmethod
     def featured_project():
         """Return the currently featured project or None."""
@@ -103,7 +96,6 @@ class Project(CachingMixin, Resource):
         for the model.
         """
         self.save_embed_url()
-        self.only_one_featured()
         super(Project, self).save(**kwargs)
 
 
