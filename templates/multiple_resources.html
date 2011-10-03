@@ -1,6 +1,7 @@
 <div class="container resource-list">
     <div class="row">
         <div class="resources">
+
             {% for resource in resources %}
             <div class="individual span4">
                 <a href="/{{ path }}/{{ resource.slug }}" class="thumbnail" alt="Project Name"></a>
@@ -13,6 +14,43 @@
                 <div class="stats"></div>
             </div>
             {% endfor %}
+
+        </div>
+        <!-- End of resources -->
+
+        <div class="span3 filters">
+            <ul class="unstyled">
+                <li>
+                  <a href="#">Featured</a>
+                </li>
+                <li>
+                  <a href="#">Popular</a>
+                </li>
+                <li>
+                  <a href="#">Recent</a>
+                </li>
+
+                <hr />
+
+                <li>
+                  <strong>Categories</strong>
+                </li>
+                <li>
+                  <a href="#">Food</a>
+                </li>
+                <li>
+                  <a href="#">General Geography</a>
+                </li>
+                <li>
+                  <a href="#">Neighborhood Quality</a>
+                </li>
+                <li>
+                  <a href="#">Public Safety</a>
+                </li>
+                <li>
+                  <a href="#">Youth / Education</a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
