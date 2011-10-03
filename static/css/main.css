@@ -26,7 +26,10 @@
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 .quickstart p {
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  margin-bottom: 9px;
 }
 .quickstart [class*="span"] {
   height: 64px;
@@ -271,6 +274,11 @@ footer .unstyled {
   position: absolute;
   right: 0;
   top: 0;
+}
+.filters strong {
+  font-size: 13px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
 }
 .filters-scrolling {
   margin-top: 55px;
