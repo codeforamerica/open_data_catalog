@@ -42,7 +42,7 @@ def create_context(request, model_name):
     tag = request.GET.get('tag')
     resources = Search.by_tag(model_name, tag)
     path = model_name.rstrip('s')
-    return {'resources': resources, 'path': path}
+    return {'resources': resources, 'path': path, 'breadcrumb': model_name}
 
 
 def community(request):
