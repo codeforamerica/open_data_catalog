@@ -3,27 +3,7 @@
     <div class="container">
 
       <ul class="nav">
-        <li class="menu dropdown" data-dropdown="dropdown">
-          <a href="#" class="menu">Login</a>
-          <ul class="menu-dropdown span5">
-            <li class="sign-in">
-              <form action="/login/" method="POST">
-                {% csrf_token %}
-                <fieldset>
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" value="" />
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" value="" />
-                <input type="submit" class="btn" value="Sign in" id="sign-in-btn"/>
-                </fieldset>
-              </form>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <a href="/register">Don't have an account?</a>
-            </li>
-          </ul>
-        </li>
+        {% include "header/login.html" %}
       </ul>
 
       <div class="pull-right">
