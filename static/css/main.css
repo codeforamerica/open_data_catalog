@@ -94,6 +94,12 @@ footer strong {
   background-image: linear-gradient(top, #eeeeee, #ffffff);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0);
 }
+span.gravatar {
+  display: inline-block;
+  height: 19px;
+  margin-right: 12px;
+  margin-bottom: -5px;
+}
 #search-bar {
   position: relative;
 }

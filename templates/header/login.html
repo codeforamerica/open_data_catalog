@@ -1,0 +1,37 @@
+<li class="menu dropdown" data-dropdown="dropdown">
+{% if user.is_authenticated %}
+{% load gravatar %}
+<a href="/logout/" class="menu">
+  <span class="gravatar">{% gravatar_img_for_email user.email 20 %}</span> {{ user.username }}
+</a>
+  <ul class="menu-dropdown span5">
+    <li>
+      <a href="/logout/?next=/">Logout</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="/register">Don't have an account?</a>
+    </li>
+  </ul>
+{% else %}
+  <a href="/login/" class="menu">Login</a>
+  <ul class="menu-dropdown span5">
+    <li class="sign-in">
+      <form action="/login/" method="POST">
+        {% csrf_token %}
+        <fieldset>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" value="" />
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" value="" />
+        <input type="submit" class="btn" value="Sign in" id="sign-in-btn"/>
+        </fieldset>
+      </form>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="/register">Don't have an account?</a>
+    </li>
+  </ul>
+{% endif %}
+</li>
