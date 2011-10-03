@@ -3,7 +3,7 @@
 import os
 
 CITY_NAME = 'Boston'
-CATALOG_URL = 'opendataboston.org'
+CATALOG_URL = 'buildingboston.org'
 
 
 # Number of days for the account activation registration window.
