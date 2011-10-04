@@ -8,30 +8,41 @@
     <div class="row">
 
         <div class="span12 individual_resource">
+            <h1 class="name"><a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a></h1>
             {% if resource.embed_url %}
             <iframe src="{{ resource.embed_url }}" class="youtube-player"
                     height="385" width="640" frameborder="0"></iframe>
             {% endif %}
             <div class="content">
-                <p class="name"><a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a></p>
-                <p class="organization">{{ resource.organization }}</p>
+              <section>
+                <p>
+                  <strong>Description</strong>
+                </p>
                 <p class="description">{{ resource.description }}</p>
-                <ul class="breadcrumb tags">
-                {% for tag in resource.tags.all %}
-                  <li>{{ tag.name }}</li>
-                  <span class="divider">/</span>
-                {% endfor %}
-                </ul>
+              </section>
+              <section>
+                <p>
+                  <strong>Organization</strong>
+                </p>
+                <p class="organization">{{ resource.organization }}</p>
+              </section>
+              <ul class="breadcrumb tags">
+              {% for tag in resource.tags.all %}
+                <li>{{ tag.name }}</li>
+                <span class="divider">/</span>
+              {% endfor %}
+              </ul>
             </div>
-            <div class="support">
-                {% include "support/support_form.html" %}
-            </div>
-            <div class="supporters">
-                {% load gravatar %}
-                {% for supporter in supporters %}
-                    {% gravatar_img_for_user supporter.user %}
-                {% endfor %}
-            </div>
+        </div>
+
+        <div class="support span4">
+            {% include "support/support_form.html" %}
+        </div>
+        <div class="supporters">
+            {% load gravatar %}
+            {% for supporter in supporters %}
+                {% gravatar_img_for_user supporter.user %}
+            {% endfor %}
         </div>
 
     </div>
