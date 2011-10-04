@@ -151,7 +151,7 @@ def search(request):
         context = {'results': None}
     else:
         results = Search.find_resources(query)
-        context = {'results': results}
+        context = results
     return render(request, 'search.html', context)
 
 
