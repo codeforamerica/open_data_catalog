@@ -16,6 +16,12 @@
                 <p class="name"><a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a></p>
                 <p class="organization">{{ resource.organization }}</p>
                 <p class="description">{{ resource.description }}</p>
+                <ul class="breadcrumb tags">
+                {% for tag in resource.tags.all %}
+                  <li>{{ tag.name }}</li>
+                  <span class="divider">/</span>
+                {% endfor %}
+                </ul>
             </div>
             <div class="support">
                 {% include "support/support_form.html" %}
