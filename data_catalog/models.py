@@ -7,6 +7,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from autoslug import AutoSlugField
 from taggit.managers import TaggableManager
+from taggit.models import Tag
 from caching.base import CachingMixin, CachingManager
 
 
