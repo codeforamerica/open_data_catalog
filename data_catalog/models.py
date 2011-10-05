@@ -8,7 +8,6 @@ from django.contrib.auth.models import User
 from autoslug import AutoSlugField
 from taggit.managers import TaggableManager
 from taggit.models import Tag
-from caching.base import CachingMixin, CachingManager
 
 
 class Resource(models.Model):
@@ -39,14 +38,13 @@ class Data(Resource):
         verbose_name_plural = 'Data'
 
 
-class Project(CachingMixin, Resource):
+class Project(Resource):
     """An individual project."""
     organization = models.CharField(max_length=150)
     video_url = models.URLField('Video URL', verify_exists=False)
     embed_url = models.URLField('Embed URL', verify_exists=False, blank=True)
     image = models.ImageField(upload_to='projects', blank=True, null=True)
     featured = models.BooleanField()
-    objects = CachingManager()
 
     def save_embed_url(self):
         """Code generated to embed a video -- either from YouTube or Vimeo."""

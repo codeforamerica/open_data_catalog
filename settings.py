@@ -142,8 +142,13 @@ INSTALLED_APPS = (
     'registration',
     'south',
     'taggit',
+    'haystack',
     #'debug_toolbar',
 )
+
+HAYSTACK_SITECONF = 'search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = 'whoosh/site_index'
 
 # Setting needed for Django Debug Toolbar.
 # INTERNAL_IPS = ('127.0.0.1',)

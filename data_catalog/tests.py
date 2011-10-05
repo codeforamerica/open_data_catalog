@@ -9,7 +9,6 @@ from mock import patch, Mock
 from data_catalog.models import App, Data, Project, Supporter
 from data_catalog.context_processors import settings_context
 from data_catalog.forms import AppForm, ProjectForm
-from data_catalog.search import Search
 from data_catalog.utils import JSONResponse
 
 
@@ -80,16 +79,12 @@ class TestViews(TestCase):
         response = self.client.get('/humans.txt')
         self.assertEquals(response.status_code, 200)
 
-    @patch('data_catalog.views.Search')
-    def test_search_works_for_queries(self, model):
+    def test_search_works_for_queries(self):
         response = self.client.get('/search?q=test')
-        self.assertTrue(model.method_calls)
         self.assertEquals(response.status_code, 200)
 
-    @patch('data_catalog.views.Search')
-    def test_search_works_without_query(self, model):
+    def test_search_works_without_query(self):
         response = self.client.get('/search?q=')
-        self.assertFalse(model.method_calls)
         self.assertEquals(response.status_code, 200)
 
     def test_autocomplete_works_and_returns_JSON(self):
@@ -129,7 +124,7 @@ class TestContextProcessors(TestCase):
         request = Mock()
         settings = settings_context(request)['settings']
         self.assertEqual(settings['CITY_NAME'], 'Boston')
-        self.assertEqual(settings['CATALOG_URL'], 'opendataboston.org')
+        self.assertEqual(settings['CATALOG_URL'], 'buildingboston.org')
 
 
 class TestModels(TestCase):
@@ -274,28 +269,6 @@ class TestSearch(TestCase):
         app = App.objects.create(name='Test', description='Test', url='test.com')
         app.tags.add('GIS')
         app.save()
-        results = Search.find_resources('gis')
-        self.assertFalse(results['data'])
-        self.assertFalse(results['projects'])
-        self.assertQuerysetEqual(results['apps'], ['Test'],
-                                 lambda app: app.name)
-
-    def test_tag_search_resources_for_nonexisting_tag(self):
-        results = Search.find_resources('foo')
-        self.assertFalse(results['apps'])
-        self.assertFalse(results['data'])
-        self.assertFalse(results['projects'])
-
-    def test_tag_search_resources_can_find_app_by_name(self):
-        App.objects.create(name='Test data', description='test',
-                           url='http://test.com').save()
-        results = Search.find_resources('data')
-        self.assertQuerysetEqual(results['apps'], ['Test data'],
-                                 lambda app: app.name)
-
-    def test_search_by_tag_for_unknown_related_model(self):
-        results = Search.by_tag('test_model', 'tag')
-        self.assertEquals(results, None)
 
 
 class TestTagging(TestCase):

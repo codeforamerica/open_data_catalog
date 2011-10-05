@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+{% if query %}
+{% for result in page.object_list %}
+    <p>{{ result.object.name }}</p>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

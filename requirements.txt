@@ -7,7 +7,13 @@ django-autoslug
 django-taggit
 django-gravatar
 django-debug-toolbar
-django-cache-machine
+
+
+# ---------------------
+# Search
+# ---------------------
+django-haystack
+whoosh
 
 
 # ---------------------

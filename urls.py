@@ -3,7 +3,6 @@
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
-from django.views.generic.simple import redirect_to
 from django.views.generic.simple import direct_to_template
 
 admin.autodiscover()
@@ -24,7 +23,7 @@ urlpatterns = patterns('data_catalog.views',
          'individual_resource'),
     url(r'^community/(?P<username>[-\w]+)/$', 'community_member'),
     url(r'^thanks/$', 'thanks'),
-    url(r'^search$', 'search'),
+    url(r'^search$', include('haystack.urls')),
     url(r'^autocomplete$', 'autocomplete'),
     url(r'^submit/(?P<resource>app|data|project)$', 'submit_resource'),
     url(r'^(?P<name>\w+)\.txt$', 'send_text_file'),

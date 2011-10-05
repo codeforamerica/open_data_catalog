@@ -7,7 +7,6 @@ from taggit.models import Tag
 from data_catalog.forms import AppForm, DataForm, ProjectForm, SupportForm
 from data_catalog.models import App, Data, Project, Supporter, User
 from data_catalog.utils import JSONResponse
-from data_catalog.search import Search
 
 
 def home(request):
@@ -40,9 +39,8 @@ def create_context(request, model_name):
     reduced by a tag.
     """
     tag = request.GET.get('tag')
-    resources = Search.by_tag(model_name, tag)
     path = model_name.rstrip('s')
-    context = {'resources': resources, 'path': path}
+    context = {'path': path}
     context = add_breadcrumb(model_name, context)
     return context
 
@@ -142,17 +140,6 @@ def support_project(request, project_slug):
                 url = '/project/%s' % (project_slug)
                 return redirect(url)
     return redirect(support)
-
-
-def search(request):
-    """Handle search requests."""
-    query = request.GET.get('q')
-    if not query:
-        context = {'results': None}
-    else:
-        results = Search.find_resources(query)
-        context = results
-    return render(request, 'search.html', context)
 
 
 def autocomplete(request):
