@@ -60,6 +60,18 @@ it to Tulsa).
     CATALOG_URL = 'opendatatulsa.org'
 
 
+### Creating the Search Index
+
+In order to use Haystack for search, you'll need to run the following
+commands from the command line:
+
+    $ mkdir whoosh
+    $ python manage.py rebuild_index
+
+This should create a new search index for your local catalog -- that way
+you can search for projects, apps, etc.
+
+
 ### Restarting the Server
 
 If you've closed your terminal -- and therefore killed the running
