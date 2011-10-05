@@ -39,8 +39,12 @@ def create_context(request, model_name):
     reduced by a tag.
     """
     tag = request.GET.get('tag')
+    available_models = {'apps': App, 'data': Data, 'projects': Project}
+    model = available_models[model_name]
+    # TODO: Need to filter by tags if tag present.
+    resources = model.objects.all()
     path = model_name.rstrip('s')
-    context = {'path': path}
+    context = {'path': path, 'resources': resources}
     context = add_breadcrumb(model_name, context)
     return context
 
