@@ -88,6 +88,26 @@ def individual_resource(request, resource_type, slug):
     return render(request, template, context)
 
 
+def edit_project(request, slug=None):
+    """
+    Edit the data associated with a specific model instance with a
+    model form.
+    """
+    if request.method == 'POST':
+        project = Project.objects.get(name=request.POST['name'])
+        form = ProjectForm(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+        return redirect(individual_resource, resource_type='project',
+                        slug=project.slug)
+    elif not slug:
+        return redirect(projects)
+    project = Project.objects.get(slug=slug)
+    form = ProjectForm(instance=project)
+    context = {'form': form}
+    return render(request, 'edit/project.html', context)
+
+
 def add_breadcrumb(resource_type, context):
     """Add a breadcrumb key/value pair to the context dictionary."""
     if resource_type == 'project' or resource_type == 'app':
