@@ -77,7 +77,11 @@ def individual_resource(request, resource_type, slug):
     available_resources = {'app': App, 'data': Data, 'project': Project}
     model = available_resources[resource_type]
     resource = get_object_or_404(model, slug=slug)
-    context = {'resource': resource, 'path': resource_type}
+    context = {
+        'resource': resource,
+        'path': resource_type,
+        'resource_type': resource_type
+    }
     if resource_type == 'project':
         supporters = resource.supporters.all()
         context.update({'supporters': supporters})
@@ -88,22 +92,28 @@ def individual_resource(request, resource_type, slug):
     return render(request, template, context)
 
 
-def edit_project(request, slug=None):
+def edit_resource(request, resource_type, slug=None):
     """
     Edit the data associated with a specific model instance with a
     model form.
     """
+    available_resources = {
+        'app': (App, AppForm),
+        'data': Data,
+        'project': (Project, ProjectForm)
+    }
+    model, model_form = available_resources[resource_type]
     if request.method == 'POST':
-        project = Project.objects.get(name=request.POST['name'])
-        form = ProjectForm(request.POST, instance=project)
+        model_instance = model.objects.get(name=request.POST['name'])
+        form = model_form(request.POST, instance=model_instance)
         if form.is_valid():
             form.save()
-        return redirect(individual_resource, resource_type='project',
-                        slug=project.slug)
+        return redirect(individual_resource, resource_type=resource_type,
+                        slug=model_instance.slug)
     elif not slug:
         return redirect(projects)
-    project = Project.objects.get(slug=slug)
-    form = ProjectForm(instance=project)
+    model_instance = model.objects.get(name=slug)
+    form = model_form(instance=model_instance)
     context = {'form': form}
     return render(request, 'edit/project.html', context)
 
