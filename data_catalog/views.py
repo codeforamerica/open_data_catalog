@@ -99,11 +99,12 @@ def edit_resource(request, resource_type, slug=None):
     """
     available_resources = {
         'app': (App, AppForm),
-        'data': Data,
-        'project': (Project, ProjectForm)
+        'data': (Data, DataForm),
+        'project': (Project, ProjectForm),
     }
     model, model_form = available_resources[resource_type]
     if request.method == 'POST':
+        # TODO: Check that the user created the project.
         model_instance = model.objects.get(name=request.POST['name'])
         form = model_form(request.POST, instance=model_instance)
         if form.is_valid():
@@ -111,8 +112,9 @@ def edit_resource(request, resource_type, slug=None):
         return redirect(individual_resource, resource_type=resource_type,
                         slug=model_instance.slug)
     elif not slug:
+        # Then the project does not exist.
         return redirect(projects)
-    model_instance = model.objects.get(name=slug)
+    model_instance = model.objects.get(slug=slug)
     form = model_form(instance=model_instance)
     context = {'form': form}
     return render(request, 'edit/project.html', context)
