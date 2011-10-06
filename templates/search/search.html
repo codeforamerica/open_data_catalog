@@ -1,18 +1,23 @@
 {% extends "base.html" %}
 
 {% block main %}
+<div class="container">
+  <div class="row">
 
-{% if query %}
-<ul class="search-results">
-{% for result in page.object_list %}
-  <a href="{{ result.object.get_absolute_url }}">
-    <div class="individual-result">
-      <p>{{ result.object.name }}</p>
-      <p>{{ result.object.description }}</p>
-    </div>
-  </a>
-{% endfor %}
-</ul>
-{% endif %}
+    {% if query %}
+    <ul class="search-results unstyled whitespace">
+    {% for result in page.object_list %}
+      <a href="{{ result.object.get_absolute_url }}">
+        <li class="individual-result">
+          <p>{{ result.object.name }}</p>
+          <p>{{ result.object.description }}</p>
+        </li>
+      </a>
+    {% endfor %}
+    {% endif %}
+
+    </ul>
+  </div>
+</div>
 
 {% endblock %}
