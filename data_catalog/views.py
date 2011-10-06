@@ -85,9 +85,7 @@ def individual_resource(request, resource_type, slug):
     if resource_type == 'project':
         supporters = resource.supporters.all()
         context.update({'supporters': supporters})
-        template = 'individual_resource/project.html'
-    else:
-        template = 'individual_resource/generic.html'
+    template = 'individual_resource/resource.html'
     context = add_breadcrumb(resource_type, context)
     return render(request, template, context)
 

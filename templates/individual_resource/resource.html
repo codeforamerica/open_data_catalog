@@ -28,7 +28,9 @@
               </section>
               <ul class="breadcrumb tags">
               {% for tag in resource.tags.all %}
-                <li>{{ tag.name }}</li>
+              <li>
+                <a href="/search?q={{ tag.name|urlencode }}" class="tag">{{ tag.name }}</a>
+              </li>
                 <span class="divider">/</span>
               {% endfor %}
               </ul>

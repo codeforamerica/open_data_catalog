@@ -23,16 +23,22 @@ class Resource(models.Model):
     def __unicode__(self):
         return self.name
 
+    def get_absolute_url(self):
+        """Return the absolute URL for the model."""
+        return "/%s/%s" % (self.type, self.slug)
+
 
 class App(Resource):
     """A model for a submitted application."""
     url = models.URLField('URL', verify_exists=False)
     image = models.ImageField(upload_to='apps', blank=True, null=True)
+    type = 'app'
 
 
 class Data(Resource):
     """A model for submitted data."""
     url = models.URLField('URL', verify_exists=False, blank=True)
+    type = 'data'
 
     class Meta:
         verbose_name_plural = 'Data'
@@ -45,6 +51,7 @@ class Project(Resource):
     embed_url = models.URLField('Embed URL', verify_exists=False, blank=True)
     image = models.ImageField(upload_to='projects', blank=True, null=True)
     featured = models.BooleanField()
+    type = 'project'
 
     def save_embed_url(self):
         """Code generated to embed a video -- either from YouTube or Vimeo."""
