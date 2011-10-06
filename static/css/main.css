@@ -69,6 +69,12 @@
 footer strong {
   color: #999;
 }
+iframe {
+  z-index: 5;
+}
+.topbar {
+  z-index: 100;
+}
 /* Let the styling begin... */
 .menu-dropdown .sign-in {
   display: inline-block;
