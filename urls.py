@@ -11,6 +11,7 @@ admin.autodiscover()
 urlpatterns = patterns('data_catalog.views',
     url(r'^$', 'home'),
     url(r'^about$', direct_to_template, {'template': 'about.html'}),
+    url(r'^contact$', direct_to_template, {'template': 'contact.html'}),
     url(r'^faq$', direct_to_template, {'template': 'faq.html'}),
     url(r'^apps$', 'apps'),
     url(r'^community$', 'community'),
