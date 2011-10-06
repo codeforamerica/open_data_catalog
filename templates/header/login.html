@@ -10,14 +10,14 @@
     </li>
     <li class="divider"></li>
     <li>
-      <a href="/logout/?next=/">Logout</a>
+      <a href="/logout/?next={{ request.path }}">Logout</a>
     </li>
   </ul>
 {% else %}
   <a href="/login/" class="menu">Login</a>
   <ul class="menu-dropdown span5">
     <li class="sign-in">
-      <form action="/login/" method="POST">
+      <form action="/login/?next={{ request.path }}" method="POST">
         {% csrf_token %}
         <fieldset>
         <label for="username">Username</label>

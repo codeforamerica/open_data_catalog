@@ -28,6 +28,7 @@ TEMPLATE_CONTEXT_SETTINGS = (
 # Append the `settings_context` to make the `settings` template
 # namespace available.
 TEMPLATE_CONTEXT_PROCESSORS += (
+    'django.core.context_processors.request',
     'data_catalog.context_processors.settings_context',
 )
 
