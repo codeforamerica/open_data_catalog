@@ -92,6 +92,16 @@
     });
 
 
+    // Allows iframe to abide by z-index CSS.
+    var iframe = $('iframe');
+
+    iframe.each(function() {
+        var self = $(this),
+            src = self.attr('src');
+
+        self.attr('src', src + '?wmode=transparent');
+    });
+
 
     // Connect namespace with window object.
     window.ns = ns;
