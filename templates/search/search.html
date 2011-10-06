@@ -3,9 +3,16 @@
 {% block main %}
 
 {% if query %}
+<ul class="search-results">
 {% for result in page.object_list %}
-    <p>{{ result.object.name }}</p>
+  <a href="{{ result.object.get_absolute_url }}">
+    <div class="individual-result">
+      <p>{{ result.object.name }}</p>
+      <p>{{ result.object.description }}</p>
+    </div>
+  </a>
 {% endfor %}
+</ul>
 {% endif %}
 
 {% endblock %}
