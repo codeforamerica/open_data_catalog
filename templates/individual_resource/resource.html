@@ -37,15 +37,19 @@
             </div>
         </div>
 
-        <div class="support span4">
-            {% include "support/support_form.html" %}
-            <a href="/edit/project/{{ resource.slug }}" class="btn">Edit</a>
-        </div>
-        <div class="supporters">
-            {% load gravatar %}
-            {% for supporter in supporters %}
-                {% gravatar_img_for_user supporter.user %}
-            {% endfor %}
+        <div class="span4">
+          <div class="support">
+              {% include "support/support_form.html" %}
+              <a href="/edit/project/{{ resource.slug }}" class="btn">Edit</a>
+          </div>
+          <div class="supporters">
+              {% load gravatar %}
+              {% for supporter in supporters %}
+                <div class="individual_supporter">
+                  {% gravatar_img_for_user supporter.user %}
+                </div>
+              {% endfor %}
+          </div>
         </div>
 
     </div>
