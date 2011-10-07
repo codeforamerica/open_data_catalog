@@ -75,7 +75,7 @@ iframe {
   padding: 0 5px;
 }
 .sign-in form input {
-  width: 90%;
+  width: 100%;
 }
 .sign-in form label {
   color: #fff;
