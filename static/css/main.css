@@ -12,7 +12,7 @@ iframe{z-index:5;}
 .topbar{z-index:100;}
 .menu-dropdown .sign-in{display:inline-block;}
 .sign-in form fieldset{margin-bottom:10px;padding:0 5px;}
-.sign-in form input{width:100%;}
+.sign-in form input{width:90%;}
 .sign-in form label{color:#fff;padding-left:5px;text-align:left;}
 .sign-in form #username,.sign-in form #password{margin:0 0 10px;}
 .sign-in form .btn{color:#404040;float:right;margin-top:10px;padding:7px;width:40%;}
@@ -44,3 +44,7 @@ footer .unstyled{margin-left:35%;}
 .filters-scrolling{margin-top:55px;margin-left:800px;margin-bottom:75px;position:fixed;right:auto;}
 .individual_resource{margin-top:40px;}.individual_resource h1{font-family:Oswald,Helvetica Neue,sans-serif;text-transform:uppercase;}
 .submit_form{text-align:auto;margin-top:40px;margin-left:330px;}
+.faq p{text-align:justify;}
+.registration_form label{display:block;padding:5px 0;text-align:left;text-transform:uppercase;width:100%;}
+.registration_form #id_username,.registration_form #id_password{width:97%;}
+.registration_form .submit.btn{float:right;margin-top:15px;padding:7px 0;width:40%;}
