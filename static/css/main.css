@@ -46,5 +46,5 @@ footer .unstyled{margin-left:35%;}
 .submit_form{text-align:auto;margin-top:40px;margin-left:330px;}
 .faq p{text-align:justify;}
 .registration_form label{display:block;padding:5px 0;text-align:left;text-transform:uppercase;width:100%;}
-.registration_form #id_username,.registration_form #id_password{width:97%;}
+.registration_form input[type="text"],.registration_form input[type="password"]{width:97%;}
 .registration_form .submit.btn{float:right;margin-top:15px;padding:7px 0;width:40%;}

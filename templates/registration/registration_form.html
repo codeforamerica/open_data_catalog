@@ -6,14 +6,23 @@
           {% include "breadcrumb.html" %}
     {% endwith %}
 
-<div class="gravatar">
-    <p>Here we should talk about using <a href="http://en.gravatar.com">Gravatar for user avatars</a>.</p> 
-</div>
-<div class="registration">
-    <form action="." method="POST" class="registration_form">
+<div class="container">
+
+  <div class="row">
+    <div class="span6 offset5 gravatar">
+        <p>Here we should talk about using <a href="http://en.gravatar.com">Gravatar for user avatars</a>.</p> 
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6 offset5 whitespace">
+      <form action="." method="POST" class="registration_form">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" class="submit" value="Submit" />
-    </form>
+        <input type="submit" class="submit btn yellow" value="Submit" />
+      </form>
+    </div>
+  </div>
+
 </div>
 {% endblock %}
