@@ -6,6 +6,10 @@
 
 /* Override some defaults */
 
+textarea{
+    resize: vertical;
+}
+
 .btn.yellow{
     background-color: #ffd305;
     background-repeat: repeat-x;
@@ -44,9 +48,12 @@
         text-align: center;
         font-style: italic;
     }
-    a:hover{
-        div{background: rgba(0, 0, 0, .03);}
-        h6{ text-shadow: 0 -1px -1px rgba(255, 255, 255, .25);}
+    a{
+        cursor: pointer;
+        &:hover{
+            div{ background: rgba(0, 0, 0, .03); }
+            h6{ text-shadow: 0 -1px -1px rgba(255, 255, 255, .25); }
+        }
     }
 }
 
@@ -368,5 +375,15 @@ footer{
         margin-top: 15px;
         padding: 7px 0;
         width: 40%;
+    }
+}
+
+.contact-form{
+    .registration_form;
+    label{
+        margin: 10px 0 0;
+    }
+    textarea{
+        width: 97%;
     }
 }
