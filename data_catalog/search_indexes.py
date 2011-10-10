@@ -10,10 +10,16 @@ class AppIndex(RealTimeSearchIndex):
     text = CharField(document=True, use_template=True)
 
 
+class DataIndex(RealTimeSearchIndex):
+    """A search index for the Data model."""
+    text = CharField(document=True, use_template=True)
+
+
 class ProjectIndex(RealTimeSearchIndex):
     """A search index for the Project model."""
     text = CharField(document=True, use_template=True)
 
 
 site.register(App, AppIndex)
+site.register(Data, DataIndex)
 site.register(Project, ProjectIndex)
