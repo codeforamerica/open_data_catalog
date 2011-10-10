@@ -32,7 +32,9 @@
 
           {% for resource in resources %}
           <div class="span12 individual {% cycle 'plain' 'zebra-striped' %}">
-            <div class="placeholder"></div>
+            <a href="/{{ path }}/{{ resource.slug }}">
+              <div class="placeholder"></div>
+            </a>
             <div class="description">
               <a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a>
               <p class="user"><small>{{ resource.user.username }}</small></p>
