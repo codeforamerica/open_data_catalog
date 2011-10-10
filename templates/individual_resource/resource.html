@@ -57,6 +57,12 @@
               {% endfor %}
           </div>
         </div>
+        {% else %}
+        <div class="span4 edit-btn">
+            {% if user.is_authenticated %}
+            <a href="/edit/{{ path }}/{{ resource.slug }}" class="btn large edit">Edit</a>
+            {% endif %}
+        </div>
         {% endif %}
 
     </div>

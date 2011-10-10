@@ -51,6 +51,7 @@ footer .unstyled{margin-left:35%;}
 .individual_resource .description{width:650px;}
 .support_project{margin-top:45px;}.support_project .btn{display:block;margin:0 auto 18px;}
 .edit{display:block;margin:0 auto 18px;text-align:center;width:180px;}
+.edit-btn{margin-top:45px;}
 .supporters{background:#eee;height:500px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
 .tags{margin-left:0;padding-left:0;}.tags .divider:last-child{display:none;}
 .submit_form{text-align:auto;margin-top:40px;margin-left:330px;}
