@@ -30,7 +30,7 @@
         {% else %}
         <div class="list-view">
 
-          {% for resource in resources %}
+          {% for resource in resources.object_list %}
           <div class="span12 individual {% cycle 'plain' 'zebra-striped' %}">
             <a href="/{{ path }}/{{ resource.slug }}">
               <div class="placeholder"></div>
