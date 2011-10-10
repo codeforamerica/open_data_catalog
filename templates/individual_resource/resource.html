@@ -39,6 +39,7 @@
             </div>
         </div>
 
+        {% if path == "project" %}
         <div class="span4">
           <div class="support">
               {% include "support/support_form.html" %}
@@ -46,6 +47,7 @@
               <a href="/edit/{{ path }}/{{ resource.slug }}" class="btn large edit">Edit</a>
               {% endif %}
           </div>
+          <hr />
           <div class="supporters">
               {% load gravatar %}
               {% for supporter in supporters %}
@@ -55,6 +57,7 @@
               {% endfor %}
           </div>
         </div>
+        {% endif %}
 
     </div>
 </div>
