@@ -1,5 +1,6 @@
 <li class="menu dropdown" data-dropdown="dropdown">
 {% if user.is_authenticated %}
+
 {% load gravatar %}
 <a href="/logout/" class="menu">
   <span class="gravatar">{% gravatar_img_for_email user.email 20 %}</span> {{ user.username }}
@@ -13,7 +14,9 @@
       <a href="/logout/?next={{ request.path }}">Logout</a>
     </li>
   </ul>
+
 {% else %}
+
   <a href="/login/" class="menu">Login</a>
   <ul class="menu-dropdown span5">
     <li class="sign-in">
@@ -30,8 +33,13 @@
     </li>
     <li class="divider"></li>
     <li>
+      <a href="/password/reset/">Forgot your password?</a>
+    </li>
+    <li class="divider"></li>
+    <li>
       <a href="/register">Don't have an account?</a>
     </li>
   </ul>
+
 {% endif %}
 </li>

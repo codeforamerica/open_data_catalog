@@ -6,7 +6,14 @@
 
             {% for resource in resources %}
             <div class="individual span4">
-                <a href="/{{ path }}/{{ resource.slug }}" class="thumbnail" alt="Project Name"></a>
+              <a href="/{{ path }}/{{ resource.slug }}" alt="Project Name">
+                {% if resource.image %}
+                <img class="actual-thumbnail" src="/media/{{ resource.image }}"
+                     alt="A thumbnail picture of {{ resource.name }}" />
+                {% else %}
+                <div class="thumbnail"></div>
+                {% endif %}
+              </a>
                 <div class="description">
                   <strong><a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a></strong>
                   <p class="user"><small>Max Ogden</small></p>
