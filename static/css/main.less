@@ -367,11 +367,24 @@ footer{
     .individual{
         height: 105px;
         .description{
-            font: 20px Oswald, Helvetica Neue, sans-serif;
             float: left;
             margin: 10px 0 0 25px;
             text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
             width: 400px;
+        }
+        p{
+            font: 20px Oswald, Helvetica Neue, sans-serif;
+        }
+        .tags{
+            border: none;
+            background: none;
+            .box-shadow(none);
+        }
+        .tag{
+            color: #aaa;
+            &:hover{
+                color: @yellow;
+            }
         }
         text-transform: uppercase;
     }

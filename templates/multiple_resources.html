@@ -36,8 +36,17 @@
               <div class="placeholder"></div>
             </a>
             <div class="description">
-              <a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a>
-              <p class="user"><small>{{ resource.user.username }}</small></p>
+              <p>
+                <a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a>
+              </p>
+              <ul class="breadcrumb tags">
+              {% for tag in resource.tags.all %}
+              <li>
+                <a href="/search?q={{ tag.name|urlencode }}" class="tag">{{ tag.name }}</a>
+              </li>
+                <span class="divider">/</span>
+              {% endfor %}
+              </ul>
             </div>
             <a href="/{{ path }}/{{ resource.slug }}"
                class="btn float-right"> Details </a>

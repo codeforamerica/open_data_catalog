@@ -48,7 +48,10 @@ footer .unstyled{margin-left:35%;}
 .resources .actual-thumbnail{display:block;height:150px;margin:20px auto;width:180px;}
 .resources .description{padding:0 20px;}.resources .description .snippet{height:75px;text-overflow:ellipsis;}
 .list-view{margin-top:40px;}.list-view .placeholder{background:url(/static/img/placeholder_small.png) no-repeat center center;float:left;height:75px;margin:15px 0 0 15px;width:90px;}
-.list-view .individual{height:105px;text-transform:uppercase;}.list-view .individual .description{font:20px Oswald,Helvetica Neue,sans-serif;float:left;margin:10px 0 0 25px;text-shadow:0 1px 1px rgba(255, 255, 255, 0.5);width:400px;}
+.list-view .individual{height:105px;text-transform:uppercase;}.list-view .individual .description{float:left;margin:10px 0 0 25px;text-shadow:0 1px 1px rgba(255, 255, 255, 0.5);width:400px;}
+.list-view .individual p{font:20px Oswald,Helvetica Neue,sans-serif;}
+.list-view .individual .tags{border:none;background:none;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
+.list-view .individual .tag{color:#aaa;}.list-view .individual .tag:hover{color:#ffd305;}
 .list-view .btn{display:block;float:right;margin:10px 25px 0 0;}
 .list-view .zebra-striped{background-color:#eeeeee;background-repeat:repeat-x;background-image:-khtml-gradient(linear, left top, left bottom, from(#f9f9f9), to(#eeeeee));background-image:-moz-linear-gradient(top, #f9f9f9, #eeeeee);background-image:-ms-linear-gradient(top, #f9f9f9, #eeeeee);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #eeeeee));background-image:-webkit-linear-gradient(top, #f9f9f9, #eeeeee);background-image:-o-linear-gradient(top, #f9f9f9, #eeeeee);background-image:linear-gradient(top, #f9f9f9, #eeeeee);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#eeeeee', GradientType=0);}
 .filters{margin-top:40px;position:absolute;right:0;top:0;}.filters strong{font-size:13px;font-family:'Oswald',sans-serif;text-transform:uppercase;}
