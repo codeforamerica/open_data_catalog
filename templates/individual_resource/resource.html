@@ -40,6 +40,7 @@
         </div>
 
         {% if path == "project" %}
+
         <div class="span4">
           <div class="support">
               {% include "support/support_form.html" %}
@@ -53,11 +54,14 @@
               {% for supporter in supporters %}
                 <div class="individual_supporter">
                   {% gravatar_img_for_user supporter.user %}
+                  <p class="username">{{ supporter.user.username }}</p>
                 </div>
               {% endfor %}
           </div>
         </div>
+
         {% else %}
+
         <div class="span4 edit-btn">
             {% if user.is_authenticated %}
             <a href="/edit/{{ path }}/{{ resource.slug }}" class="btn large edit">Edit</a>

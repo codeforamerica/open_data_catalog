@@ -52,9 +52,13 @@ footer .unstyled{margin-left:35%;}
 .support_project{margin-top:45px;}.support_project .btn{display:block;margin:0 auto 18px;}
 .edit{display:block;margin:0 auto 18px;text-align:center;width:180px;}
 .edit-btn{margin-top:45px;}
-.supporters{background:#eee;height:500px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
+.supporters{background:#eee;height:500px;padding:20px 0;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}.supporters img{display:block;margin:0 auto;}
+.supporters .username{text-align:center;}
 .tags{margin-left:0;padding-left:0;}.tags .divider:last-child{display:none;}
-.submit_form{text-align:auto;margin-top:40px;margin-left:330px;}
+.submit-form label{display:block;padding:5px 0;text-align:left;text-transform:uppercase;width:100%;}
+.submit-form input[type="text"],.submit-form input[type="password"]{width:97%;}
+.submit-form .submit.btn{float:right;margin-top:15px;padding:7px 0;width:40%;}
+.submit-form textarea{width:97%;}
 .faq p{text-align:justify;}
 .registration_form label{display:block;padding:5px 0;text-align:left;text-transform:uppercase;width:100%;}
 .registration_form input[type="text"],.registration_form input[type="password"]{width:97%;}
