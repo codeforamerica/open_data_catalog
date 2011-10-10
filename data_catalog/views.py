@@ -1,6 +1,7 @@
 """Views for the Boston Data Catalog."""
 
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render, redirect, get_object_or_404
 from taggit.models import Tag
 
@@ -39,10 +40,18 @@ def create_context(request, model_name):
     reduced by a tag.
     """
     tag = request.GET.get('tag')
+    page = request.GET.get('page')
     available_models = {'apps': App, 'data': Data, 'projects': Project}
     model = available_models[model_name]
     # TODO: Need to filter by tags if tag present.
     resources = model.objects.all()
+    paginator = Paginator(resources, 9)
+    try:
+        resources = paginator.page(page)
+    except EmptyPage:
+        resources = paginator.page(paginator.num_pages)
+    except:
+        resources = paginator.page(1)
     path = model_name.rstrip('s')
     context = {'path': path, 'resources': resources}
     context = add_breadcrumb(model_name, context)

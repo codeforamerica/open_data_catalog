@@ -5,7 +5,7 @@
         {% if layout != "list-view" %}
         <div class="resources">
 
-            {% for resource in resources %}
+            {% for resource in resources.object_list %}
             <div class="individual span4">
               <a href="/{{ path }}/{{ resource.slug }}" alt="Project Name">
                 {% if resource.image %}
