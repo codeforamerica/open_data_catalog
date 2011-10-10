@@ -2,6 +2,8 @@
     <div class="row">
 
         <div class="submit-form span8 offset4 whitespace">
+          <p>Your image should be <strong>150 pixels</strong> by
+          <strong>180 pixels</strong>.</p>
             <form action="/submit/{{ resource }}" method="POST"
                   enctype="mutlipart/form-data" class="resource_form">
                 {% csrf_token %}
