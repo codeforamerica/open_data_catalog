@@ -44,7 +44,7 @@
         <div class="span4">
           <div class="support">
               {% include "support/support_form.html" %}
-              {% if user.is_authenticated %}
+              {% if resource.user == user %}
               <a href="/edit/{{ path }}/{{ resource.slug }}" class="btn large edit">Edit</a>
               {% endif %}
           </div>
