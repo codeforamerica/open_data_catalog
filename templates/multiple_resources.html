@@ -2,6 +2,7 @@
 
 <div class="container resource-list">
     <div class="row">
+        {% if layout != "list-view" %}
         <div class="resources">
 
             {% for resource in resources %}
@@ -26,6 +27,17 @@
 
         </div>
         <!-- End of resources -->
+
+        {% else %}
+        <div class="list-view whitespace">
+
+          {% for resource in resources %}
+          <div class="span12 individual {% cycle 'plain' 'zebra-striped' %}">
+            <p>{{ resource.name }}</p>
+          </div>
+          {% endfor %}
+
+        {% endif %}
 
         {% include "filters.html" %}
 

@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
 {% block main %}
-{% include "multiple_resources.html" %}
+
+{% with layout="list-view" %}
+  {% include "multiple_resources.html" %}
+{% endwith %}
+
 {% endblock %}
