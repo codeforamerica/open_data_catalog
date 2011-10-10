@@ -39,11 +39,9 @@ def create_context(request, model_name):
     and also determines whether the number of model instances returned can be
     reduced by a tag.
     """
-    tag = request.GET.get('tag')
     page = request.GET.get('page')
     available_models = {'apps': App, 'data': Data, 'projects': Project}
     model = available_models[model_name]
-    # TODO: Need to filter by tags if tag present.
     resources = model.objects.all()
     paginator = Paginator(resources, 9)
     try:
@@ -125,6 +123,18 @@ def edit_resource(request, resource_type, slug=None):
     form = model_form(instance=model_instance)
     context = {'form': form}
     return render(request, 'edit/project.html', context)
+
+
+@login_required
+def my_projects(request):
+    """List the projects the user is involved with."""
+    user = request.user
+    if not user.is_authenticated():
+        return redirect(projects)
+    projects = Project.objects.filter(user=user)
+    context = {'projects': projects}
+    return render(request, 'my_projects.html', context)
+
 
 
 def add_breadcrumb(resource_type, context):
