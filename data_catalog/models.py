@@ -16,6 +16,7 @@ class Resource(models.Model):
     slug = AutoSlugField(populate_from='name', unique=True)
     description = models.TextField()
     tags = TaggableManager()
+    user = models.ForeignKey(User, blank=True, null=True)
 
     class Meta:
         abstract = True
