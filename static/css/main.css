@@ -48,6 +48,7 @@ footer .unstyled{margin-left:35%;}
 .individual_resource{margin-top:40px;}.individual_resource h1{font-family:Oswald,Helvetica Neue,sans-serif;text-transform:uppercase;}
 .support_project{margin-top:45px;}
 .edit{display:block;margin:0 0 18px 0;text-align:center;width:180px;}
+.tags .divider:last-child{display:none;}
 .submit_form{text-align:auto;margin-top:40px;margin-left:330px;}
 .faq p{text-align:justify;}
 .registration_form label{display:block;padding:5px 0;text-align:left;text-transform:uppercase;width:100%;}
