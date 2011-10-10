@@ -6,6 +6,17 @@
 
 /* Override some defaults */
 
+a {
+    color: #414141;
+    text-decoration: none;
+    line-height: inherit;
+    font-weight: inherit;
+    &:hover {
+        color:#FFD104;
+        text-decoration: none;
+    }
+}
+
 textarea{
     resize: vertical;
 }
@@ -243,15 +254,30 @@ span.gravatar{
     }
 }
 
-a {
-  color: #414141;
-  text-decoration: none;
-  line-height: inherit;
-  font-weight: inherit;
+hr.separator{
+    margin: 40px 0 0;
 }
-a:hover {
-  color:#FFD104;
-  text-decoration: none;
+
+.logos{
+    a{
+        display: block;
+        height: 100px;
+        margin: 25px 0;
+        text-indent: -999em;
+        width: 290px;
+        &:hover{
+            opacity: .7;
+        }
+    }
+    .built{
+        background: url(/static/img/sponsors/builtinboston.png) no-repeat center center;
+    }
+    .cfa{
+        background: url(/static/img/sponsors/cfalogo.png) no-repeat center center;
+    }
+    .new-urban{
+        background: url(/static/img/sponsors/newurbanmechanics.png) no-repeat center center;
+    }
 }
 
 footer{
@@ -337,6 +363,7 @@ footer{
             font: 20px Oswald, Helvetica Neue, sans-serif;
             float: left;
             margin: 10px 0 0 25px;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
             width: 400px;
         }
         text-transform: uppercase;
