@@ -26,14 +26,16 @@
                 </p>
                 <p class="organization">{{ resource.organization }}</p>
               </section>
-              <ul class="breadcrumb tags">
-              {% for tag in resource.tags.all %}
-              <li>
-                <a href="/search?q={{ tag.name|urlencode }}" class="tag">{{ tag.name }}</a>
-              </li>
-                <span class="divider">/</span>
-              {% endfor %}
-              </ul>
+              <section>
+                  <ul class="breadcrumb tags">
+                  {% for tag in resource.tags.all %}
+                  <li>
+                    <a href="/search?q={{ tag.name|urlencode }}" class="tag">{{ tag.name }}</a>
+                  </li>
+                    <span class="divider">/</span>
+                  {% endfor %}
+                  </ul>
+              </section>
             </div>
         </div>
 
