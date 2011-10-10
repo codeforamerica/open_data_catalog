@@ -46,7 +46,9 @@ footer .unstyled{margin-left:35%;}
 .filters{margin-top:40px;position:absolute;right:0;top:0;}.filters strong{font-size:13px;font-family:'Oswald',sans-serif;text-transform:uppercase;}
 .filters-scrolling{margin-top:55px;margin-left:800px;margin-bottom:75px;position:fixed;right:auto;}
 .individual_resource{margin-top:40px;}.individual_resource h1{font-family:Oswald,Helvetica Neue,sans-serif;text-transform:uppercase;}
+.individual_resource iframe{margin-bottom:20px;}
 .individual_resource section{padding-top:20px;}
+.individual_resource .description{width:650px;}
 .support_project{margin-top:45px;}
 .edit{display:block;margin:0 0 18px 0;text-align:center;width:180px;}
 .tags{margin-left:0;padding-left:0;}.tags .divider:last-child{display:none;}
