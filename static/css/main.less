@@ -332,13 +332,22 @@ footer{
 .list-view{
     .whitespace;
     .individual{
-        font: 20px Oswald, Helvetica Neue, sans-serif;
-        height: 75px;
-        padding: 5px 0;
+        height: 100px;
+        .description{
+            font: 20px Oswald, Helvetica Neue, sans-serif;
+            float: left;
+            margin: 10px 0 0 25px;
+            width: 400px;
+        }
         text-transform: uppercase;
     }
+    .btn{
+        display: block;
+        float: right;
+        margin: 10px 25px 0 0;
+    }
     .zebra-striped{
-        background: #eee;
+        #gradient > .vertical(#f9f9f9, #eee);
     }
 }
 
