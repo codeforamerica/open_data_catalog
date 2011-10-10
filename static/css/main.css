@@ -43,6 +43,8 @@ footer .unstyled{margin-left:35%;}
 .resources .thumbnail{background:url(/static/img/placeholder.png) no-repeat center center;background-size:180px;display:block;height:150px;margin:20px auto;}
 .resources .actual-thumbnail{display:block;height:150px;margin:20px auto;width:180px;}
 .resources .description{padding:0 20px;}.resources .description .snippet{height:75px;text-overflow:ellipsis;}
+.list-view{margin-top:40px;}.list-view .individual{font:20px Oswald,Helvetica Neue,sans-serif;height:75px;padding:5px 0;text-transform:uppercase;}
+.list-view .zebra-striped{background:#eee;}
 .filters{margin-top:40px;position:absolute;right:0;top:0;}.filters strong{font-size:13px;font-family:'Oswald',sans-serif;text-transform:uppercase;}
 .filters-scrolling{margin-top:55px;margin-left:800px;margin-bottom:75px;position:fixed;right:auto;}
 .individual_resource{margin-top:40px;}.individual_resource h1{font-family:Oswald,Helvetica Neue,sans-serif;text-transform:uppercase;}

@@ -26,17 +26,20 @@
             {% endfor %}
 
         </div>
-        <!-- End of resources -->
 
         {% else %}
-        <div class="list-view whitespace">
+        <div class="list-view">
 
           {% for resource in resources %}
           <div class="span12 individual {% cycle 'plain' 'zebra-striped' %}">
-            <p>{{ resource.name }}</p>
+            <div class="description">
+              <a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a>
+              <p class="user"><small>{{ resource.user.username }}</small></p>
+            </div>
           </div>
           {% endfor %}
 
+        </div>
         {% endif %}
 
         {% include "filters.html" %}
