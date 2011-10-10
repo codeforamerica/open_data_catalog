@@ -46,7 +46,8 @@ footer .unstyled{margin-left:35%;}
 .resources{margin-bottom:75px;}.resources .individual{border:3px solid #eee;min-height:375px;margin-top:40px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-webkit-box-shadow:0 1px 5px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1);-moz-box-shadow:0 1px 5px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1);box-shadow:0 1px 5px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1);}
 .resources .thumbnail{background:url(/static/img/placeholder.png) no-repeat center center;background-size:180px;display:block;height:150px;margin:20px auto;}
 .resources .actual-thumbnail{display:block;height:150px;margin:20px auto;width:180px;}
-.resources .description{padding:0 20px;}.resources .description .snippet{height:75px;text-overflow:ellipsis;}
+.resources .description{padding:0 20px;}.resources .description .name{font:14px Oswald,sans-serif;text-transform:uppercase;}
+.resources .description .snippet{height:75px;text-overflow:ellipsis;}
 .list-view{margin-top:40px;}.list-view .placeholder{background:url(/static/img/placeholder_small.png) no-repeat center center;float:left;height:75px;margin:15px 0 0 15px;width:90px;}
 .list-view .individual{height:105px;text-transform:uppercase;}.list-view .individual .description{float:left;margin:10px 0 0 25px;text-shadow:0 1px 1px rgba(255, 255, 255, 0.5);width:400px;}
 .list-view .individual p{font:20px Oswald,Helvetica Neue,sans-serif;}
