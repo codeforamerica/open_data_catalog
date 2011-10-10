@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="container resource-list">
+    <div class="row">
+
+        <div class="list-view">
+
+          {% for project in projects %}
+          <div class="span12 individual {% cycle 'plain' 'zebra-striped' %}">
+            <a href="/project/{{ project.slug }}">
+              <div class="placeholder"></div>
+            </a>
+            <div class="description">
+              <p>
+                <a href="/project/{{ project.slug }}">{{ project.name }}</a>
+              </p>
+              <ul class="breadcrumb tags">
+              {% for tag in project.tags.all %}
+              <li>
+                <a href="/search?q={{ tag.name|urlencode }}" class="tag">{{ tag.name }}</a>
+              </li>
+                <span class="divider">/</span>
+              {% endfor %}
+              </ul>
+            </div>
+            <a href="/{{ path }}/{{ projects.slug }}"
+               class="btn float-right"> Details </a>
+          </div>
+          {% endfor %}
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
