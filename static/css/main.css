@@ -52,7 +52,7 @@ footer .unstyled{margin-left:35%;}
 .support_project{margin-top:45px;}.support_project .btn{display:block;margin:0 auto 18px;}
 .edit{display:block;margin:0 auto 18px;text-align:center;width:180px;}
 .edit-btn{margin-top:45px;}
-.supporters{background:#eee;height:500px;padding:20px 0;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}.supporters img{display:block;margin:0 auto;}
+.supporters{background:#eee;height:500px;overflow-y:scroll;padding:20px 0;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}.supporters img{display:block;margin:0 auto;}
 .supporters .username{text-align:center;}
 .tags{margin-left:0;padding-left:0;}.tags .divider:last-child{display:none;}
 .submit-form label{display:block;padding:5px 0;text-align:left;text-transform:uppercase;width:100%;}

@@ -1,8 +1,14 @@
-<div class="submit_form">
-    <form action="/submit/{{ resource }}" method="POST"
-          enctype="mutlipart/form-data" class="resource_form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" class="submit" value="Submit" name="submit" />
-    </form>
+<div class="container">
+    <div class="row">
+
+        <div class="submit-form span8 offset4 whitespace">
+            <form action="/submit/{{ resource }}" method="POST"
+                  enctype="mutlipart/form-data" class="resource_form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="submit btn yellow" value="Submit" name="submit" />
+            </form>
+        </div>
+
+    </div>
 </div>
