@@ -1,4 +1,4 @@
-"""Django settings file."""
+"""Django settings file for the data catalog."""
 
 import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
