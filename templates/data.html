@@ -1,9 +1,34 @@
 {% extends "base.html" %}
 
 {% block main %}
+<div class="container resource-list">
+    <div class="row">
+        <div class="list-view">
 
-{% with layout="list-view" %}
-  {% include "multiple_resources.html" %}
-{% endwith %}
-
+          {% for resource in resources %}
+          {% with datacouch="http://datacouch.com/edit/#/" %}
+          <div class="span12 individual {% cycle 'plain' 'zebra-striped' %}">
+              <a href="{{ datacouch }}{{ resource.id }}"><div class="placeholder"></div></a>
+            <div class="description">
+              <p>
+                <a href="{{ datacouch }}{{ resource.id }}">{{ resource.value }}</a>
+              </p>
+              <ul class="breadcrumb tags">
+              {% for tag in resource.tags.all %}
+              <li>
+                <a href="/search?q={{ tag.name|urlencode }}" class="tag">{{ tag.name }}</a>
+              </li>
+                <span class="divider">/</span>
+              {% endfor %}
+              </ul>
+            </div>
+            <a href="{{ datacouch }}{{ resource.id }}"
+               class="btn float-right"> Details </a>
+          </div>
+          {% endwith %}
+          {% endfor %}
+        </div>
+        {% include "filters.html" %}
+    </div>
+</div>
 {% endblock %}

@@ -1,8 +1,11 @@
 """Views for the Boston Data Catalog."""
 
+from urllib2 import urlopen
+
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils import simplejson as json
 from taggit.models import Tag
 
 from data_catalog.forms import AppForm, DataForm, ProjectForm, SupportForm
@@ -23,7 +26,10 @@ def apps(request):
 
 def data(request):
     """Render the data page."""
-    context = create_context(request, 'data')
+    url = 'http://datacouch.com/api/datasets/newurbanmechs'
+    json_data = urlopen(url).read()
+    data_sets = json.loads(json_data)
+    context = {'resources': data_sets['rows']}
     return render(request, 'data.html', context)
 
 
@@ -134,7 +140,6 @@ def my_projects(request):
     projects = Project.objects.filter(user=user)
     context = {'projects': projects}
     return render(request, 'my_projects.html', context)
-
 
 
 def add_breadcrumb(resource_type, context):
