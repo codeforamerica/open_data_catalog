@@ -5,7 +5,7 @@ textarea{resize:vertical;}
 .quickstart h6,.quickstart p{font-style:bold;font-family:Georgia,"Times New Roman",Times,serif;text-shadow:0 1px 1px rgba(255, 255, 255, 0.5);text-align:center;}
 .quickstart p{font-size:13px;font-style:italic;font-weight:normal;line-height:18px;margin-bottom:9px;}
 .quickstart [class*="span"]{height:64px;padding:11px 19px 12px;text-align:center;font-style:italic;}
-.quickstart a{cursor:pointer;}.quickstart a:hover h6{color:#ffd305;}
+.quickstart a{cursor:pointer;}.quickstart a:hover div{background:rgba(0, 0, 0, 0.04);}
 .breadcrumb-container{margin-top:20px;}
 .breadcrumb{background:#fff;border:none;color:white;font-family:'Oswald',sans-serif;margin-bottom:0;margin-left:5px;text-transform:uppercase;}
 .hero-unit h1,.hero-unit p{text-shadow:0 1px 1px rgba(255, 255, 255, 0.8);}
