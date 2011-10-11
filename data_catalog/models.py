@@ -44,6 +44,18 @@ class Data(Resource):
     class Meta:
         verbose_name_plural = 'Data'
 
+    @staticmethod
+    def check_exists(data_sets):
+        """Check to see if data sets from Data Couch already exist."""
+        for data in reversed(data_sets):
+            name = data['value']
+            url = 'http://datacouch.com/edit/#/' + data['id']
+            instance, created = Data.objects.get_or_create(name=name, url=url)
+            if created:
+                instance.description = data['doc']['description']
+                instance.slug = data['id']
+                instance.save()
+
 
 class Project(Resource):
     """An individual project."""

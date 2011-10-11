@@ -17,7 +17,7 @@
               </a>
                 <div class="description">
                   <p class="name">
-                    <a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a>
+                    <a href="/{{ path }}/{{ resource.slug }}/">{{ resource.name }}</a>
                   </p>
                   <p class="user"><small>Max Ogden</small></p>
                   <p class="snippet">{{ resource.description|truncatewords:15 }}</p>
@@ -34,12 +34,12 @@
 
           {% for resource in resources.object_list %}
           <div class="span12 individual {% cycle 'plain' 'zebra-striped' %}">
-            <a href="/{{ path }}/{{ resource.slug }}">
+            <a href="/{{ path }}/{{ resource.slug }}/">
               <div class="placeholder"></div>
             </a>
             <div class="description">
               <p>
-                <a href="/{{ path }}/{{ resource.slug }}">{{ resource.name }}</a>
+                <a href="/{{ path }}/{{ resource.slug }}/">{{ resource.name }}</a>
               </p>
               <ul class="breadcrumb tags">
               {% for tag in resource.tags.all %}
@@ -50,7 +50,7 @@
               {% endfor %}
               </ul>
             </div>
-            <a href="/{{ path }}/{{ resource.slug }}"
+            <a href="/{{ path }}/{{ resource.slug }}/"
                class="btn float-right"> Details </a>
           </div>
           {% endfor %}

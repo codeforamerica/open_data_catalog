@@ -5,6 +5,7 @@ from urllib2 import urlopen
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.cache import cache_page
 from django.utils import simplejson as json
 from taggit.models import Tag
 
@@ -24,13 +25,22 @@ def apps(request):
     return render(request, 'apps.html', context)
 
 
+@cache_page(60 * 10)
 def data(request):
-    """Render the data page."""
-    url = 'http://datacouch.com/api/datasets/newurbanmechs'
+    """Render the data page. Currently caching for ten minutes."""
+    ping_datacouch()
+    context = create_context(request, 'data')
+    return render(request, 'data.html', context)
+
+
+def ping_datacouch():
+    """Ping Data Couch to see if there are any new data sets."""
+    user = 'newurbanmechs'
+    url = 'http://datacouch.com/api/datasets/' + user
     json_data = urlopen(url).read()
     data_sets = json.loads(json_data)
-    context = {'resources': data_sets['rows']}
-    return render(request, 'data.html', context)
+    rows = data_sets['rows']
+    Data.check_exists(rows)
 
 
 def projects(request):
@@ -87,7 +97,7 @@ def request_data(request):
 
 def individual_resource(request, resource_type, slug):
     """Render a specific resource."""
-    available_resources = {'app': App, 'data': Data, 'project': Project}
+    available_resources = {'app': App, 'project': Project}
     model = available_resources[resource_type]
     resource = get_object_or_404(model, slug=slug)
     context = {
@@ -101,6 +111,13 @@ def individual_resource(request, resource_type, slug):
     template = 'individual_resource/resource.html'
     context = add_breadcrumb(resource_type, context)
     return render(request, template, context)
+
+
+def redirect_to_data_couch(request, slug):
+    """Redirect to Data Couch so that a user can see an actual data set."""
+    resource = Data.objects.get(slug=slug)
+    redirect_url = 'http://datacouch.com/edit/#/' + resource.slug
+    return redirect(redirect_url)
 
 
 def edit_resource(request, resource_type, slug=None):
