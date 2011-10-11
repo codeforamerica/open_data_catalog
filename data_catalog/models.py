@@ -80,7 +80,7 @@ class Project(Resource):
         """
         if 'youtube' in video_url:
             hosting_provider = 'youtube'
-            video_id = re.search(r'v=(\w+)', video_url).group(1)
+            video_id = re.search(r'v=(.\w+)', video_url).group(1)
         elif 'vimeo' in video_url:
             hosting_provider = 'vimeo'
             video_id = re.search(r'\d+', video_url).group()
