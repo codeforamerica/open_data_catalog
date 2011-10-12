@@ -1,4 +1,11 @@
 <div class="span3 filters">
+
+  {% if path == "app" %}
+    <a href="/submit/app" class="btn yellow">Submit Your App &rarr;</a>
+
+    <ul class="unstyled">
+  {% else %}
+
     <ul class="unstyled">
         <li>
           <a href="#">Featured</a>
@@ -12,6 +19,8 @@
         <li>
           <a href="submit/project">Post A Project</a>
         </li>
+
+  {% endif %}
 
         <hr />
 
