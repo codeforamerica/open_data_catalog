@@ -3,7 +3,7 @@ Hello, thanks for registering.
 To activate your account click on the link below or copy and paste it
 into your web browser:
 
-http://{{ settings.CATALOG_URL }}/accounts/activate/{{ activation_key }}/
+http://www.buildingboston.org/accounts/activate/{{ activation_key }}/
 
 Thanks,
 
