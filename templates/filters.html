@@ -2,11 +2,11 @@
 
   {% if path == "app" %}
     <a href="/submit/app" class="btn yellow">Submit Your App &rarr;</a>
-  {% endif %}
-  {% if path == "project" %}
+  {% else %}{% if path == "project" %}
     <a href="/submit/project" class="btn yellow">Submit A Project</a>
   {% else %}
-    <a href="http://datacouch.com" class="btn yellow">Request Data</a>
+    <a href="/request/data" class="btn yellow">Request Data</a>
+  {% endif %}
   {% endif %}
     <hr />
     <ul class="unstyled">

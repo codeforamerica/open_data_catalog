@@ -3,6 +3,7 @@
 from urllib2 import urlopen
 
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.cache import cache_page
@@ -92,6 +93,12 @@ def request_data(request):
     Direct the user in the best way for obtaining a currently
     unavailable dataset.
     """
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    message = request.POST.get('message')
+    if name and email and message:
+        send_mail(name, message, email, ['nigel.jacob@cityofboston.gov'])
+        return redirect(data)
     return render(request, 'request_data.html')
 
 

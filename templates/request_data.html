@@ -1,5 +1,22 @@
 {% extends "base.html" %}
 
 {% block main %}
-<p>This page is for requesting data.</p>
+<div class="container">
+    <div class="row">
+
+        <div class="submit-form span8 offset4 whitespace">
+            <form action="." method="POST" class="resource_form">
+                {% csrf_token %}
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="" />
+                <label for="name">Email</label>
+                <input type="text" name="email" id="email" value="" />
+                <label for="message">Message</label>
+                <textarea name="message" id="message" rows=8></textarea>
+                <input type="submit" class="submit btn yellow" value="Send Request" name="submit" />
+            </form>
+        </div>
+
+    </div>
+</div>
 {% endblock %}
