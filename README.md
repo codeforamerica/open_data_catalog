@@ -4,6 +4,9 @@ Open Data Catalog
 A Django web application that can be used by cities to easily get an
 open data catalog up and running.
 
+NOTE: This fork hasn't been touched since mid-2011.  Instead, please visit:
+
+https://github.com/azavea/Open-Data-Catalog
 
 Setup Instructions
 ------------------
